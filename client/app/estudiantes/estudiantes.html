@@ -1,0 +1,258 @@
+<!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
+<navbar></navbar>
+<div class="col-md-12">
+  <div class="row">
+  <div class="col-md-8">
+    <h2 class="text-center">Estudiantes</h2>
+
+  </div>
+  <div class="col-md-4">
+    <br>
+    <!-- <button class="btn btn-primary" ng-click="crearEstudiante()">Crear estudiante</button> -->
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modalCrearEstudiante">Crear estudiante</button>
+
+  </div>
+  </div>
+
+    <div ng-if="vista!='inicio'" class="table-responsive">
+      <!-- <table class="table table-striped">
+        <thead>
+          <td>Identificación</td>
+          <td>Nombres</td>
+          <td>Apellidos</td>
+          <td>Fecha de nacimiento</td>
+          <td>Ciudad</td>
+          <td>Dirección</td>
+          <td>Teléfono</td>
+          <td>Email</td>
+          <td></td>
+          <td></td>
+        </thead>
+        <tbody>
+          <tr dir-paginate="estudiante in estudiantes | itemsPerPage: pageSize" current-page="currentPage" data-toggle="modal" data-target="#modalGestionarEstudiante" ng-click="cargarEstudiante(estudiante)">
+            <td>{{estudiante.identificacion}}</td>
+            <td>{{estudiante.nombre}}</td>
+            <td>{{estudiante.apellido}}</td>
+            <td>{{estudiante.fecha_nacimiento | date }}</td>
+            <td>{{estudiante.fecha_nacimiento | date:'longDate' }}</td>
+            <td>{{estudiante.ciudad}}</td>
+            <td>{{estudiante.direccion}}</td>
+            <td>{{estudiante.telefono}}</td>
+            <td>{{estudiante.email}}</td>
+            <td>
+              <button type="button" class="btn btn-warning" ng-click="actualizarEstudiante(estudiante);"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" ng-click="eliminarEstudiante(estudiante);"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+
+
+      <!-- <table st-table="rowCollection" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Identificación</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Fecha de nacimiento</th>
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+	<tbody>
+	<tr dir-paginate="estudiante in estudiantes | itemsPerPage: pageSize" current-page="currentPage">
+    <td>{{estudiante.identificacion}}</td>
+    <td>{{estudiante.nombre}}</td>
+    <td>{{estudiante.apellido}}</td>
+    <td>{{estudiante.fecha_nacimiento | date }}</td>
+    <td>{{estudiante.ciudad}}</td>
+    <td>{{estudiante.direccion}}</td>
+    <td>{{estudiante.telefono}}</td>
+    <td>{{estudiante.email}}</td>
+	</tr>
+	</tbody>
+</table> -->
+
+
+<!-- <script src="angular.js"></script> <!-- add angular framework--> -->
+<script src="lrStickyHeader.js"></script> <!-- add lrStickyHeader (script framework agnostic) -->
+<script src="smart-table.js"></script> <!-- add smart table angular module -->
+<script src="stStickyHeader.js"></script><!-- load directive -->
+<script>
+  angular.module('myApp',['smart-table']) // bootstrap your app
+</script>
+
+<table st-table="foo" st-sticky-header>  <!-- use st-sticky-header directive on the smart-table element -->
+
+</table>
+
+
+    </div>
+  </div>
+<div class="text-center">
+  <dir-pagination-controls  boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
+
+</div>
+
+<!-- <div ng-include="'app/estudiantes/estudianteGestion.html'"> -->
+<!-- <div ng-include="'app/modales/confirmar/confirmar.html'"> -->
+
+<!--
+****************************
+modal -->
+<div class="modal fade" id="modalGestionarEstudiante" tabindex="-1" role="dialog" aria-labelledby="modalGestionarEstudianteLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalGestionarEstudianteLabel">Estudiante: {{ estudianteAGestionar.nombre}} {{estudianteAGestionar.apellido}}</h4>
+      </div>
+      <div class="modal-body">
+
+      <div id="ver" ng-show="vista=='ver'">
+
+        <table class="table">
+          <tr>
+            <td>Identificación:</td>
+            <td>{{estudianteAMostrar.identificacion}}</td>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td>{{estudianteAMostrar.nombre}}</td>
+          </tr>
+
+          <tr>
+            <td>Apellido:</td>
+            <td>{{estudianteAMostrar.apellido}}:</td>
+          </tr>
+
+          <tr>
+            <td>Fecha de nacimiento:</td>
+            <td>{{estudianteAMostrar.fecha_nacimiento | date}}:</td>
+          </tr>
+
+          <tr>
+            <td>Ciudad:</td>
+            <td>{{estudianteAMostrar.ciudad}}:</td>
+          </tr>
+
+          <tr>
+            <td>Dirección:</td>
+            <td>{{estudianteAMostrar.direccion}}:</td>
+          </tr>
+
+          <tr>
+            <td>Teléfono</td>
+            <td>{{estudianteAMostrar.telefono}}:</td>
+          </tr>
+
+          <tr>
+            <td>Correo electrónico:</td>
+            <td>{{estudianteAMostrar.email}}:</td>
+          </tr>
+
+        </table>
+</div>
+
+<div id="editar" ng-show="vista=='editar'">
+ <h1>vista editar estudiante</h1>
+        <button type="button" class="btn btn-danger text-left" ng-show="vista=='editar'" ng-click="eliminarEstudiante('el/la estudiante '+ estudianteAGestionar.nombre +' '+ estudianteAGestionar.apellido)">Eliminar</button>
+</div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-show="vista=='editar'" ng-click="cambiarVista('ver')">Volver</button>
+        <button type="button" class="btn btn-warning" ng-show="vista=='ver'" ng-click="cambiarVista('editar')">Editar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div ng-if="vista=='crear'">
+  <form class="form-horizontal" ng-submit="crearEstudiante()">
+
+    <fieldset>
+
+    <!-- Identificación-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textIdentificacion">*Nro. Identificación</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.identificacion" id="textIdentificacion" name="textIdentificacion" type="text" placeholder="Ingrese el número de identificación" class="form-control input-md" required>
+        </div>
+    </div>
+
+    <!-- Nombre-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textNombre">*Nombre</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.nombre" id="textNombre" name="textNombre" type="text" placeholder="Ingrese el nombre" class="form-control input-md" required>
+      </div>
+    </div>
+
+    <!-- Apellido-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textApellido">*Apellido</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.apellido" id="textApellido" name="textApellido" type="text" placeholder="Ingrese los apellidos" class="form-control input-md" required>
+      </div>
+    </div>
+
+    <!-- Fecha de Nacimiento-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="dateFechaNacimiento">*Fecha de nacimiento</label>
+      <div class="col-md-6">
+      <input type="date" ng-model="estudiante.fecha_nacimiento" id="dateFechaNacimiento" name="dateFechaNacimiento"  class="form-control input-md"  required>
+      </div>
+    </div>
+
+    <!--Ciudad -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textCiudad">*Ciudad</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.ciudad" id="textCiudad" name="textCiudad" type="text" placeholder="Ingrese la ciudad" class="form-control input-md" required>
+      </div>
+    </div>
+
+    <!--Dirección -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textDireccion">*Dirección</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.direccion" id="textDireccion" name="textDireccion" type="text" placeholder="Ingrese la dirección" class="form-control input-md" required>
+      </div>
+    </div>
+
+    <!--Teléfono -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textTelefono">*Teléfono</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.telefono" id="textTelefono" name="textTelefono" type="text" placeholder="Ingrese el teléfono" class="form-control input-md" required>
+      </div>
+    </div>
+
+    <!--Email -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textEmail">*Email</label>
+      <div class="col-md-6">
+      <input ng-model="estudiante.email" id="textEmail" name="textEmail" type="email" placeholder="Ingrese su dirección de correo electrónico" class="form-control input-md" required>
+      </div>
+    </div>
+
+
+    </fieldset>
+
+  <div class="modal-footer">
+      <button class="btn btn-primary" type="submit">{{textoBoton}}</button>
+      <button class="btn btn-warning" type="button" ng-click="cancelar()">Cáncelar</button>
+  </div>
+  </form>
+
+</div>
