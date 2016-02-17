@@ -13,6 +13,10 @@ class NavbarController {
 {
   'title':'Desempeños',
   'link':'/desempenos'
+},
+{
+  'title':'Asistencia',
+  'link':'/asistencia'
 }];
 
   isCollapsed = true;
