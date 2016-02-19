@@ -16,4 +16,8 @@ angular.module('notasApp', [
       });
 
     $locationProvider.html5Mode(true);
+
+    $(document).ready(function() {
+        $('.button-collapse').sideNav();
+    });
   });
