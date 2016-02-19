@@ -16,22 +16,27 @@
 <div class="row container">
   <ul class="collapsible popout collection" data-collapsible="accordion">
     <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion' | limitTo:10">
+
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">
+        <!-- THUMBNAIL -->
         <img src="assets/images/user.png" alt="" class="circle" height="25px">
         <span class="title">{{estudiante.nombre}} {{estudiante.apellido}} -- {{estudiante.identificacion}}</span>
       </div>
+
       <!-- CUERPO ACORDEON -->
       <div class="collapsible-body">
         <div class="row">
-          <div class="col l2 s12 center-align">
-            <br>
-            <img src="assets/images/user.png" alt="" class="circle" height="150px">
+          <!-- IMAGEN PRINCIPAL -->
+          <div class="col l3 s12 center-align">
+            <br><img src="assets/images/user.png" alt="" class="circle" height="150px">
           </div>
-          <div class="col l10 s12">
+
+          <!-- VISTA "VER" DE ESTUDIANTE -->
+          <div class="col l9 s12 " ng-show="vista=='ver'">
             <br>
             <div class="row">
-              <div class="col s10 offset-s1">
+              <div class="col s10">
                 <div class="row">
                   <div class="col l2 s4">
                     <strong>  Nombre:</strong>
@@ -96,7 +101,97 @@
                 </div>
               </div>
             </div>
+            <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
+            <a class="red btn">Eliminar</a>
           </div>
+          <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
+
+
+          <!-- VISTA "EDICION" DE ESTUDIANTE -->
+          <div class="col l9 s12 " ng-show="vista=='editar'">
+            <form class="col m12" ng-submit="actualizarEstudiante(estudiante)">
+
+              <!-- INPUT IDENTIFICACIÓN -->
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">book</i>
+                  <input id="input_codigo" type="text" class="validate" ng-model="estudiante.identificacion" required="" aria-required="true">
+                  <label for="input_codigo" data-error="wrong" >identificación</label>
+                </div>
+
+                <!-- INPUT FECHA DE NACIMIENTO -->
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">date_range</i>
+                  <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
+                  <!-- <input id="date_fecha_nacimiento" type="date" ng-model="fecha"  required="" aria-required="true"> -->
+                  <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
+                </div>
+              </div>
+
+              <!-- INPUT NOMBRE -->
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">account_box</i>
+                  <input id="input_nombre" type="text" class="validate" ng-model="estudiante.nombre" required="" aria-required="true">
+                  <label for="input_nombre" data-error="Error" >Nombre</label>
+                </div>
+
+              <!-- INPUT APELLIDO -->
+                <div class="input-field col l6 s12">
+                  <!-- <i class="material-icons prefix">face</i> -->
+                  <input id="input_apellido" type="text" class="validate" ng-model="estudiante.apellido" required="" aria-required="true">
+                  <label for="input_apellido" data-error="Error" >Apellido</label>
+                </div>
+              </div>
+
+              <!-- INPUT TELEFONO -->
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">phone</i>
+                  <input id="input_telefono" type="text" class="validate" ng-model="estudiante.telefono" required="" aria-required="true">
+                  <label for="input_telefono" data-error="Error" >Teléfono</label>
+                </div>
+
+                <!-- INPUT EMAIL -->
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">email</i>
+                  <input id="input_email" type="email" class="validate" ng-model="estudiante.email" required="" aria-required="true">
+                  <label for="input_email" data-error="Ingrese una dirección de correo válida" >Email</label>
+                </div>
+              </div>
+
+              <!-- INPUT CIUDAD -->
+              <div class="row">
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">location_city</i>
+                  <input id="input_ciudad" type="text" class="validate" ng-model="estudiante.ciudad" required="" aria-required="true">
+                  <label for="input_ciudad" data-error="Error" >Ciudad</label>
+                </div>
+
+
+                <!-- TEXTAREA DIRECCION -->
+                <div class="input-field col l6 s12">
+                <i class="material-icons prefix">import_contacts</i>
+                  <textarea id="textarea_direccion" class="materialize-textarea" ng-model="estudiante.direccion" required="" aria-required="true"></textarea>
+                  <label for="textarea_direccion">Dirección</label>
+                </div>
+              </div>
+
+
+
+              <div class="row right-align">
+
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+
+
+            </form>
+          </div>
+          <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
+
+
         </div>
       </div>
     </li>

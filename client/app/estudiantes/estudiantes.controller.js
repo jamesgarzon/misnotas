@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('EstudiantesCtrl', function ($scope,$http,Estudiante) {
+.controller('EstudiantesCtrl', function ($scope,$http,Estudiante,$filter) {
 
   $('.scrollspy').scrollSpy();
   $(".button-collapse-clientes").sideNav();
@@ -15,10 +15,16 @@ angular.module('notasApp')
   //   selectYears: 50 // Creates a dropdown of 15 years to control year
   // });
 
+  $scope.fecha = new Date();
+  $scope.vista ='ver';
+
   $scope.listarEstudiantes = function () {
     Estudiante.listar()
     .then(function(data) {
       $scope.estudiantes = data;
+      // for (var i = 0; i < $scope.estudiantes.length; i++) {
+      //   $scope.estudiantes[i].fecha_nacimiento = $filter('date')($scope.estudiantes[i].fecha_nacimiento, "yyyy-MM-dd");
+      // }
     })
     .catch(function(err) {
       console.log(err);
