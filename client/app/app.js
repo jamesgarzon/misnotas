@@ -6,8 +6,8 @@ angular.module('notasApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap',
-  'angularUtils.directives.dirPagination'
+  'angularUtils.directives.dirPagination',
+  'ui.materialize'
 ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider

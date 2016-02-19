@@ -1,66 +1,39 @@
-// 'use strict';
-//
-// angular.module('notasApp')
-//   .controller('EstudiantesCtrl', function ($scope) {
-//     $scope.message = 'Hello';
-//   });
-
 'use strict';
 
 angular.module('notasApp')
-.controller('EstudiantesCtrl', function ($scope,$http,Modal,estudianteService,$modal, $log) {
-// .controller('EstudiantesCtrl', function ($scope,EstudianteService,$uibModal, $log) {
-
-  $scope.currentPage = 1;
-  $scope.pageSize = 3;
-  $scope.estudiantes = [];
- $scope.vista='ver';
-    estudianteService.listar($scope);
-
-
-
-        //  $scope.crearEstudiante = Modal.confirm.create(function() { // callback when modal is confirmed
-        //      console.log('Se creó la vuelta');
-        //     });
+.controller('EstudiantesCtrl', function ($scope,$http,Estudiante) {
+  $('.scrollspy').scrollSpy();
+  $(".button-collapse-clientes").sideNav();
+  Estudiante.listar()
+  .then(function(data) {
+    $scope.estudiantes = data;
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
 
 
-        $scope.crearEstudiante = function () {
-           var estudiante = {};
-           var infoModal = {titulo:'Crear Estudiante', textoBoton:'Crear', estudiante:estudiante};
-
-           var modalInstance = $modal.open({
-             animation: true,
-             templateUrl: 'estudianteGestion.html',
-             controller: 'EstudianteModalCtrl',
-             size: 'md',
-             resolve:{
-               infoModal: function () {
-                 return infoModal;
-               }
-             }
-           });
-
-           modalInstance.result.then(function (estudianteACrear) {
-             estudianteService.crear(estudianteACrear, $scope);
-           }, function () {
-             $log.info('Modal dismissed at: ' + new Date());
-           });
-         };
-
-         $scope.cargarEstudiante = function (estudiante) {
-           $scope.estudianteAMostrar = angular.copy(estudiante);
-           $scope.estudianteAGestionar = angular.copy(estudiante);
-         };
-
-         $scope.eliminarEstudiante = Modal.confirm.delete(function() { // callback when modal is confirmed
-           estudianteService.eliminar($scope.estudianteAGestionar._id, $scope);
-            });
-
-         $scope.cambiarVista = function (nuevaVista) {
-           $scope.vista = nuevaVista;
-         };
-
-
-
+  // for (var i = 0; i < 5000; i++) {
+  //   console.log("entró al ciclo");
+  //   var id = ""+i;
+  //   var estudiante =      {
+  //     "identificacion": id,
+  //     "nombre": "JAMES DANILO",
+  //     "apellido": "GARZON OTALVARO",
+  //     "fecha_nacimiento": "2016-02-19T16:28:00.564Z",
+  //     "ciudad": "MEDELLIN",
+  //     "direccion": "AVENIDA SIEMPRE VIVA",
+  //     "telefono": "555-555-555",
+  //     "email": "james.garzon@udea.edu.co"
+  //   }
+  //
+  //   Estudiante.crear(estudiante)
+  //   .then(function(data) {
+  //     // $scope.estudiantes = data;
+  //   })
+  //   .catch(function(err) {
+  //     console.log(err);
+  //   });
+  // }
 
 });
