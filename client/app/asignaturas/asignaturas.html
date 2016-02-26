@@ -1,0 +1,25 @@
+<navbar></navbar>
+<div class="row">
+  <div class="col s12 teal">
+    <h2 class="center-align white-text">ASIGNATURAS</h2>
+  </div>
+</div>
+<table class="responsive-table striped highlight bordered">
+
+  <thead>
+    <tr>
+      <td> Estudiantes </td>
+      <td ng-repeat="actividad in actividades"> {{actividad.nombre}} </td>
+      <td> Calificación Final </td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="estudiante in estudiantes">
+      <td> {{estudiante.nombre}} {{estudiante.apellido}} </td>
+      <td ng-repeat="actividad in actividades"> {{actividad.periodo}} </td>
+
+    </tr>
+  </tbody>
+
+</table>

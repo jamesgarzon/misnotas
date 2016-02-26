@@ -17,7 +17,16 @@ class NavbarController {
 {
   'titulo':'Asistencia',
   'link':'/asistencia'
-}];
+},
+{
+  'titulo':'Grupos',
+  'link':'/grupos'
+},
+{
+  'titulo':'Asignaturas',
+  'link':'/asignaturas'
+}
+];
 
   isCollapsed = true;
   //end-non-standard

@@ -8,7 +8,7 @@ var newActividad;
 describe('Actividad API:', function() {
 
   describe('GET /api/actividades', function() {
-    var actividades;
+    var actividads;
 
     beforeEach(function(done) {
       request(app)
@@ -19,13 +19,13 @@ describe('Actividad API:', function() {
           if (err) {
             return done(err);
           }
-          actividades = res.body;
+          actividads = res.body;
           done();
         });
     });
 
     it('should respond with JSON array', function() {
-      actividades.should.be.instanceOf(Array);
+      actividads.should.be.instanceOf(Array);
     });
 
   });

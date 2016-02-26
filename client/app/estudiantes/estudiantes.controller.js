@@ -43,9 +43,17 @@ angular.module('notasApp')
     });
   }
 
+  $scope.opciones = [1,2,3,4];
 
+  $scope.colors = [
+        {name:'black', shade:'dark'},
+        {name:'white', shade:'light', notAnOption: true},
+        {name:'red', shade:'dark'},
+        {name:'blue', shade:'dark', notAnOption: true},
+        {name:'yellow', shade:'light', notAnOption: false}
+      ];
 
-  // for (var i = 0; i < 5000; i++) {
+  // for (var i = 0; i < 5; i++) {
   //   console.log("entró al ciclo");
   //   var id = ""+i;
   //   var estudiante =      {

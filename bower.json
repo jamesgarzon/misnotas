@@ -12,9 +12,9 @@
     "angularUtils-pagination": "angular-utils-pagination#~0.9.2",
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
-    "angular-materialize": "https://github.com/krescruz/angular-materialize.git#^0.1.2",
     "icon": "https://fonts.googleapis.com/icon?family=Material+Icons",
-    "angular-locale_es-co": "https://code.angularjs.org/1.5.0/i18n/angular-locale_es-co.js"
+    "angular-locale_es-co": "https://code.angularjs.org/1.5.0/i18n/angular-locale_es-co.js",
+    "Materialize": "materialize#^0.97.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

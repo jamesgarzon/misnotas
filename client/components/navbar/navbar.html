@@ -1,6 +1,6 @@
 <nav class="teal" ng-controller="NavbarController">
   <ul class="right hide-on-med-and-down">
-    <li ng-repeat="item in menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
+    <li ng-repeat="item in nav.menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
   </ul>
   <ul id="slide-out" class="side-nav">
     <li ng-repeat="item in nav.menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
@@ -16,6 +16,6 @@ $(document).ready(function() {
       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
     }
   );
-       
+
 });
 </script>

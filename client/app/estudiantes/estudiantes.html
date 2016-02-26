@@ -283,7 +283,7 @@
 
         <div class="row right-align">
 
-          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light" type="submit" name="action">Crear
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -294,3 +294,14 @@
 
   </div>
 </div>
+
+
+
+  <!-- <div class=" col s12"> -->
+    <select ng-model="myColor" ng-options="color.name for color in colors" >
+      <option value="" disabled selected>Escoja un color</option>
+    </select>
+    <label>Materialize Select</label>
+  <!-- </div> -->
+
+  Opcion seleccionada : {{myColor}}

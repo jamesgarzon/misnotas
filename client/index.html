@@ -13,23 +13,23 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
+      <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
       <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/actividades/actividades.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/asignaturas/asignaturas.css">
       <link rel="stylesheet" href="app/asistencia/asistencia.css">
       <link rel="stylesheet" href="app/desempenos/desempenos.css">
       <link rel="stylesheet" href="app/estudiantes/estudiantes.css">
+      <link rel="stylesheet" href="app/grupos/grupos.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="components/footer/footer.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
-
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -68,30 +68,37 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/materialize/bin/materialize.js"></script>
-      <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
       <script src="bower_components/angular-locale_es-co/index.js"></script>
+      <script src="bower_components/Materialize/bin/materialize.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="components/util/util.module.js"></script>
-      <script src="app/main/main.controller.js"></script>
+      <script src="app/estudiantes/estudiantes.controller.js"></script>
+      <script src="app/actividades/actividades.service.js"></script>
+      <script src="app/app.constant.js"></script>
+      <script src="app/app.directives.js"></script>
+      <script src="app/asignaturas/asignaturas.controller.js"></script>
+      <script src="app/asignaturas/asignaturas.js"></script>
+      <script src="app/asistencia/asistencia.controller.js"></script>
       <script src="app/asistencia/asistencia.js"></script>
       <script src="app/desempenos/desempenos.controller.js"></script>
       <script src="app/desempenos/desempenos.js"></script>
       <script src="app/estudiantes/estudiante.service.js"></script>
-      <script src="app/estudiantes/estudiantes.controller.js"></script>
+      <script src="app/actividades/actividades.js"></script>
       <script src="app/estudiantes/estudiantes.js"></script>
-      <script src="app/asistencia/asistencia.controller.js"></script>
+      <script src="app/grupos/grupos.controller.js"></script>
+      <script src="app/grupos/grupos.js"></script>
+      <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
       <script src="app/services/nota/nota.service.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
       <script src="components/navbar/navbar.directive.js"></script>
-      <script src="app/app.constant.js"></script>
+      <script src="app/actividades/actividades.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
