@@ -4,19 +4,19 @@
     <h2 class="center-align white-text">ASIGNATURAS</h2>
   </div>
 </div>
-<table class="responsive-table striped highlight bordered">
+<table class="responsive-table-custom striped highlight bordered">
 
   <thead>
     <tr>
       <td> Estudiantes </td>
-      <td ng-repeat="actividad in actividades"> {{actividad.nombre}} </td>
+      <td ng-repeat="estudiante in estudiantes"> {{estudiante.nombre}} </td>
       <td> Calificación Final </td>
     </tr>
   </thead>
 
   <tbody>
-    <tr ng-repeat="estudiante in estudiantes">
-      <td> {{estudiante.nombre}} {{estudiante.apellido}} </td>
+    <tr ng-repeat="actividad in actividades">
+      <td> {{actividad.nombre}} </td>
       <td ng-repeat="actividad in actividades"> {{actividad.periodo}} </td>
 
     </tr>

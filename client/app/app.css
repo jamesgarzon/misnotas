@@ -41,3 +41,76 @@
 label[data-error]:after {
   white-space: nowrap;
 }
+
+
+/*@media only screen and (max-width: 992px) {*/
+  table.responsive-table-custom{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative;
+    /* sort out borders */
+  }
+  table.responsive-table-custom th,
+  table.responsive-table-custom td {
+    margin: 0;
+    vertical-align: top;
+  }
+  table.responsive-table-custom th {
+    text-align: left;
+  }
+  table.responsive-table-custom thead {
+    display: block;
+    float: left;
+  }
+  table.responsive-table-custom thead tr {
+    display: block;
+    padding: 0 10px 0 0;
+  }
+  table.responsive-table-custom thead tr th::before {
+    content: "\00a0";
+  }
+  table.responsive-table-custom tbody {
+    display: block;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  table.responsive-table-custom tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  table.responsive-table-custom th {
+    display: block;
+    text-align: right;
+  }
+  table.responsive-table-custom td {
+    display: block;
+    min-height: 1.25em;
+    text-align: left;
+  }
+  table.responsive-table-custom tr {
+    padding: 0 10px;
+  }
+  table.responsive-table-custom thead {
+    border: 0;
+    border-right: 1px solid #d0d0d0;
+  }
+  table.responsive-table-custom.bordered th {
+    border-bottom: 0;
+    border-left: 0;
+  }
+  table.responsive-table-custom.bordered td {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  table.responsive-table-custom.bordered tr {
+    border: 0;
+  }
+  table.responsive-table-custom.bordered tbody tr {
+    border-right: 1px solid #d0d0d0;
+  }
+/*}*/
