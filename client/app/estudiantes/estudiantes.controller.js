@@ -2,18 +2,16 @@
 
 angular.module('notasApp')
 .controller('EstudiantesCtrl', function ($scope,$http,Estudiante,$filter) {
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+    $('select').material_select();
+    $('.scrollspy').scrollSpy();
+    $(".button-collapse-clientes").sideNav();
+    $('.modal-trigger').leanModal();
+  });
 
-  $('.scrollspy').scrollSpy();
-  $(".button-collapse-clientes").sideNav();
-  // // $('select').material_select();
-  // $('input, textarea').characterCounter();
-  $('.modal-trigger').leanModal();
-  // // $('.button-collapse').sideNav();
-  // $('.collapsible').collapsible();
-  // $('.datepicker').pickadate({
-  //   selectMonths: true, // Creates a dropdown to control month
-  //   selectYears: 50 // Creates a dropdown of 15 years to control year
-  // });
 
   $scope.fecha = new Date();
   $scope.vista ='ver';

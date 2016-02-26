@@ -3,19 +3,19 @@
 class NavbarController {
   //start-non-standard
   menu = [{
-    'title': 'Home',
+    'titulo': 'Home',
     'link': '/'
   },
 {
-  'title':'Estudiantes',
+  'titulo':'Estudiantes',
   'link':'/estudiantes'
 },
 {
-  'title':'Desempeños',
+  'titulo':'Desempeños',
   'link':'/desempenos'
 },
 {
-  'title':'Asistencia',
+  'titulo':'Asistencia',
   'link':'/asistencia'
 }];
 
