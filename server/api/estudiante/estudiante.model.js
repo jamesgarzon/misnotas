@@ -3,14 +3,15 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var EstudianteSchema = new mongoose.Schema({
-  tipoDocumento : {type: String, required: true},
+  tipoDocumento : String,
   documento : {type: String, required: true},
   nombres : {type: String, required: true},
   apellidos : {type: String, required: true},
   direccion : {type: String, required: true},
+  ciudad:String,
   telefonos : [ { tipo :String, titular : String, numero : String } ],
   email : String,
-  acudiente : {type: String, required: true}, 
+  acudiente : String, 
   fechaNacimiento:{type:Date, required: true},//Cambiar cuando creemos la entidad
   periodos : [
     {

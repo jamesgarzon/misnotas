@@ -69,7 +69,7 @@
                     <strong>  Teléfono:</strong>
                   </div>
                   <div class="col l10 s8">
-                    {{estudiante.telefonos}}
+                    {{estudiante.telefonos[0].numero}}
                   </div>
                 </div>
 
@@ -87,7 +87,7 @@
                     <strong>  Fecha de nacimiento:</strong>
                   </div>
                   <div class="col l10 s8">
-                    {{estudiante.fecha_nacimiento | date:'longDate'}}
+                    {{estudiante.fechaNacimiento | date:'longDate'}}
                   </div>
                 </div>
 
@@ -217,7 +217,7 @@
         <div class="row">
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">book</i>
-            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.identificacion" required="" aria-required="true">
+            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.documento" required="" aria-required="true">
             <label for="input_codigo" data-error="wrong" >identificación</label>
           </div>
 
@@ -225,7 +225,7 @@
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">date_range</i>
             <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
-            <input id="date_fecha_nacimiento" class="datepicker" type="text" onfocus="(this.type='date')" ng-model="nuevoEstudiante.fecha_nacimiento"  required="" aria-required="true">
+            <input id="date_fecha_nacimiento" class="datepicker" type="text" onfocus="(this.type='date')" ng-model="nuevoEstudiante.fechaNacimiento"  required="" aria-required="true">
             <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label>
           </div>
         </div>
@@ -234,14 +234,14 @@
         <div class="row">
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">account_box</i>
-            <input id="input_nombre" type="text" class="validate" ng-model="nuevoEstudiante.nombre" required="" aria-required="true">
+            <input id="input_nombre" type="text" class="validate" ng-model="nuevoEstudiante.nombres" required="" aria-required="true">
             <label for="input_nombre" data-error="Error" >Nombre</label>
           </div>
 
         <!-- INPUT APELLIDO -->
           <div class="input-field col l6 s12">
             <!-- <i class="material-icons prefix">face</i> -->
-            <input id="input_apellido" type="text" class="validate" ng-model="nuevoEstudiante.apellido" required="" aria-required="true">
+            <input id="input_apellido" type="text" class="validate" ng-model="nuevoEstudiante.apellidos" required="" aria-required="true">
             <label for="input_apellido" data-error="Error" >Apellido</label>
           </div>
         </div>
@@ -250,7 +250,7 @@
         <div class="row">
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">phone</i>
-            <input id="input_telefono" type="text" class="validate" ng-model="nuevoEstudiante.telefono" required="" aria-required="true">
+            <input id="input_telefono" type="text" class="validate" ng-model="nuevoEstudiante.telefonos.numero" required="" aria-required="true">
             <label for="input_telefono" data-error="Error" >Teléfono</label>
           </div>
 
