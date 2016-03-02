@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('notasApp')
-  .controller('DesempenosCtrl', function ($scope, Modal) {
-    $scope.message = 'Hello';
+  .controller('DesempenosCtrl', function ($scope) {
+  //  $scope.message = 'Hello';
 
-    $scope.listadesempenos = [
+  /*  $scope.listadesempenos = [
       {
         'id': 1,
         'nombre': 'Azurite',
@@ -44,24 +44,24 @@ angular.module('notasApp')
         'fechaCreacion': 1397490980837,
         'ultimaModificacion': 1397490980837
       }
-    ];
+    ];*/
 
 
-        $scope.vista = 1;
-
-        $scope.setVista = function(nuevoValor){
-          $scope.vista  = nuevoValor;
-        };
-
-        $scope.estaSeleccionada = function(vistaSeleccionada){
-          $scope.vista = vistaSeleccionada;
-        };
-
-        $scope.crear = Modal.confirm.create(function() {
-          console.log('se creo exitosamente');
-          Modal.info.create();
-          Modal.info.default('titulo de prueba', 'Contenido de prueba');
-         });
+        // $scope.vista = 1;
+        //
+        // $scope.setVista = function(nuevoValor){
+        //   $scope.vista  = nuevoValor;
+        // };
+        //
+        // $scope.estaSeleccionada = function(vistaSeleccionada){
+        //   $scope.vista = vistaSeleccionada;
+        // };
+        //
+        // $scope.crear = Modal.confirm.create(function() {
+        //   console.log('se creo exitosamente');
+        //   Modal.info.create();
+        //   Modal.info.default('titulo de prueba', 'Contenido de prueba');
+        //  });
 
 
   });
