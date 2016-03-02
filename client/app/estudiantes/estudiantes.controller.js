@@ -6,7 +6,7 @@ angular.module('notasApp')
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
-    $('select').material_select();
+    // $('select').material_select();
     $('.scrollspy').scrollSpy();
     $(".button-collapse-clientes").sideNav();
     $('.modal-trigger').leanModal();
@@ -15,6 +15,11 @@ angular.module('notasApp')
 
   $scope.fecha = new Date();
   $scope.vista ='ver';
+  $scope.tipoDocumentos =[
+    {indice:"CC", nombre: "Cédula de ciudadanía"},
+    {indice:"TI", nombre: "Tarjeta de identidad"},
+    {indice:"RC", nombre: "Registro civil"}
+  ]
 
   $scope.listarEstudiantes = function () {
     Estudiante.listar()
@@ -43,15 +48,6 @@ angular.module('notasApp')
     });
   }
 
-  $scope.opciones = [1,2,3,4];
-
-  $scope.colors = [
-        {name:'black', shade:'dark'},
-        {name:'white', shade:'light', notAnOption: true},
-        {name:'red', shade:'dark'},
-        {name:'blue', shade:'dark', notAnOption: true},
-        {name:'yellow', shade:'light', notAnOption: false}
-      ];
 
   // for (var i = 0; i < 5; i++) {
   //   console.log("entró al ciclo");

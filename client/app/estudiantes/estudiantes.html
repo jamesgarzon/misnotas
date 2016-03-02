@@ -136,7 +136,7 @@
                   <label for="input_nombre" data-error="Error" >Nombre</label>
                 </div>
 
-              <!-- INPUT APELLIDO -->
+                <!-- INPUT APELLIDO -->
                 <div class="input-field col l6 s12">
                   <!-- <i class="material-icons prefix">face</i> -->
                   <input id="input_apellido" type="text" class="validate" ng-model="estudiante.apellido" required="" aria-required="true">
@@ -171,7 +171,7 @@
 
                 <!-- TEXTAREA DIRECCION -->
                 <div class="input-field col l6 s12">
-                <i class="material-icons prefix">import_contacts</i>
+                  <i class="material-icons prefix">import_contacts</i>
                   <textarea id="textarea_direccion" class="materialize-textarea" ng-model="estudiante.direccion" required="" aria-required="true"></textarea>
                   <label for="textarea_direccion">Dirección</label>
                 </div>
@@ -198,11 +198,8 @@
   </ul>
 </div>
 
-<!-- <ul>
-  <li ng-repeat="estudiante in estudiantes">{{estudiante.identificacion}}</li>
-</ul> -->
 
-<!-- floating button for creating product -->
+<!-- BOTON PARA AÑADIR UN NUEVO ESTUDIANTE -->
 <div class="fixed-action-btn" style="bottom:45px; right:24px;">
   <a class="waves-effect waves-light btn modal-trigger btn-floating btn-large red" href="#modal-estudiante-form" ng-click="showCreateForm()"><i class="large material-icons">add</i></a>
 </div>
@@ -238,7 +235,7 @@
             <label for="input_nombre" data-error="Error" >Nombre</label>
           </div>
 
-        <!-- INPUT APELLIDO -->
+          <!-- INPUT APELLIDO -->
           <div class="input-field col l6 s12">
             <!-- <i class="material-icons prefix">face</i> -->
             <input id="input_apellido" type="text" class="validate" ng-model="nuevoEstudiante.apellidos" required="" aria-required="true">
@@ -273,13 +270,22 @@
 
           <!-- TEXTAREA DIRECCION -->
           <div class="input-field col l6 s12">
-          <i class="material-icons prefix">import_contacts</i>
+            <i class="material-icons prefix">import_contacts</i>
             <textarea id="textarea_direccion" class="materialize-textarea" ng-model="nuevoEstudiante.direccion" required="" aria-required="true"></textarea>
             <label for="textarea_direccion">Dirección</label>
           </div>
         </div>
 
+        <div class="row">
 
+          <div class="input-field col m6 s12">
+            <select class="" ng-model="nuevoEstudiante.tipoDocumento" material-select watch ng-options="tipoDocumento.nombre for tipoDocumento in tipoDocumentos" required>
+
+              <option value="" disabled selected> Escoja un Tipo Doc.</option>
+            </select>
+            <label>Tipo de documento</label>
+          </div>
+        </div>
 
         <div class="row right-align">
 
@@ -288,20 +294,8 @@
           </button>
         </div>
 
-
       </form>
     </div>
 
   </div>
 </div>
-
-
-
-  <!-- <div class=" col s12"> -->
-    <select ng-model="myColor" ng-options="color.name for color in colors" >
-      <option value="" disabled selected>Escoja un color</option>
-    </select>
-    <label>Materialize Select</label>
-  <!-- </div> -->
-
-  Opcion seleccionada : {{myColor}}
