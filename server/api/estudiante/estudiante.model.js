@@ -39,7 +39,8 @@ var EstudianteSchema = new mongoose.Schema({
                 desempeno : {
                   nombre : String,
                   descripcion : String,
-                  tipo : [String]
+                  tipo : [String],
+                  periodo:[String]
                 }
               }
               ]
