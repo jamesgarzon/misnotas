@@ -11,7 +11,7 @@ var EstudianteSchema = new mongoose.Schema({
   ciudad:String,
   telefonos : [ { tipo :String, titular : String, numero : String } ],
   email : String,
-  acudiente : String, 
+  acudiente : String,
   fechaNacimiento:{type:Date, required: true},//Cambiar cuando creemos la entidad
   periodos : [
     {
@@ -39,7 +39,8 @@ var EstudianteSchema = new mongoose.Schema({
                 desempeno : {
                   nombre : String,
                   descripcion : String,
-                  tipo : [String]
+                  tipo : String,
+                  periodo:String
                 }
               }
               ]
