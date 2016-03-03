@@ -20,46 +20,38 @@
     <div class="row">
       <form class="col m12" ng-submit="crearDesempenos(nuevoDesempeno)">
 
-        <!-- INPUT IDENTIFICACIÓN -->
-        <div class="row">
-          <div class="input-field col l6 s12">
-            <i class="material-icons prefix">book</i>
-            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.documento" required="" aria-required="true">
-            <label for="input_codigo" data-error="wrong" >identificación</label>
-          </div>
-
-          <!-- INPUT FECHA DE NACIMIENTO -->
-          <div class="input-field col l6 s12">
-            <i class="material-icons prefix">date_range</i>
-            <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
-            <input id="date_fecha_nacimiento" class="datepicker" type="text" onfocus="(this.type='date')" ng-model="nuevoEstudiante.fechaNacimiento"  required="" aria-required="true">
-            <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label>
-          </div>
-        </div>
-
         <!-- INPUT NOMBRE -->
         <div class="row">
-          <div class="input-field col l6 s12">
-            <i class="material-icons prefix">account_box</i>
-            <input id="input_nombre" type="text" class="validate" ng-model="nuevoEstudiante.nombres" required="" aria-required="true">
-            <label for="input_nombre" data-error="Error" >Nombre</label>
+          <div class="input-field col l6 s6">
+            <i class="material-icons prefix">label</i>
+            <input id="input_nombre" type="text" class="validate" ng-model="nuevoDesempeno.nombre" required="" aria-required="true">
+            <label for="input_nombre" data-error="wrong" >Nombre Desempeño</label>
           </div>
 
-          <!-- INPUT APELLIDO -->
-          <div class="input-field col l6 s12">
-            <!-- <i class="material-icons prefix">face</i> -->
-            <input id="input_apellido" type="text" class="validate" ng-model="nuevoEstudiante.apellidos" required="" aria-required="true">
-            <label for="input_apellido" data-error="Error" >Apellido</label>
+          <!-- INPUT TIPO -->
+          <div class="input-field col l6 s6">
+            <i class="material-icons prefix">view_array</i>
+            <input id="input_tipo" type="text" class="validate" ng-model="nuevoDesempeno.tipo" required="" aria-required="true">
+            <label for="input_tipo" data-error="wrong" >Tipo Desempeño</label>
+          </div>
+
+          <!-- INPUT PERIODO -->
+          <div class="input-field col l6 s6">
+            <i class="material-icons prefix">today</i>
+            <input id="input_periodo" type="text" class="validate" ng-model="nuevoDesempeno.periodo" required="" aria-required="true">
+            <label for="input_periodo" data-error="wrong" >Periodo</label>
           </div>
         </div>
 
-        <!-- INPUT TELEFONO -->
+        <!-- INPUT DESCRIPCION -->
         <div class="row">
           <div class="input-field col l6 s12">
-            <i class="material-icons prefix">phone</i>
-            <input id="input_telefono" type="text" class="validate" ng-model="nuevoEstudiante.telefonos.numero" required="" aria-required="true">
-            <label for="input_telefono" data-error="Error" >Teléfono</label>
+            <i class="material-icons prefix">subject</i>
+            <!--input id="input_descripcion" type="textarea" class="validate" ng-model="nuevoDesempeno.descripcion" required="" aria-required="true"-->
+            <textarea id="input_descripcion" class="materialize-textarea" ng-model="nuevoDesempeno.descripcion" required="" aria-required="true"></textarea>
+            <label for="input_descripcion" data-error="Error" >Descripción</label>
           </div>
+        </div>
 
         <div class="row right-align">
 
