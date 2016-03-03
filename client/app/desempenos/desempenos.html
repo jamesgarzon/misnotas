@@ -7,3 +7,69 @@
     <h2 class="center-align white-text">DESEMPEÑOS</h2>
   </div>
 </div>
+
+
+<!-- BOTON PARA AÑADIR UN NUEVO DESEMPEÑO -->
+<div class="fixed-action-btn" style="bottom:45px; right:24px;">
+  <a class="waves-effect waves-light btn modal-trigger btn-floating btn-large red" href="#modal-desempeno-form" ng-click="showCreateForm()"><i class="large material-icons">add</i></a>
+</div>
+
+<div id="modal-desempeno-form" class="modal">
+  <div class="modal-content">
+    <h4 id="modal-desempeno-title">Crear un nuevo desempeño</h4>
+    <div class="row">
+      <form class="col m12" ng-submit="crearDesempenos(nuevoDesempeno)">
+
+        <!-- INPUT IDENTIFICACIÓN -->
+        <div class="row">
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">book</i>
+            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.documento" required="" aria-required="true">
+            <label for="input_codigo" data-error="wrong" >identificación</label>
+          </div>
+
+          <!-- INPUT FECHA DE NACIMIENTO -->
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">date_range</i>
+            <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
+            <input id="date_fecha_nacimiento" class="datepicker" type="text" onfocus="(this.type='date')" ng-model="nuevoEstudiante.fechaNacimiento"  required="" aria-required="true">
+            <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label>
+          </div>
+        </div>
+
+        <!-- INPUT NOMBRE -->
+        <div class="row">
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">account_box</i>
+            <input id="input_nombre" type="text" class="validate" ng-model="nuevoEstudiante.nombres" required="" aria-required="true">
+            <label for="input_nombre" data-error="Error" >Nombre</label>
+          </div>
+
+          <!-- INPUT APELLIDO -->
+          <div class="input-field col l6 s12">
+            <!-- <i class="material-icons prefix">face</i> -->
+            <input id="input_apellido" type="text" class="validate" ng-model="nuevoEstudiante.apellidos" required="" aria-required="true">
+            <label for="input_apellido" data-error="Error" >Apellido</label>
+          </div>
+        </div>
+
+        <!-- INPUT TELEFONO -->
+        <div class="row">
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">phone</i>
+            <input id="input_telefono" type="text" class="validate" ng-model="nuevoEstudiante.telefonos.numero" required="" aria-required="true">
+            <label for="input_telefono" data-error="Error" >Teléfono</label>
+          </div>
+
+        <div class="row right-align">
+
+          <button class="btn waves-effect waves-light" type="submit" name="action">Crear
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
