@@ -1,40 +1,23 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/desempenoss              ->  index
- * POST    /api/desempenoss              ->  create
- * GET     /api/desempenoss/:id          ->  show
- * PUT     /api/desempenoss/:id          ->  update
- * DELETE  /api/desempenoss/:id          ->  destroy
+ * GET     /api/desempenos              ->  index
+ * POST    /api/desempenos              ->  create
+ * GET     /api/desempenos/:id          ->  show
+ * PUT     /api/desempenos/:id          ->  update
+ * DELETE  /api/desempenos/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-var Desempenos = require('./desempenos.model');
+import Desempeno from './desempeno.model';
 
-function handleError(res, statusCode) {
-  statusCode = statusCode || 500;
-  return function(err) {
-    res.status(statusCode).send(err);
-  };
-}
-
-function responseWithResult(res, statusCode) {
+function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
       res.status(statusCode).json(entity);
     }
-  };
-}
-
-function handleEntityNotFound(res) {
-  return function(entity) {
-    if (!entity) {
-      res.status(404).end();
-      return null;
-    }
-    return entity;
   };
 }
 
@@ -59,43 +42,60 @@ function removeEntity(res) {
   };
 }
 
-// Gets a list of Desempenoss
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
+function handleError(res, statusCode) {
+  statusCode = statusCode || 500;
+  return function(err) {
+    res.status(statusCode).send(err);
+  };
+}
+
+// Gets a list of Desempenos
 export function index(req, res) {
-  Desempenos.findAsync()
-    .then(responseWithResult(res))
+  Desempeno.findAsync()
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Desempenos from the DB
+// Gets a single Desempeno from the DB
 export function show(req, res) {
-  Desempenos.findByIdAsync(req.params.id)
+  Desempeno.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
-    .then(responseWithResult(res))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Desempenos in the DB
+// Creates a new Desempeno in the DB
 export function create(req, res) {
-  Desempenos.createAsync(req.body)
-    .then(responseWithResult(res, 201))
+  Desempeno.createAsync(req.body)
+    .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Desempenos in the DB
+// Updates an existing Desempeno in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  Desempenos.findByIdAsync(req.params.id)
+  Desempeno.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
-    .then(responseWithResult(res))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Desempenos from the DB
+// Deletes a Desempeno from the DB
 export function destroy(req, res) {
-  Desempenos.findByIdAsync(req.params.id)
+  Desempeno.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
