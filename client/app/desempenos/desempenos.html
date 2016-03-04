@@ -8,6 +8,11 @@
   </div>
 </div>
 
+<div class="container">
+  <ul>
+    <li ng-repeat="desempeno in desempenos">{{desempeno.nombre}}</li>
+  </ul>
+</div>
 
 <!-- BOTON PARA AÑADIR UN NUEVO DESEMPEÑO -->
 <div class="fixed-action-btn" style="bottom:45px; right:24px;">
@@ -18,25 +23,25 @@
   <div class="modal-content">
     <h4 id="modal-desempeno-title">Crear un nuevo desempeño</h4>
     <div class="row">
-      <form class="col m12" ng-submit="crearDesempenos(nuevoDesempeno)">
+      <form class="col m12" ng-submit="crearDesempeno(nuevoDesempeno)">
 
         <!-- INPUT NOMBRE -->
         <div class="row">
-          <div class="input-field col l6 s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">label</i>
             <input id="input_nombre" type="text" class="validate" ng-model="nuevoDesempeno.nombre" required="" aria-required="true">
             <label for="input_nombre" data-error="wrong" >Nombre Desempeño</label>
           </div>
 
           <!-- INPUT TIPO -->
-          <div class="input-field col l6 s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">view_array</i>
             <input id="input_tipo" type="text" class="validate" ng-model="nuevoDesempeno.tipo" required="" aria-required="true">
             <label for="input_tipo" data-error="wrong" >Tipo Desempeño</label>
           </div>
 
           <!-- INPUT PERIODO -->
-          <div class="input-field col l6 s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">today</i>
             <input id="input_periodo" type="text" class="validate" ng-model="nuevoDesempeno.periodo" required="" aria-required="true">
             <label for="input_periodo" data-error="wrong" >Periodo</label>
@@ -45,7 +50,7 @@
 
         <!-- INPUT DESCRIPCION -->
         <div class="row">
-          <div class="input-field col l6 s12">
+          <div class="input-field col s12">
             <i class="material-icons prefix">subject</i>
             <!--input id="input_descripcion" type="textarea" class="validate" ng-model="nuevoDesempeno.descripcion" required="" aria-required="true"-->
             <textarea id="input_descripcion" class="materialize-textarea" ng-model="nuevoDesempeno.descripcion" required="" aria-required="true"></textarea>

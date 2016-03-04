@@ -1,6 +1,6 @@
 'use strict';
 angular.module('notasApp')
-.factory('Desempenos',function($http, $route, $q){
+.factory('Desempeno',function($http, $route, $q){
 
 var servicio = {};
 
