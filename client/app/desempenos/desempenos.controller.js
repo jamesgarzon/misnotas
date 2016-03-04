@@ -13,11 +13,11 @@ angular.module('notasApp')
     });
     //$scope.message = 'Hello';
 
-    $scope.tipoDesempenos ={
+    $scope.tipoDesempenos =[
       "Ser",
       "Estar",
       "Hacer"
-    }
+    ]
 
 
   });
