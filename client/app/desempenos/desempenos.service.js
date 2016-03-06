@@ -38,7 +38,7 @@ servicio.crear = function (desempenosNuevo) {
 servicio.actualizar = function (desempenosActualizar) {
 	var defered = $q.defer();
 	var promise = defered.promise;
-	$http.put('/api/Desempenodesempenos/'+desempenosActualizar._id, desempenosActualizar)
+	$http.put('/api/desempenos/'+desempenosActualizar._id, desempenosActualizar)
 			.success(function(data) {
 					defered.resolve(data);
 			})
@@ -53,7 +53,7 @@ servicio.actualizar = function (desempenosActualizar) {
 servicio.obtenerDesempeno = function (_idDesempeno) {
 	var defered = $q.defer();
 	var promise = defered.promise;
-	$http.get('/api/desempeno/'+ _idDesempeno)
+	$http.get('/api/desempenos/'+ _idDesempeno)
 			.success(function(data) {
 					defered.resolve(data);
 			})

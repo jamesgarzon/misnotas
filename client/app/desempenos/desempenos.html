@@ -8,9 +8,20 @@
   </div>
 </div>
 
-<div class="container">
-  <ul>
-    <li ng-repeat="desempeno in desempenos">{{desempeno.nombre}}</li>
+<!-- Area de Muestra de Desempeños -->
+<div class="row container">
+  <ul class="collapsible popout collection" data-collapsible="accordion">
+    <li collection-item avatar ng-repeat="desempeno in desempenos | orderBy:'nombre'">
+
+      <!-- TITULO ACORDEON -->
+      <div class="collapsible-header">
+        <!-- THUMBNAIL -->
+        <i class="material-icons prefix">label</i>
+        <span class="title">{{desempeno.nombre}} -- {{desempeno.tipo}} -- {{desempeno.periodo}}</span>
+      </div>
+
+
+    </li>
   </ul>
 </div>
 
@@ -33,19 +44,27 @@
             <label for="input_nombre" data-error="wrong" >Nombre Desempeño</label>
           </div>
 
-          <!-- INPUT TIPO -->
-          <div class="input-field col s12">
-            <i class="material-icons prefix">view_array</i>
-            <input id="input_tipo" type="text" class="validate" ng-model="nuevoDesempeno.tipo" required="" aria-required="true">
-            <label for="input_tipo" data-error="wrong" >Tipo Desempeño</label>
-          </div>
+        </div>
 
-          <!-- INPUT PERIODO -->
-          <div class="input-field col s12">
-            <i class="material-icons prefix">today</i>
-            <input id="input_periodo" type="text" class="validate" ng-model="nuevoDesempeno.periodo" required="" aria-required="true">
-            <label for="input_periodo" data-error="wrong" >Periodo</label>
-          </div>
+        <div class="row">
+            <!-- INPUT PERIODO -->
+            <div class="row col s6">
+              <label for="input_periodo_select"><h6>Periodo</h6></label>
+              <select id="input_periodo_select" class="browser-default validate" ng-model="nuevoDesempeno.periodo" required material-select watch>
+                  <option value="" disabled selected>Escoja un periodo</option>
+                  <option value="{{periodo}}" ng-repeat="periodo in periodoDesempenos">{{periodo}}</option>
+              </select>
+            </div>
+
+            <!-- INPUT TIPO -->
+            <div class="row col s6">
+              <label for="input_tipo_select"><h6>Tipo Desempeño</h6></label>
+              <select id="input_tipo_select" class="browser-default validate" ng-model="nuevoDesempeno.tipo" required="" material-select watch>
+                  <option value="" disabled selected>Escoja un tipo de desempeño</option>
+                  <option value="{{tipo}}" ng-repeat="tipo in tipoDesempenos">{{tipo}}</option>
+              </select>
+            </div>
+
         </div>
 
         <!-- INPUT DESCRIPCION -->

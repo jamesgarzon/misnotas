@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('notasApp')
-  .controller('DesempenosCtrl', function ($scope,Desempeno) {
+  .controller('DesempenosCtrl', function ($scope,$http,Desempeno) {
     $(document).ready(function(){
       $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
-      // $('select').material_select();
-      //$('.scrollspy').scrollSpy();
-      //$(".button-collapse-clientes").sideNav();
+      //$('select').material_select();
+      $('.scrollspy').scrollSpy();
+      $(".button-collapse-clientes").sideNav();
       $('.modal-trigger').leanModal();
     });
     //$scope.message = 'Hello';
@@ -17,6 +17,10 @@ angular.module('notasApp')
       "Ser",
       "Estar",
       "Hacer"
+    ];
+
+    $scope.periodoDesempenos =[
+      "1","2","3","4"
     ];
 
     $scope.listarDesempenos = function () {
