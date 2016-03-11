@@ -48,6 +48,18 @@ angular.module('notasApp')
     });
   }
 
+  $scope.actualizarEstudiante = function (estudiante) {
+    Estudiante.actualizar(estudiante)
+    .then(function (data) {
+      Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
+      $scope.listarEstudiantes();
+    })
+    .catch(function (err) {
+      Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
+
+    });
+  }
+
 
   // for (var i = 0; i < 5; i++) {
   //   console.log("entró al ciclo");

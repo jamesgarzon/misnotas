@@ -6,7 +6,7 @@ angular.module('notasApp')
       Estudiante.listar()
       .then(function(data) {
         $scope.estudiantes = data;
-        
+
       })
       .catch(function(err) {
         console.log(err);
@@ -34,9 +34,19 @@ $('.datepicker').pickadate({
     {indice:"CC", nombre: "Cédula de ciudadanía"},
     {indice:"TI", nombre: "Tarjeta de identidad"},
     {indice:"RC", nombre: "Registro civil"}
-  ]
+  ];
+
+$scope.anadirFecha = function (estudiante, fecha){
+    alert("entro");
+    estudiante.periodos[0].areas[0].asignaturas[0].asistencias.push(fecha);
+    Estudiante.actualizar(estudiante)
+    .then(function (data) {
+      $scope.listarEstudiantes();
+      Materialize.toast("Asistencia Ingresada Correctamente", 5000);
+    })
+};
 
 
-    
+
     $scope.listarEstudiantes();
   });

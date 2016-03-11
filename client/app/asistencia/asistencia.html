@@ -9,7 +9,7 @@
 
 <div class="row container">
   <ul class="collapsible popout collection" data-collapsible="accordion">
-    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion' | limitTo:10">
+    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion'">
 
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">
@@ -27,38 +27,41 @@
           </div>
            <div class="row">
               <div class="col l3 s12 center-align">
-            
-              <input type="date" class="datepicker">
+             <ul>
+               <li ng-repeat="fechaAsistencia in estudiante.periodos[0].areas[0].asignaturas[0].asistencias  track by $index">{{$index+1}} - {{fechaAsistencia | date:'shortDate'}}</li>
+             </ul>
+
              </div>
-    
+
              <div class="row">
             <a class="orange btn" ng-click="vista='agregar'">Ingresar</a>
             <a class="red btn">Eliminar</a>
            </div>
            </div>
           <!-- VISTA "VER" DE ESTUDIANTE -->
-           
+
           <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
 
 
           <!-- VISTA AGREGAR FECHA DE FALTAS  DE ESTUDIANTE -->
           <div class="col l9 s12 " ng-show="vista=='agregar'">
-            <form class="col m12" ng-submit="actualizarEstudiante(estudiante)">
+            <form class="col m12" ng-submit="anadirFecha(estudiante,fecha)">
 
-             
+
                 <!-- INPUT FECHA DE NACIMIENTO -->
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">date_range</i>
+
                   <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
-                  <!-- <input id="date_fecha_nacimiento" type="date" ng-model="fecha"  required="" aria-required="true"> -->
+                  <input id="fecha_asistencia" type="date" ng-model="fecha"  required="" aria-required="true">
                   <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
                 </div>
               </div>
 
-             
+
               <div class="row right-align">
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button class="btn waves-effect waves-light" type="submit" ng-click="anadirFecha(estudiante,fecha)">Agregar
                   <i class="material-icons right">send</i>
                 </button>
               </div>
@@ -74,4 +77,3 @@
     </li>
   </ul>
 </div>
-

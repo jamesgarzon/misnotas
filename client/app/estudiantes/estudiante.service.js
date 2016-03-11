@@ -50,7 +50,7 @@ servicio.actualizar = function (estudianteActualizar) {
 
 // Servicio para obtener un estudiante
 // parametro _idEstudiante => ID del estudiante que se desea obtener
-servicio.obtenerProducto = function (_idEstudiante) {
+servicio.obtener = function (_idEstudiante) {
 	var defered = $q.defer();
 	var promise = defered.promise;
 	$http.get('/api/estudiantes/'+ _idEstudiante)

@@ -8,14 +8,14 @@
 <!-- <input type="text" name="buscarEstudiante" ng-model="buscarEstudiante" placeholder="BUSCAR USUARIO"> -->
 <div class="input-field col l6 s12">
   <i class="material-icons prefix">book</i>
-  <input id="input_codigo" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
-  <label for="input_codigo" data-error="wrong" >Buscar estudiante</label>
+  <input id="input_buscar" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
+  <label for="input_buscar" data-error="wrong" >Buscar estudiante</label>
 </div>
 
 
 <div class="row container">
   <ul class="collapsible popout collection" data-collapsible="accordion">
-    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion' | limitTo:10">
+    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion'">
 
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">
@@ -115,7 +115,7 @@
               <div class="row">
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">book</i>
-                  <input id="input_codigo" type="text" class="validate" ng-model="estudiante.identificacion" required="" aria-required="true">
+                  <input id="input_codigo" type="text" class="validate" ng-model="estudiante.documento" required="" aria-required="true">
                   <label for="input_codigo" data-error="wrong" >identificación</label>
                 </div>
 
@@ -132,14 +132,14 @@
               <div class="row">
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">account_box</i>
-                  <input id="input_nombre" type="text" class="validate" ng-model="estudiante.nombre" required="" aria-required="true">
+                  <input id="input_nombre" type="text" class="validate" ng-model="estudiante.nombres" required="" aria-required="true">
                   <label for="input_nombre" data-error="Error" >Nombre</label>
                 </div>
 
               <!-- INPUT APELLIDO -->
                 <div class="input-field col l6 s12">
                   <!-- <i class="material-icons prefix">face</i> -->
-                  <input id="input_apellido" type="text" class="validate" ng-model="estudiante.apellido" required="" aria-required="true">
+                  <input id="input_apellido" type="text" class="validate" ng-model="estudiante.apellidos" required="" aria-required="true">
                   <label for="input_apellido" data-error="Error" >Apellido</label>
                 </div>
               </div>
@@ -148,7 +148,7 @@
               <div class="row">
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">phone</i>
-                  <input id="input_telefono" type="text" class="validate" ng-model="estudiante.telefono" required="" aria-required="true">
+                  <input id="input_telefono" type="text" class="validate" ng-model="estudiante.telefonos[0].numero" aria-required="true">
                   <label for="input_telefono" data-error="Error" >Teléfono</label>
                 </div>
 
@@ -172,7 +172,7 @@
                 <!-- TEXTAREA DIRECCION -->
                 <div class="input-field col l6 s12">
                 <i class="material-icons prefix">import_contacts</i>
-                  <textarea id="textarea_direccion" class="materialize-textarea" ng-model="estudiante.direccion" required="" aria-required="true"></textarea>
+                  <textarea id="textarea_direccion" class="materialize-textarea" ng-model="estudiante.direccion" aria-required="true"></textarea>
                   <label for="textarea_direccion">Dirección</label>
                 </div>
               </div>
@@ -181,7 +181,7 @@
 
               <div class="row right-align">
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button class="btn waves-effect waves-light" type="submit">Actualizar datos
                   <i class="material-icons right">send</i>
                 </button>
               </div>
@@ -300,7 +300,7 @@
   <!-- <div class=" col s12"> -->
     <select ng-model="myColor" ng-options="color.name for color in colors" >
       <option value="" disabled selected>Escoja un color</option>
-      
+
     </select>
     <label>Materialize Select</label>
   <!-- </div> -->
