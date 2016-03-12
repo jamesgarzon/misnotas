@@ -26,16 +26,16 @@
             <br><img src="assets/images/user.png" alt="" class="circle" height="150px">
           </div>
            <div class="row">
-              <div class="col l3 s12 center-align">
+              <div class="col l3 s12 ">
              <ul>
-               <li ng-repeat="fechaAsistencia in estudiante.periodos[0].areas[0].asignaturas[0].asistencias  track by $index">{{$index+1}} - {{fechaAsistencia | date:'shortDate'}}</li>
+               <li ng-repeat="fechaAsistencia in estudiante.periodos[0].areas[0].asignaturas[0].asistencias  track by $index"><div class="col" >{{$index+1}}) {{fechaAsistencia | date:'shortDate'}} </div> <div class="col"><a class="btn-floating btn-tiny waves-effect waves-light red" ng-click="eliminarFecha(estudiante,$index)"><i class="material-icons">delete</i></a></div><br/><br/></li> 
              </ul>
 
              </div>
 
              <div class="row">
             <a class="orange btn" ng-click="vista='agregar'">Ingresar</a>
-            <a class="red btn">Eliminar</a>
+            
            </div>
            </div>
           <!-- VISTA "VER" DE ESTUDIANTE -->
@@ -56,16 +56,16 @@
                   <input id="fecha_asistencia" type="date" ng-model="fecha"  required="" aria-required="true">
                   <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
                 </div>
-              </div>
+             
 
 
               <div class="row right-align">
 
-                <button class="btn waves-effect waves-light" type="submit" ng-click="anadirFecha(estudiante,fecha)">Agregar
+                <button class="btn waves-effect waves-light" type="submit">Agregar
                   <i class="material-icons right">send</i>
                 </button>
               </div>
-
+          </div>
 
             </form>
           </div>
