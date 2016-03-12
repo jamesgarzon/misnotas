@@ -56,4 +56,15 @@ $scope.eliminarFecha = function(estudiante,index){
       Materialize.toast("Fecha Eliminada Correctamente", 5000);
     })
 };
+
+//Función para editar fecha especifica
+$scope.editarFecha = function(estudiante,index,fecha){
+  estudiante.periodos[0].areas[0].asignaturas[0].asistencias[index]=fecha;
+
+  Estudiante.actualizar(estudiante)
+    .then(function (data) {
+      $scope.listarEstudiantes();
+      Materialize.toast("Fecha Eliminada Correctamente", 5000);
+    })
+};
 });

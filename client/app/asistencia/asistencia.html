@@ -4,7 +4,7 @@
     <h2 class="center-align white-text">Asistencias</h2>
   </div>
 </div>
-<
+
 
 
 <div class="row container">
@@ -27,27 +27,15 @@
           </div>
            <div class="row">
               <div class="col l3 s12 ">
-             <ul>
-               <li ng-repeat="fechaAsistencia in estudiante.periodos[0].areas[0].asignaturas[0].asistencias  track by $index"><div class="col" >{{$index+1}}) {{fechaAsistencia | date:'shortDate'}} </div> <div class="col"><a class="btn-floating btn-tiny waves-effect waves-light red" ng-click="eliminarFecha(estudiante,$index)"><i class="material-icons">delete</i></a></div><br/><br/></li> 
-             </ul>
-
-             </div>
-
-             <div class="row">
-            <a class="orange btn" ng-click="vista='agregar'">Ingresar</a>
-            
+               <ul>
+                 <li ng-repeat="fechaAsistencia in estudiante.periodos[0].areas[0].asignaturas[0].asistencias  track by $index"><div class="col" >{{$index+1}})  {{fechaAsistencia | date:'shortDate'}}<!--<input  ng-model="estudiante.periodos[0].areas[0].asignaturas[0].asistencias[$index]">--> </div> <div class="col"><a class="btn-floating btn-tiny waves-effect waves-light red" ng-click="eliminarFecha(estudiante,$index)"><i class="material-icons">delete</i></a></div><div class="col"><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a></div><br/><br/></li> 
+               </ul>
+              </div>        
            </div>
-           </div>
-          <!-- VISTA "VER" DE ESTUDIANTE -->
-
-          <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
-
 
           <!-- VISTA AGREGAR FECHA DE FALTAS  DE ESTUDIANTE -->
           <div class="col l9 s12 " ng-show="vista=='agregar'">
             <form class="col m12" ng-submit="anadirFecha(estudiante,fecha)">
-
-
                 <!-- INPUT FECHA DE NACIMIENTO -->
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">date_range</i>
@@ -56,24 +44,42 @@
                   <input id="fecha_asistencia" type="date" ng-model="fecha"  required="" aria-required="true">
                   <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
                 </div>
-             
-
-
               <div class="row right-align">
-
                 <button class="btn waves-effect waves-light" type="submit">Agregar
                   <i class="material-icons right">send</i>
                 </button>
               </div>
-          </div>
-
             </form>
           </div>
-          <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
+          <!-- FIN CONTENEDOR AGREGAR FECHAS DE FATLAS DE ESTUDIANTE -->
+           <!-- VISTA EDITAR FECHA DE FALTAS  DE ESTUDIANTE -->
+          <div class="col l9 s12 " ng-show="vista=='editar'">
+            <form class="col m12" ng-submit="editarFecha(estudiante,$index,fecha)">
+                <!-- INPUT FECHA DE NACIMIENTO -->
+                <div class="input-field col l6 s12">
+                  <i class="material-icons prefix">date_range</i>
 
-
+                  <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
+                  <input id="fecha_asistencia" type="date" ng-model="fecha"  required="" aria-required="true">
+                  <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
+                </div>
+              <div class="row right-align">
+                <button class="btn waves-effect waves-light" type="submit">Editar
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- FIN CONTENEDOR EDITAR FECHAS DE FATLAS DE ESTUDIANTE -->
         </div>
+
+         <div class="row">
+        <a class="orange btn" ng-click="vista='agregar'">Ingresar Faltas de Asistencia</a>
+        </div>
+        <!-- FIN CONTENEDOR DE LA LISTA DE FECHAS DE FALTAS DE ASISTENCIAS DE ESTUDIANTE -->
       </div>
+
+       
     </li>
   </ul>
 </div>
