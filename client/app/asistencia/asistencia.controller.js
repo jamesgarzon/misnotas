@@ -37,7 +37,7 @@ $('.datepicker').pickadate({
   ];
 //Función para añadir fechas
 $scope.anadirFecha = function (estudiante, fecha){
-    alert("entro");
+   
     estudiante.periodos[0].areas[0].asignaturas[0].asistencias.push(fecha);
     Estudiante.actualizar(estudiante)
     .then(function (data) {
@@ -52,7 +52,6 @@ $scope.eliminarFecha = function(estudiante,index){
 
   Estudiante.actualizar(estudiante)
     .then(function (data) {
-      $scope.listarEstudiantes();
       Materialize.toast("Fecha Eliminada Correctamente", 5000);
     })
 };
@@ -63,8 +62,8 @@ $scope.editarFecha = function(estudiante,index,fecha){
 
   Estudiante.actualizar(estudiante)
     .then(function (data) {
-      $scope.listarEstudiantes();
-      Materialize.toast("Fecha Eliminada Correctamente", 5000);
+      
+      Materialize.toast("Fecha Actualizada Correctamente", 5000);
     })
 };
 });
