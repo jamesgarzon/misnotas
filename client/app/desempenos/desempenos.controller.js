@@ -12,7 +12,7 @@ angular.module('notasApp')
       $('.modal-trigger').leanModal();
     });
     //$scope.message = 'Hello';
-
+    $scope.vista ='ver';
     $scope.tipoDesempenos =[
       "Ser",
       "Estar",
@@ -43,6 +43,28 @@ angular.module('notasApp')
       .catch(function(err) {
         Materialize.toast('Hubo un error creando el Desempeño', 1000) // 4000 is the duration of the toast
         console.log(err);
+      });
+    }
+
+    $scope.actualizarDesempeno = function (desempeno) {
+      Desempeno.actualizar(desempeno)
+      .then(function(data) {
+        Materialize.toast('Desempeño actualizado con éxito', 4000) // 4000 is the duration of the toast
+        $scope.listarDesempenos();
+      })
+      .catch(function(err) {
+        Materialize.toast('No se pudo actualizar el desempeño. '+ err , 4000) // 4000 is the duration of the toast
+      });
+    }
+
+    $scope.eliminarDesempeno = function(desempeno) {
+      Desempeno.eliminar(desempeno._idDesempeno)
+      .then(function(data) {
+        Materialize.toast('Desempeño eliminado con éxito', 4000) // 4000 is the duration of the toast
+        $scope.listarDesempenos();
+      })
+      .catch(function(err) {
+        Materialize.toast('No se pudo eliminar el desempeño. '+ err , 4000) // 4000 is the duration of the toast
       });
     }
 

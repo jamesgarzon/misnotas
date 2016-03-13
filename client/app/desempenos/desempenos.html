@@ -20,6 +20,121 @@
         <span class="title">{{desempeno.nombre}} -- {{desempeno.tipo}} -- {{desempeno.periodo}}</span>
       </div>
 
+      <!-- CUERPO ACORDEON -->
+      <div class="collapsible-body">
+        <div class="row">
+
+          <!-- VISTA "VER" DE DESEMPEÑO -->
+          <div class="col l9 s12 " ng-show="vista=='ver'">
+            <br>
+            <div class="row">
+              <div class="col s10">
+                <div class="row">
+                  <div class="col l2 s4">
+                    <strong>  Nombre:</strong>
+                  </div>
+                  <div class="col l10 s8">
+                    {{desempeno.nombre}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col l2 s4">
+                    <strong>  Tipo:</strong>
+                  </div>
+                  <div class="col l10 s8">
+                    {{desempeno.tipo}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col l2 s4">
+                    <strong>  Periodo:</strong>
+                  </div>
+                  <div class="col l10 s8">
+                    {{desempeno.periodo}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col l2 s4">
+                    <strong>  Descripción:</strong>
+                  </div>
+                  <div class="col l10 s8">
+                    {{desempeno.descripcion}}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
+            <a class="red btn" ng-submit="eliminarDesempeno(desempeno._idDesempeno)">Eliminar</a>
+          </div>
+          <!-- FIN CONTENEDOR DEL DESEMPEÑO -->
+
+
+          <!-- VISTA "EDICION" DE DESEMPEÑO -->
+          <div class="col l9 s12 " ng-show="vista=='editar'">
+            <form class="col m12" ng-submit="actualizarDesempeno(desempeno)">
+
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">label</i>
+                  <input id="input_nombre" type="text" class="validate" ng-model="desempeno.nombre" required="" aria-required="true">
+                  <label for="input_nombre" data-error="wrong" >Nombre Desempeño</label>
+                </div>
+
+              </div>
+
+              <div class="row">
+                  <!-- INPUT PERIODO -->
+                  <div class="row col s6">
+                    <label for="input_periodo_select"><h6>Periodo</h6></label>
+                    <select id="input_periodo_select" class="browser-default validate" ng-model="desempeno.periodo" required material-select watch>
+                        <option value="" disabled selected>Escoja un periodo</option>
+                        <option value="{{periodo}}" ng-repeat="periodo in periodoDesempenos">{{periodo}}</option>
+                    </select>
+                  </div>
+
+                  <!-- INPUT TIPO -->
+                  <div class="row col s6">
+                    <label for="input_tipo_select"><h6>Tipo Desempeño</h6></label>
+                    <select id="input_tipo_select" class="browser-default validate" ng-model="desempeno.tipo" required="" material-select watch>
+                        <option value="" disabled selected>Escoja un tipo de desempeño</option>
+                        <option value="{{tipo}}" ng-repeat="tipo in tipoDesempenos">{{tipo}}</option>
+                    </select>
+                  </div>
+
+              </div>
+
+              <!-- INPUT DESCRIPCION -->
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">subject</i>
+                  <!--input id="input_descripcion" type="textarea" class="validate" ng-model="nuevoDesempeno.descripcion" required="" aria-required="true"-->
+                  <textarea id="input_descripcion" class="materialize-textarea" ng-model="desempeno.descripcion" required="" aria-required="true"></textarea>
+                  <label for="input_descripcion" data-error="Error" >Descripción</label>
+                </div>
+              </div>
+
+              <div class="row left-align">
+                <a class="red btn" ng-show="vista=='ver'">Cancelar</a>
+              </div>
+              <div class="row right-align">
+
+                <button class="btn waves-effect waves-light" type="submit">Actualizar desempeño
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+
+
+            </form>
+          </div>
+          <!-- FIN CONTENEDOR DEL DESEMPEÑO -->
+
+        </div>
+      </div>
 
     </li>
   </ul>
