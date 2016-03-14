@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('EstudiantesCtrl', function ($scope,$http,Estudiante,$filter) {
+.controller('EstudiantesCtrl', function ($scope,$http,Estudiante,Periodo,$filter) {
   $(document).ready(function(){
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -12,7 +12,7 @@ angular.module('notasApp')
     $('.modal-trigger').leanModal();
   });
 
-
+  
   $scope.fecha = new Date();
   $scope.vista ='ver';
   $scope.tipoDocumentos =[
@@ -20,6 +20,19 @@ angular.module('notasApp')
     {indice:"TI", nombre: "Tarjeta de identidad"},
     {indice:"RC", nombre: "Registro civil"}
   ]
+
+  $scope.listarPeriodos = function () {
+      Periodo.listar()
+      .then(function(data) {
+        $scope.periodos = data;
+         $scope.grupos = $scope.periodos[3].grupos.slice();
+
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    };
+  $scope.listarPeriodos();
 
   $scope.listarEstudiantes = function () {
     Estudiante.listar()
@@ -35,7 +48,11 @@ angular.module('notasApp')
   }
   $scope.listarEstudiantes();
 
-  $scope.crearEstudiante = function (estudiante) {
+  $scope.crearEstudiante = function (estudiante,index) {
+     //estudiante.periodos[0].push($scope.periodos[3]);
+   //  estudiante.periodos[0].codigo = $scope.periodos[3].codigo;
+    // estudiante.periodos[0].areas = $scope.grupos[index].areas.slice();
+ 
     Estudiante.crear(estudiante)
     .then(function(data) {
       $('#modal-estudiante-form').closeModal();

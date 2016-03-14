@@ -30,11 +30,7 @@ $('.datepicker').pickadate({
   $scope.listarEstudiantes();
   $scope.fecha = new Date();
   $scope.vista ='ver';
-  $scope.tipoDocumentos =[
-    {indice:"CC", nombre: "Cédula de ciudadanía"},
-    {indice:"TI", nombre: "Tarjeta de identidad"},
-    {indice:"RC", nombre: "Registro civil"}
-  ];
+  
 //Función para añadir fechas
 $scope.anadirFecha = function (estudiante, fecha){
    

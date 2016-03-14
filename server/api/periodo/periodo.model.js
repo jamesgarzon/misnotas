@@ -8,13 +8,35 @@ var PeriodoSchema = new mongoose.Schema({
       	nombre: String,
 		  areas : [
 		    {
-		      nombre : String,
-		      asignaturas : [
-		        {
-		          nombre : String,
-		          docente : String // Cambiar cuando creemos la entidad    
-		        }
-		      ]
+		     nombre : String,
+	          nota : Number,
+	          notaEscolar : String,
+	          notaNacional : String,
+	          asignaturas : [
+	            {
+	              nombre : String,
+	              docente : String, // Cambiar cuando creemos la entidad
+	              asistencias : [Date],
+	              actividades : [
+	                {
+	                titulo : String,
+	                descripcion : String,
+	                fechaCreacion : Date,
+	                nota : Number,
+	                notaEscolar : String,
+	                notaNacional : String,
+	                desempeno : {
+	                  nombre : String,
+	                  descripcion : String,
+
+	                  tipo : [String],
+	                  periodo:[String]
+
+	                }
+              }
+              ]
+            }
+          ]
 		    }
 		   ]
 		}

@@ -19,7 +19,20 @@ $scope.grupos =[
 		          docente : "Carmen"
 		 }
 		 ]      
-    }]} 
+    }]},  {nombre:"2A", 
+    areas: [{
+      nombre : "Humanidades",
+     asignaturas :[
+     {
+       nombre :"Lengua Castellana",
+              docente : "Paula"
+     },
+    {
+       nombre :"Ingles",
+              docente : "Carmen"
+     }
+     ]      
+    }]}
   ];
 
 
