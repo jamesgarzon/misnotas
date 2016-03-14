@@ -19,7 +19,7 @@ class NavbarController {
   'link':'/asistencia'
 },
 {
-  'titulo':'Grupos',
+  'titulo':'Periodos',
   'link':'/grupos'
 },
 {

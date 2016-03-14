@@ -3,6 +3,27 @@
 angular.module('notasApp')
   .controller('GruposCtrl', function ($scope, Periodo) {
      
+//creación de datos  base para areas, asignaturas y grupos por default con solo crear el periodo asi cuando se cree un estudiante solo sea seleccionar el grupo al qeu va pertenecer
+
+$scope.grupos =[
+    {nombre:"1A", 
+    areas: [{
+    	nombre : "Humanidades",
+		 asignaturas :[
+		 {
+		 	 nombre :"Lengua Castellana",
+		          docente : "Paula"
+		 },
+		{
+		 	 nombre :"Ingles",
+		          docente : "Carmen"
+		 }
+		 ]      
+    }]} 
+  ];
+
+
+ 
      $scope.listarPeriodos = function () {
       Periodo.listar()
       .then(function(data) {
@@ -14,6 +35,8 @@ angular.module('notasApp')
       });
     };
   $scope.listarPeriodos();
+
+
 $(document).ready(function(){
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -23,8 +46,9 @@ $(document).ready(function(){
     $(".button-collapse-clientes").sideNav();
     $('.modal-trigger').leanModal();
   });
-
+//función crear perido
 $scope.crearPeriodo = function (periodo) {
+	periodo.grupos = $scope.grupos.slice();
     Periodo.crear(periodo)
     .then(function(data) {
       $('#modal-periodo-form').closeModal();
@@ -36,5 +60,6 @@ $scope.crearPeriodo = function (periodo) {
       console.log(err);
     });
   }
+
 
   });
