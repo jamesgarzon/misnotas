@@ -58,7 +58,7 @@ angular.module('notasApp')
     }
 
     $scope.eliminarDesempeno = function(desempeno) {
-      Desempeno.eliminar(desempeno._idDesempeno)
+      Desempeno.eliminar(desempeno._id)
       .then(function(data) {
         Materialize.toast('Desempeño eliminado con éxito', 4000) // 4000 is the duration of the toast
         $scope.listarDesempenos();

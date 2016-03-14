@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 var PeriodoSchema = new mongoose.Schema({
   codigo : String, // 2016-1
-      grupo : [ // en este modelos tenemos varios grupos por que como un periodop puede tener varios grupos no es lo mismo que un estudiante.
+      grupo : [ {// en este modelos tenemos varios grupos por que como un periodop puede tener varios grupos no es lo mismo que un estudiante.
       	nombre: String,
 		  areas : [
 		    {
@@ -39,6 +39,7 @@ var PeriodoSchema = new mongoose.Schema({
 		      ]
 		    }
 		   ]
+		}
       ]
 });
 
