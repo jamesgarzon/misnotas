@@ -12,14 +12,10 @@ angular.module('notasApp')
     $('.modal-trigger').leanModal();
   });
 
-  
+  $scope.tipoDocumentos = [{nombre:'Cédula de cuidadanía', codigo:'CC'},{nombre:'Tarjeta de Identidad', codigo:'TI'}];
   $scope.fecha = new Date();
   $scope.vista ='ver';
-  $scope.tipoDocumentos =[
-    {indice:"CC", nombre: "Cédula de ciudadanía"},
-    {indice:"TI", nombre: "Tarjeta de identidad"},
-    {indice:"RC", nombre: "Registro civil"}
-  ]
+  $scope.tipoDocumentos =["CC","TI","RC"];
 
   $scope.listarPeriodos = function () {
       Periodo.listar()
@@ -38,9 +34,9 @@ angular.module('notasApp')
     Estudiante.listar()
     .then(function(data) {
       $scope.estudiantes = data;
-      // for (var i = 0; i < $scope.estudiantes.length; i++) {
-      //   $scope.estudiantes[i].fecha_nacimiento = $filter('date')($scope.estudiantes[i].fecha_nacimiento, "yyyy-MM-dd");
-      // }
+      for (var i = 0; i < $scope.estudiantes.length; i++) {
+        $scope.estudiantes[i].fechaNacimiento = new Date($scope.estudiantes[i].fechaNacimiento);
+      }
     })
     .catch(function(err) {
       console.log(err);
@@ -52,7 +48,7 @@ angular.module('notasApp')
      //estudiante.periodos[0].push($scope.periodos[3]);
    //  estudiante.periodos[0].codigo = $scope.periodos[3].codigo;
     // estudiante.periodos[0].areas = $scope.grupos[index].areas.slice();
- 
+
     Estudiante.crear(estudiante)
     .then(function(data) {
       $('#modal-estudiante-form').closeModal();
