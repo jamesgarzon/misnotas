@@ -21,18 +21,7 @@ angular.module('notasApp')
     {indice:"RC", nombre: "Registro civil"}
   ]
 
-  $scope.listarPeriodos = function () {
-      Periodo.listar()
-      .then(function(data) {
-        $scope.periodos = data;
-         $scope.grupos = $scope.periodos[3].grupos.slice();
-
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-    };
-  $scope.listarPeriodos();
+ 
 
   $scope.listarEstudiantes = function () {
     Estudiante.listar()
@@ -48,10 +37,8 @@ angular.module('notasApp')
   }
   $scope.listarEstudiantes();
 
-  $scope.crearEstudiante = function (estudiante,index) {
-     //estudiante.periodos[0].push($scope.periodos[3]);
-   //  estudiante.periodos[0].codigo = $scope.periodos[3].codigo;
-    // estudiante.periodos[0].areas = $scope.grupos[index].areas.slice();
+  $scope.crearEstudiante = function (estudiante) {
+
  
     Estudiante.crear(estudiante)
     .then(function(data) {

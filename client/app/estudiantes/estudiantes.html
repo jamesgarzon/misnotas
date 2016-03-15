@@ -99,14 +99,7 @@
                   </div>
                 </div>
 
-                 <div class="row">
-                  <div class="col l2 s4">
-                    <strong> Grupo:</strong>
-                  </div>
-                  <div class="col l10 s8">
-                    {{estudiante.periodos[0].grupo}}
-                  </div>
-                </div>
+          
               </div>
             </div>
             <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
@@ -286,13 +279,7 @@
           </div>
         </div>
 
-        <div class="row col s6">
-        <label for="input_periodo_select"><h6>Grupo</h6></label>
-        <select id="input_periodo_select" class="browser-default validate" ng-model="nuevoEstudiante.periodos[0].grupo" required material-select watch>
-            <option value="" disabled selected>Escoja un grupo</option>
-            <option value="{{grupo}}" ng-repeat="grupo in grupos">{{grupo.nombre}}</option>
-        </select>
-      </div>
+
 
         <div class="row right-align">
 
