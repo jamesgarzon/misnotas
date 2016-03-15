@@ -88,7 +88,7 @@
                     <strong>  Fecha de nacimiento:</strong>
                   </div>
                   <div class="col l10 s8">
-                    {{estudiante.fechaNacimiento | date:'longDate'}}
+                    {{estudiante.fechaNacimiento | date:'shortDate'}}
                   </div>
                 </div>
 
@@ -105,7 +105,7 @@
               </div>
             </div>
             <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
-            <a class="red btn">Eliminar</a>
+            <a class="red btn" ng-click="eliminarEstudiante(estudiante)">Eliminar</a>
           </div>
           <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
 
@@ -126,9 +126,7 @@
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">date_range</i>
                   <input type="date" name="name" ng-model="estudiante.fechaNacimiento">
-                  <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
-                  <!-- <input id="date_fecha_nacimiento" type="date" ng-model="fecha"  required="" aria-required="true"> -->
-                  <!-- <label for="date_fecha_nacimiento" data-error="Error" >Fecha de nacimiento</label> -->
+                  
                 </div>
               </div>
 

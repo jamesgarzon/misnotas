@@ -63,6 +63,17 @@ angular.module('notasApp')
     });
   }
 
+ $scope.eliminarEstudiante = function(estudiante) {
+     Estudiante.eliminar(estudiante._id)
+      .then(function(data) {
+        Materialize.toast('Estudiante eliminado con éxito', 4000) // 4000 is the duration of the toast
+        $scope.listarEstudiantes();
+      })
+      .catch(function(err) {
+        Materialize.toast('No se pudo eliminar el estudiante. '+ err , 4000) // 4000 is the duration of the toast
+      });
+    }
+
 
   // for (var i = 0; i < 5; i++) {
   //   console.log("entró al ciclo");
