@@ -67,8 +67,10 @@
 
               </div>
             </div>
-            <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
-            <a class="red btn" ng-click="eliminarDesempeno(desempeno)">Eliminar</a>
+            <div class="row center-align">
+              <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
+              <a class="red btn" ng-click="eliminarDesempeno(desempeno)">Eliminar</a>
+            </div>          
           </div>
           <!-- FIN CONTENEDOR DEL DESEMPEÑO -->
 
@@ -118,11 +120,8 @@
                 </div>
               </div>
 
-              <div class="row left-align">
-                <a class="red btn" ng-show="vista=='ver'">Cancelar</a>
-              </div>
               <div class="row right-align">
-
+                <a class="red btn" ng-click="vista='ver'">Cancelar</a>
                 <button class="btn waves-effect waves-light" type="submit">Actualizar desempeño
                   <i class="material-icons right">send</i>
                 </button>
