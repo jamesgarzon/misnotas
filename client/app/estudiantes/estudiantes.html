@@ -123,8 +123,8 @@
               <div class="row">
                 <div class="input-field col l6 s12">
                   <i class="material-icons prefix">book</i>
-                  <input id="input_codigo" type="text" class="validate" ng-model="estudiante.documento" required="" aria-required="true">
-                  <label for="input_codigo" data-error="wrong" class="active">identificación</label>
+                  <input id="input_codigo_edicion" type="text" class="validate" ng-model="estudiante.documento" required="" aria-required="true">
+                  <label for="input_codigo_edicion" data-error="wrong" class="active">identificación</label>
                 </div>
 
                 <!-- INPUT FECHA DE NACIMIENTO -->
@@ -225,8 +225,8 @@
         <div class="row">
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">book</i>
-            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.documento" required="" aria-required="true">
-            <label for="input_codigo" data-error="wrong" >identificación</label>
+            <input id="input_codigo" type="text" class="validate" ng-model="nuevoEstudiante.documento" required="">
+            <label for="input_codigo">identificación</label>
           </div>
 
           <!-- INPUT FECHA DE NACIMIENTO -->
@@ -293,10 +293,6 @@
             <option value="{{grupo}}" ng-repeat="grupo in grupos">{{grupo.nombre}}</option>
         </select>
       </div>
-
-
-
-
 
         <div class="row right-align">
 
