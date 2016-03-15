@@ -16,11 +16,10 @@ angular.module('notasApp')
   $scope.fecha = new Date();
   $scope.vista ='ver';
   $scope.tipoDocumentos =[
-    {indice:"CC", nombre: "Cédula de ciudadanía"},
-    {indice:"TI", nombre: "Tarjeta de identidad"},
-    {indice:"RC", nombre: "Registro civil"}
+    "Cédula de ciudadanía",
+    "Tarjeta de identidad",
+    "Registro civil"
   ]
-
  
 
   $scope.listarEstudiantes = function () {
