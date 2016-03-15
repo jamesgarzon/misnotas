@@ -8,10 +8,30 @@
 
 <div class="row container">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
-		 <li collection-item avatar ng-repeat="periodo in periodos">
-          <div>{{periodo.codigo}}</div>
-		 </li>
-	</ul>
+   <li collection-item avatar ng-repeat="periodo in periodos">
+    <div> {{periodo.codigo}} <a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a></div>
+
+
+    <!-- VISTA EDITAR Periodos -->
+    <div class="row " ng-show="vista=='editar'">
+      <form class="row" ng-submit="editarPeriodo(periodo)">
+        <!-- INPUT FECHA DE NACIMIENTO -->
+        <div class="input-field row ">
+         
+          <input  type="text" ng-model="periodo.codigo">
+          
+        </div>
+        <div class="row right-align">
+          <button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Editar
+            <i class="material-icons right">send</i>
+          </button>
+          <a class="btn  red"  ng-click="vista='da'">Cancelar</a>
+        </div>
+      </form>
+    </div>
+    <!-- FIN CONTENEDOR EDITAR -->
+  </li>
+</ul>
 
 </div>
 
@@ -32,17 +52,17 @@
             <input id="input_codigo" type="text" class="validate" ng-model="nuevoPeriodo.codigo" required="" aria-required="true">
             <label for="input_codigo" data-error="wrong" >Codigo</label>
           </div>
- 
+          
 
-        <div class="row right-align">
+          <div class="row right-align">
 
-          <button class="btn waves-effect waves-light" type="submit" name="action">Crear
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Crear
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
 
-      </form>
+        </form>
+      </div>
+
     </div>
-
   </div>
-</div>

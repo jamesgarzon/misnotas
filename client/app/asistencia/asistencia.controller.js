@@ -57,9 +57,9 @@ $scope.editarFecha = function(estudiante,index,fecha){
   estudiante.periodos[0].areas[0].asignaturas[0].asistencias[index]=fecha;
 
   Estudiante.actualizar(estudiante)
-    .then(function (data) {
-      
-      Materialize.toast("Fecha Actualizada Correctamente", 5000);
-    })
+  .then(function (data) {
+    
+    Materialize.toast("Fecha Actualizada Correctamente", 5000);
+  })
 };
 });

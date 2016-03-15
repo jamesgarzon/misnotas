@@ -39,7 +39,7 @@ servicio.crear = function (periodoNuevo) {
 servicio.actualizar = function (periodoActualizar) {
 	var defered = $q.defer();
 	var promise = defered.promise;
-	$http.put('/api/desempenos/'+periodoActualizar._id, periodoActualizar)
+	$http.put('/api/periodos/'+periodoActualizar._id, periodoActualizar)
 			.success(function(data) {
 					defered.resolve(data);
 			})
