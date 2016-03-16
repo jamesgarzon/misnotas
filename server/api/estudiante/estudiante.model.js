@@ -4,6 +4,7 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var EstudianteSchema = new mongoose.Schema({
   perfil: String,
+  password: String,
   tipoDocumento : String,
   documento : {type: String, required: true},
   nombres : {type: String, required: true},
