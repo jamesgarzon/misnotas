@@ -37,7 +37,8 @@ angular.module('notasApp')
   $scope.listarEstudiantes();
 
   $scope.crearEstudiante = function (estudiante) {
-
+    estudiante.perfil = "estudiante";
+    estudiante.password = estudiante.documento;
  
     Estudiante.crear(estudiante)
     .then(function(data) {
