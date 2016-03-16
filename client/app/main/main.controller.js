@@ -25,6 +25,10 @@ class MainController {
   }
 }
 
+  login() {
+    
+  }
+
 angular.module('notasApp')
   .controller('MainController', MainController);
 
