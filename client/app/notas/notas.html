@@ -16,9 +16,9 @@
 </thead>
 
 <tbody>
-<tr ng-repeat="actividad in actividades">
-<td> {{actividad.nombre}} </td>
-<td ng-repeat="actividad in actividades"> {{actividad.periodo}} </td>
+<tr ng-repeat="actividad in estudiantes[0].periodos[0].areas[0].asignaturas[0].actividades">
+  <td> {{actividad.titulo}}</td>
+<td ng-repeat="nota in estudiantes"> {{nota.periodos[0].areas[0].asignaturas[0].actividades[$index].nota}} </td>
 
 </tr>
 </tbody>
