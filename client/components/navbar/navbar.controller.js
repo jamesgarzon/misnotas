@@ -19,12 +19,16 @@ class NavbarController {
   'link':'/asistencia'
 },
 {
-  'titulo':'Periodos',
+  'titulo':'Grupos',
   'link':'/grupos'
 },
 {
   'titulo':'Asignaturas',
   'link':'/asignaturas'
+},
+{
+  'titulo':'Periodos',
+  'link':'/periodos'
 }
 ];
 

@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('GruposCtrl', function ($scope, Periodo) {
-
-//creación de datos  base para areas, asignaturas y grupos por default con solo crear el periodo asi cuando se cree un estudiante solo sea seleccionar el grupo al qeu va pertenecer
-
+  .controller('PeriodosCtrl', function ($scope, Periodo) {
+   
 $scope.grupos =[
 {nombre:"1A", 
 areas: [{
@@ -93,7 +91,4 @@ $scope.eliminarPeriodo = function(periodo) {
         Materialize.toast('No se pudo eliminar el Periodo. '+ err , 4000) // 4000 is the duration of the toast
       });
 }
-
-});
-
-
+  });
