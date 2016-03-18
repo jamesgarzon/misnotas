@@ -37,10 +37,15 @@ areas: [{
 //función que asigna el valor del periodo actual
 $scope.esPeriodoActual = function(periodo){
 PeriodoActual.id = periodo._id;
+$scope.periodos[0].codigo= periodo._id;
 
+Periodo.actualizar($scope.periodos[0]).then(function (data) {
+
+    Materialize.toast('Periodo Actual Asignado', 4000) ;
+  })
 $scope.s = PeriodoActual.id;
 
- Materialize.toast('Periodo Actual Asignado', 4000) ;
+ 
 
 };
  //Función para listar periodos
@@ -48,13 +53,15 @@ $scope.s = PeriodoActual.id;
   Periodo.listar()
   .then(function(data) {
     $scope.periodos = data;
+    $scope.listaPeriodos=data.slice(1);
   })
   .catch(function(err) {
     console.log(err);
   });
+
 };
 $scope.listarPeriodos();
-
+ 
 
 $(document).ready(function(){
   $('.collapsible').collapsible({
