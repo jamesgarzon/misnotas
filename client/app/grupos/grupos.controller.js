@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('GruposCtrl', function ($scope, Periodo) {
+.controller('GruposCtrl', function ($scope, Periodo,clientId) {
 
 //creación de datos  base para areas, asignaturas y grupos por default con solo crear el periodo asi cuando se cree un estudiante solo sea seleccionar el grupo al qeu va pertenecer
-
+$scope.s = clientId;
 $scope.grupos =[
 {nombre:"1A", 
 areas: [{

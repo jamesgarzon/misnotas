@@ -1,16 +1,9 @@
 'use strict';
-
-angular.module('notasApp')
-  .controller('PeriodosCtrl', function ($scope, Periodo) {
+var app = angular.module('notasApp');
+app.value('clientId', 'a12345654321x');
+  app.controller('PeriodosCtrl', function ($scope, Periodo,clientId) {
 $scope.periodoActual;
-//función para que solo se pueda seleccionar un checkbox
-/*$(document).ready(function() {
-    $('input[type=checkbox]').live('click', function(){
-        var parent = $(this).parent().attr('id');
-        $('#'+parent+' input[type=checkbox]').removeAttr('checked');
-        $(this).attr('checked', 'checked');
-    });
-});*/
+$scope.s = clientId;
 $scope.grupos =[
 {nombre:"1A", 
 areas: [{

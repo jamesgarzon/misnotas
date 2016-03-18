@@ -4,7 +4,6 @@ angular.module('notasApp')
   .factory('Periodo',function($http, $route, $q){
 
 var servicio = {};
-
 // Servicio para listar desempeños
 servicio.listar = function () {
 	var defered = $q.defer();
@@ -63,6 +62,9 @@ servicio.obtenerPeriodo = function (_idPeriodo) {
 			});
 	return promise;
 };
+
+
+
 
 // Servicio para eliminar un desempeño
 // parametro _idDesempeno => ID del desempeño que se desea eliminar
