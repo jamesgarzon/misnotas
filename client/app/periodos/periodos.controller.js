@@ -34,11 +34,13 @@ areas: [{
  ]      
 }]}
 ];
-
+//función que asigna el valor del periodo actual
 $scope.esPeriodoActual = function(periodo){
 PeriodoActual.id = periodo._id;
 
 $scope.s = PeriodoActual.id;
+
+ Materialize.toast('Periodo Actual Asignado', 4000) ;
 
 };
  //Función para listar periodos
