@@ -12,6 +12,7 @@ angular.module('notasApp')
   Periodo.listar()
   .then(function(data) {
     $scope.periodos = data;
+  //Periodo.obtenerPeriodo($scope.periodos[0].codigo).then(function(data){$scope r = data}).catch( function(err){ console.log(err);});
   })
   .catch(function(err) {
     console.log(err);
