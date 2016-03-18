@@ -1,9 +1,10 @@
 'use strict';
 var app = angular.module('notasApp');
-app.value('clientId', 'a12345654321x');
-  app.controller('PeriodosCtrl', function ($scope, Periodo,clientId) {
+app.value('PeriodoActual',{ id: null
+});
+  app.controller('PeriodosCtrl', function ($scope, Periodo,PeriodoActual) {
 $scope.periodoActual;
-$scope.s = clientId;
+
 $scope.grupos =[
 {nombre:"1A", 
 areas: [{
@@ -34,7 +35,12 @@ areas: [{
 }]}
 ];
 
+$scope.esPeriodoActual = function(periodo){
+PeriodoActual.id = periodo._id;
 
+$scope.s = PeriodoActual.id;
+
+};
  //Función para listar periodos
  $scope.listarPeriodos = function () {
   Periodo.listar()
