@@ -2,7 +2,15 @@
 
 angular.module('notasApp')
   .controller('PeriodosCtrl', function ($scope, Periodo) {
-   
+$scope.periodoActual;
+//función para que solo se pueda seleccionar un checkbox
+/*$(document).ready(function() {
+    $('input[type=checkbox]').live('click', function(){
+        var parent = $(this).parent().attr('id');
+        $('#'+parent+' input[type=checkbox]').removeAttr('checked');
+        $(this).attr('checked', 'checked');
+    });
+});*/
 $scope.grupos =[
 {nombre:"1A", 
 areas: [{
@@ -55,6 +63,7 @@ $(document).ready(function(){
     $('.scrollspy').scrollSpy();
     $(".button-collapse-clientes").sideNav();
     $('.modal-trigger').leanModal();
+
   });
 
 //función crear perido
