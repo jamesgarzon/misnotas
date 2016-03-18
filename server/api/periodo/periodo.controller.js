@@ -100,3 +100,19 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// Gets a single Periodo from the DB
+export function obtenerUltimoPeriodo(req, res) {
+  return Periodo.find({esUltimo:true}).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+//funciona para actualizar masivamente la variable esUltimo
+export function actualizarEstados(req, res) {
+  return Periodo.update({esUltimo:true},{$set:{esUltimo:false}},{ multi: true}).exec()
+    .then(handleEntityNotFound(res))
+    // .then(saveUpdates(req.body))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}

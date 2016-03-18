@@ -38,7 +38,7 @@ servicio.crear = function (periodoNuevo) {
 servicio.actualizar = function (periodoActualizar) {
 	var defered = $q.defer();
 	var promise = defered.promise;
-	$http.put('/api/periodos/'+periodoActualizar._id, periodoActualizar)
+	$http.put('/api/periodos/id/'+periodoActualizar._id, periodoActualizar)
 			.success(function(data) {
 					defered.resolve(data);
 			})
@@ -81,6 +81,21 @@ servicio.eliminar = function (_idPeriodo) {
 	return promise;
 };
 
- return servicio;
+ // Servicio para eliminar un desempeño
+ // parametro _idDesempeno => ID del desempeño que se desea eliminar
+ servicio.actualizarEstados = function () {
+ 	var defered = $q.defer();
+ 	var promise = defered.promise;
+ 	$http.put('/api/periodos/actualizarEstados')
+ 			.success(function(data) {
+ 					defered.resolve(data);
+ 			})
+ 			.error(function(err) {
+ 					defered.reject(err);
+ 			});
+ 	return promise;
+ };
 
- });
+  return servicio;
+
+  });

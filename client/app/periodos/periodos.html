@@ -8,21 +8,27 @@
 
 <div class="row container">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
-	 <li collection-item avatar ng-repeat="periodo in listaPeriodos">
-		<div> 
-    <!--  <input type="radio" name="periodoAc"  id="{{$index}}"  ng-model="periodoActual" ng-value="{{periodo}}" />
-      <label for="{{$index}}">{{periodo.codigo}}</label>-->
-      <div>{{periodo.codigo}}</div>
-    <a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="esPeriodoActual(periodo)"><i class="material-icons">done</i></a></div>
-  
+	 <li collection-item avatar ng-repeat="periodo in periodos">
+
+  <div class="row">
+		<div class="col m6">
+		<p>{{periodo.codigo}}</p>
+		</div>
+		<div class="col m6 right-align">
+			<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a>
+			<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a>
+
+		</div>
+	</div>
+
 		<!-- VISTA EDITAR Periodos -->
 		<div class="row " ng-show="vista=='editar'">
-			<form class="row" ng-submit="editarPeriodo(periodo)">
+			<form class="row" ng-submit="editarPeriodo(editaPeriodo[$index])">
 				<!-- INPUT FECHA DE NACIMIENTO -->
 				<div class="input-field row ">
-				 
-					<input  type="text" ng-model="periodo.codigo">
-					
+
+					<input  class="col m4 offset-m1 "type="text" ng-model="editaPeriodo[$index].codigo"  >
+
 				</div>
 				<div class="row right-align">
 					<button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Editar
@@ -58,7 +64,7 @@
 						<input id="input_codigo" type="text" class="validate" ng-model="nuevoPeriodo.codigo" required="" aria-required="true">
 						<label for="input_codigo" data-error="wrong" >Codigo</label>
 					</div>
-					
+
 
 					<div class="row right-align">
 

@@ -33,7 +33,8 @@ $(document).ready(function(){
 
 //función crear perido
 $scope.crearPeriodo = function (periodo) {
-	periodo.grupos = $scope.grupos.slice();
+  periodo.esUtimo = true;
+  periodo.grupos = $scope.grupos.slice();
   Periodo.crear(periodo)
   .then(function(data) {
     $('#modal-periodo-form').closeModal();
@@ -67,5 +68,3 @@ $scope.eliminarPeriodo = function(periodo) {
 }
 
 });
-
-

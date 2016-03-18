@@ -100,3 +100,16 @@ export function destroy(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res));
 }
+
+// Gets a list of Estudiantes
+export function actividadesPorEstudiante(req, res) {
+  Estudiante.findAsync()
+    .then(function (estudiantes) {
+      var respuesta = [];
+      for (var i = 0; i < estudiantes.length; i++) {
+        respuesta.push([estudiantes[i].apellidos,5,4,'-']);
+      }
+      res.json(respuesta);
+    })
+    .catch(handleError(res));
+}

@@ -6,7 +6,7 @@ app.value('PeriodoActual',{ id: null
 $scope.periodoActual;
 
 $scope.grupos =[
-{nombre:"1A", 
+{nombre:"1A",
 areas: [{
  nombre : "Humanidades",
  asignaturas :[
@@ -18,8 +18,8 @@ areas: [{
    nombre :"Ingles",
    docente : "Carmen"
  }
- ]      
-}]},  {nombre:"2A", 
+ ]
+}]},  {nombre:"2A",
 areas: [{
   nombre : "Humanidades",
   asignaturas :[
@@ -31,29 +31,16 @@ areas: [{
    nombre :"Ingles",
    docente : "Carmen"
  }
- ]      
+ ]
 }]}
 ];
-//función que asigna el valor del periodo actual
-$scope.esPeriodoActual = function(periodo){
-PeriodoActual.id = periodo._id;
-$scope.periodos[0].codigo= periodo._id;
 
-Periodo.actualizar($scope.periodos[0]).then(function (data) {
-
-    Materialize.toast('Periodo Actual Asignado', 4000) ;
-  })
-$scope.s = PeriodoActual.id;
-
- 
-
-};
  //Función para listar periodos
  $scope.listarPeriodos = function () {
   Periodo.listar()
   .then(function(data) {
     $scope.periodos = data;
-    $scope.listaPeriodos=data.slice(1);
+    $scope.editaPeriodo = angular.copy($scope.periodos);
   })
   .catch(function(err) {
     console.log(err);
@@ -61,7 +48,7 @@ $scope.s = PeriodoActual.id;
 
 };
 $scope.listarPeriodos();
- 
+
 
 $(document).ready(function(){
   $('.collapsible').collapsible({
@@ -76,24 +63,35 @@ $(document).ready(function(){
 
 //función crear perido
 $scope.crearPeriodo = function (periodo) {
-	periodo.grupos = $scope.grupos.slice();
-  Periodo.crear(periodo)
-  .then(function(data) {
-    $('#modal-periodo-form').closeModal();
-    $scope.listarPeriodos();
-      Materialize.toast('Periodo creado con éxito', 4000) // 4000 is the duration of the toast
-    })
-  .catch(function(err) {
-      Materialize.toast('Hubo un error creando el periodo', 1000) // 4000 is the duration of the toast
-      console.log(err);
-    });
+  Periodo.actualizarEstados()
+  .then(function (data) {
+
+    periodo.grupos = $scope.grupos.slice();
+    Periodo.crear(periodo)
+    .then(function(data) {
+      $('#modal-periodo-form').closeModal();
+      $scope.listarPeriodos();
+        Materialize.toast('Periodo creado con éxito', 4000) // 4000 is the duration of the toast
+      })
+    .catch(function(err) {
+        Materialize.toast('Hubo un error creando el periodo', 1000) // 4000 is the duration of the toast
+        console.log(err);
+      });
+  })
+
+  .catch(function (err) {
+    Materialize.toast('Hubo un error creando el periodo', 1000) // 4000 is the duration of the toast
+
+  });
+
+
 }
 
 //Función editar periodo
 $scope.editarPeriodo = function(periodo){
   Periodo.actualizar(periodo)
   .then(function (data) {
-
+    $scope.listarPeriodos();
     Materialize.toast("Periodo Actualizado Correctamente", 5000);
   })
 };
