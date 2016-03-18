@@ -5,20 +5,21 @@
 <h2 class="center-align white-text">ASIGNATURAS</h2>
 </div>
 </div>
-<table class="responsive-table-custom striped highlight bordered">
+<table class="responsive-table striped highlight bordered">
+<!-- <table class="responsive-table-custom striped highlight bordered"> -->
 
 <thead>
 <tr>
-<td> Estudiantes </td>
+<td> <b>ESTUDIANTES</b> </td>
 <td ng-repeat="estudiante in estudiantes"> {{estudiante.nombres}} {{estudiante.apellidos}}</td>
 <td> Calificación Final </td>
 </tr>
 </thead>
 
 <tbody>
-<tr ng-repeat="actividad in estudiantes[0].periodos[0].areas[0].asignaturas[0].actividades">
-  <td> {{actividad.titulo}}</td>
-<td ng-repeat="nota in estudiantes"> {{nota.periodos[0].areas[0].asignaturas[0].actividades[$index].nota}} </td>
+<tr ng-repeat="actividad in notasPorActividad">
+  <td ng-repeat="nota in actividad  track by $index"> {{nota}}</td>
+<!-- <td ng-repeat="actividad in estudiante.periodos[0].areas[0].asignaturas[0].actividades"><span >{{actividad}}</span></td> -->
 
 </tr>
 </tbody>
