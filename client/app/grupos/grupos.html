@@ -8,16 +8,17 @@
 
 
 
-<div class="row container">
+
+<div class="row container" ng-model="ultimoPeriodo">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
-   <li collection-item avatar ng-repeat="periodo in periodos">
-    <div> {{periodo.grupos[$index].nombre}} <a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a></div>
+   <li collection-item avatar ng-repeat="grupo in ultimoPeriodo[0].grupos">
+    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>
 
 
-    <!-- VISTA EDITAR Periodos -->
+    <!-- VISTA EDITAR Periodos 
     <div class="row " ng-show="vista=='editar'">
       <form class="row" ng-submit="editarPeriodo(periodo)">
-        <!-- INPUT FECHA DE NACIMIENTO -->
+        <!-- INPUT FECHA DE NACIMIENTO 
         <div class="input-field row ">
          
           <input  type="text" ng-model="periodo.codigo">
@@ -31,10 +32,10 @@
         </div>
       </form>
     </div>
-    <!-- FIN CONTENEDOR EDITAR -->
+  FIN CONTENEDOR EDITAR -->
   </li>
 </ul>
-
+<!--
 </div>
 
 <div class="fixed-action-btn" style="bottom:45px; right:24px;">
@@ -47,7 +48,7 @@
     <div class="row">
       <form class="col m12" ng-submit="crearPeriodo(nuevoPeriodo)">
 
-        <!-- INPUT IDENTIFICACIÓN -->
+         INPUT IDENTIFICACIÓN 
         <div class="row">
           <div class="input-field col l6 s12">
             <i class="material-icons prefix">book</i>
@@ -68,3 +69,4 @@
 
     </div>
   </div>
+-->

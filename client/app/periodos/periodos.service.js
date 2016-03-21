@@ -96,6 +96,19 @@ servicio.eliminar = function (_idPeriodo) {
  	return promise;
  };
 
+servicio.obtenerUltimoPeriodo = function () {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	$http.get('/api/periodos/ultimoPeriodo')
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
+
   return servicio;
 
   });

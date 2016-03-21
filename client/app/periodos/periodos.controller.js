@@ -32,6 +32,20 @@ areas: [{
    docente : "Carmen"
  }
  ]
+}]},
+{nombre:"3A",
+areas: [{
+  nombre : "Humanidades",
+  asignaturas :[
+  {
+   nombre :"Lengua Castellana",
+   docente : "Paula"
+ },
+ {
+   nombre :"Ingles",
+   docente : "Carmen"
+ }
+ ]
 }]}
 ];
 
