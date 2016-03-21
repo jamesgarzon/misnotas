@@ -6,33 +6,33 @@
 </div>
 
 
-
-
-
 <div class="row container" ng-model="ultimoPeriodo">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
-   <li collection-item avatar ng-repeat="grupo in ultimoPeriodo[0].grupos">
-    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a><a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>
+   <li collection-item avatar  ng-repeat="grupo in ultimoPeriodo[0].grupos">
+    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light yellow" ng-click="obtenerEstudiantes(ultimoPeriodo[0].codigo);vista='editar'"><i class="material-icons">assignment</i></a><!--<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>-->
 
 
-    <!-- VISTA EDITAR Periodos 
+    <!-- VISTA EDITAR Grupo -->
     <div class="row " ng-show="vista=='editar'">
-      <form class="row" ng-submit="editarPeriodo(periodo)">
-        <!-- INPUT FECHA DE NACIMIENTO 
-        <div class="input-field row ">
-         
-          <input  type="text" ng-model="periodo.codigo">
-          
+  <!-- <form class="row" ng-submit="editarPeriodo(periodo)">
+        <!-- Aqui se vn a listar los estudiante pertenecientes al grupo -->
+        <div class="col ">
+          <ul class="collapsible popout collection" data-collapsible="accordion">
+            <li collection-item avatar ng-repeat="estudiante in estudiantes ">{{estudiante.nombres}}</li>
+          </ul>
         </div>
-        <div class="row right-align">
-          <button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Editar
+        <!-- Aqui se vn a listar todos los estudiantes -->
+        <div class="col ">
+          mundo
+        </div>
+        <div class="row m4">
+          <button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Volver
             <i class="material-icons right">send</i>
           </button>
-          <a class="btn  red"  ng-click="vista='da'">Cancelar</a>
         </div>
-      </form>
+   <!--  </form>-->
     </div>
-  FIN CONTENEDOR EDITAR -->
+    <!-- FIN CONTENEDOR EDITAR -->
   </li>
 </ul>
 <!--

@@ -113,3 +113,34 @@ export function actividadesPorEstudiante(req, res) {
     })
     .catch(handleError(res));
 }
+
+//Obtener estudiante por periodo
+
+export function obtenerEstudiantesPeriodo(req, res) {
+  return Estudiante.find({periodos:{ $elemMatch:{codigo:req.params.codigo}}})
+    .then(handleEntityNotFound(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}
+
+
+
+
+/*
+export function obtenerEstudiantesPeriodo(req, res) {
+   Estudiante.findAsync()
+    .then(function (estudiantes) { 
+      var respuesta = [];
+      for (var i = 0; i < estudiantes.length; i++) {
+        for (var j = estudiantes.length - 1; j >= 0; j--) {
+           respuesta.push([estudiantes[i].periodos[j]]);
+        }
+       
+      }
+      res.json(respuesta);
+    })
+    .catch(handleError(res));
+}
+
+
+*/

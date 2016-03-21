@@ -77,6 +77,19 @@ servicio.eliminar = function (_idEstudiante) {
 			});
 	return promise;
 };
+// parametro periodo devuelve todos los estudiantes que estuvieron en ese periodo
+servicio.obtenerEstudiantesPorPeriodo = function (periodo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	$http.get('/api/estudiantes/obtenerEstudiantesPeriodo/'+periodo)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
 
  return servicio;
 

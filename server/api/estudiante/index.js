@@ -12,4 +12,5 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/actividades', controller.actividadesPorEstudiante);
+router.get('/obtenerEstudiantesPeriodo/:codigo', controller.obtenerEstudiantesPeriodo);
 module.exports = router;
