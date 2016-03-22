@@ -8,39 +8,39 @@
 
 <div class="row container">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
-	 <li collection-item avatar ng-repeat="periodo in periodos">
+		<li collection-item avatar ng-repeat="periodo in periodos">
 
-  <div class="row">
-		<div class="col m6">
-		<p>{{periodo.codigo}}</p>
-		</div>
-		<div class="col m6 right-align">
-			<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a>
-			<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a>
-
-		</div>
-	</div>
-
-		<!-- VISTA EDITAR Periodos -->
-		<div class="row " ng-show="vista=='editar'">
-			<form class="row" ng-submit="editarPeriodo(editaPeriodo[$index])">
-				<!-- INPUT FECHA DE NACIMIENTO -->
-				<div class="input-field row ">
-
-					<input  class="col m4 offset-m1 "type="text" ng-model="editaPeriodo[$index].codigo"  >
+			<div class="row">
+				<div class="col m6">
+					<p>{{periodo.codigo}}</p>
+				</div>
+				<div class="col m6 right-align">
+					<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="vista='editar'"><i class="material-icons">assignment</i></a>
+					<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click="eliminarPeriodo(periodo)"><i class="material-icons">delete</i></a>
 
 				</div>
-				<div class="row right-align">
-					<button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Editar
-						<i class="material-icons right">send</i>
-					</button>
-					<a class="btn  red"  ng-click="vista='da'">Cancelar</a>
-				</div>
-			</form>
-		</div>
-		<!-- FIN CONTENEDOR EDITAR -->
+			</div>
 
-	 </li>
+			<!-- VISTA EDITAR Periodos -->
+			<div class="row " ng-show="vista=='editar'">
+				<form class="row" ng-submit="editarPeriodo(editaPeriodo[$index])">
+					<!-- INPUT Editar codigo -->
+					<div class="input-field row ">
+
+						<input  class="col m4 offset-m1 "type="text" ng-model="editaPeriodo[$index].codigo"  >
+
+					</div>
+					<div class="row right-align">
+						<button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Editar
+							<i class="material-icons right">send</i>
+						</button>
+						<a class="btn  red"  ng-click="vista='da'">Cancelar</a>
+					</div>
+				</form>
+			</div>
+			<!-- FIN CONTENEDOR EDITAR -->
+
+		</li>
 
 
 	</ul>
@@ -57,7 +57,7 @@
 		<div class="row">
 			<form class="col m12" ng-submit="crearPeriodo(nuevoPeriodo)">
 
-				<!-- INPUT IDENTIFICACIÓN -->
+				<!-- INPUT Codigo del Periodos -->
 				<div class="row">
 					<div class="input-field col l6 s12">
 						<i class="material-icons prefix">book</i>

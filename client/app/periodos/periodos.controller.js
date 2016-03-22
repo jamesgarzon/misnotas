@@ -2,65 +2,10 @@
 var app = angular.module('notasApp');
 app.value('PeriodoActual',{ id: null
 });
-  app.controller('PeriodosCtrl', function ($scope, Periodo,PeriodoActual) {
+  app.controller('PeriodosCtrl', function ($scope, Periodo,PeriodoActual,Grupos) {
 $scope.periodoActual;
 
-$scope.grupos =[
-{nombre:"1A",
-areas: [{
- nombre : "Humanidades",
- asignaturas :[
- {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
- },
- {
-   nombre :"Ingles",
-   docente : "Carmen"
- }
- ]
-}]},  {nombre:"2A",
-areas: [{
-  nombre : "Humanidades",
-  asignaturas :[
-  {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
- },
- {
-   nombre :"Ingles",
-   docente : "Carmen"
- }
- ]
-}]},
-{nombre:"3A",
-areas: [{
-  nombre : "Humanidades",
-  asignaturas :[
-  {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
- },
- {
-   nombre :"Ingles",
-   docente : "Carmen"
- },
- ]
-}]},{nombre:"9B",
-areas: [{
-  nombre : "Humanidades",
-  asignaturas :[
-  {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
- },
- {
-   nombre :"Ingles",
-   docente : "Carmen"
- },
- ]
-}]}
-];
+$scope.grupos = Grupos.grupos.slice();
 
  //Función para listar periodos
  $scope.listarPeriodos = function () {
