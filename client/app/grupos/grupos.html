@@ -27,7 +27,8 @@
           <h5>Todos los Estudiantes</h5>
            <input id="input_buscar" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
         <ul class="collapsible popout collection" data-collapsible="accordion">
-            <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | filter:estudiante.estaMatriculado='true'|filter:estudiante.esEgresado='false'">{{estudiante.nombres}} {{estudiante.apellidos}}</li>
+            <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | filter:estudiante.estaMatriculado='true'|filter:estudiante.esEgresado='false'">{{estudiante.nombres}} {{estudiante.apellidos}} <button class="btn waves-effect waves-light red " type="submit" ng-click="agregarEstudianteGrupo(estudiante,grupo);obtenerEstudiantes(ultimoPeriodo[0].codigo)"><i class="material-icons ">add</i>
+          </button></li>
           </ul>
         </div>
         <div class="row m4">

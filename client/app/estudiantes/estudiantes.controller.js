@@ -41,7 +41,7 @@ angular.module('notasApp')
       estudiante.estaMatriculado = true;
       estudiante.esEgresado = false;
      estudiante.periodos =[{codigo:""}];
-     estudiante.periodos[0].codigo =  $scope.ultiPeriodo[0].codigo;
+     estudiante.periodos[0].codigo =  $scope.ultimoPeriodo[0].codigo;
      estudiante.perfil = "estudiante";
      estudiante.password = estudiante.documento;
 
