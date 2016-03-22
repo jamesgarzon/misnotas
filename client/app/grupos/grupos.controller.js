@@ -30,9 +30,9 @@ $scope.obtenerEstudiantes = function (codigo) {
   });
 
 };
-//Obtiene Los estudiantes de un grupo que se le envia como parametro
-$scope.obtenerEstudiantesGrupo = function (grupo) {
-  Estudiante.obtenerEstudiantesPorGrupo(grupo)
+//Obtiene Los estudiantes de un periodo y  de un grupo que se les envian como parametro
+$scope.obtenerEstudiantesPorGrupoPeriodo = function (grupo,periodo) {
+  Estudiante.obtenerEstudiantesPorGrupoPeriodo(grupo,periodo)
   .then(function(data) {
     $scope.estudiantesGrupo = data;
   })

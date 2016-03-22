@@ -109,7 +109,7 @@ servicio.obtenerEstudiantesPorGrupoPeriodo = function (grupo,periodo) {
 	var defered = $q.defer();
 	var promise = defered.promise;
 	
-	$http.get('/api/estudiantes/ob/obtenerEstudiantesGrupo/'+grupo+'/'+periodo)
+	$http.get('/api/estudiantes/ob/obtenerEstudiantesGrupoPeriodo/'+grupo+'/'+periodo)
 			.success(function(data) {
 					defered.resolve(data);
 			})

@@ -9,7 +9,7 @@
 <div class="row container"  ng-model="ultimoPeriodo">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
    <li collection-item avatar  ng-repeat="grupo in ultimoPeriodo[0].grupos">
-    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light yellow" ng-click="obtenerEstudiantesGrupo(grupo.nombre);vista='editar'"><i class="material-icons">assignment</i></a><!--<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>-->
+    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light yellow" ng-click="obtenerEstudiantesPorGrupoPeriodo(grupo.nombre,ultimoPeriodo[0].codigo);vista='editar'"><i class="material-icons">assignment</i></a><!--<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>-->
 <div ng-init ="obtenerEstudiantes(ultimoPeriodo[0].codigo)"></div>
 
     <!-- VISTA EDITAR Grupo -->
@@ -19,7 +19,7 @@
         <div class="col ">
            <h5> Estudiantes del grupo:{{grupo.nombre}}</h5>
           <ul class="collapsible popout collection" data-collapsible="accordion">
-            <li collection-item avatar ng-repeat="estudianteG in estudiantesGrupo | filter:ultimoPeriodo[0].codigo| filter:estudianteG.estaMatriculado='true'|filter:estudianteG.esEgresado='false'">{{estudianteG.nombres}}</li>
+            <li collection-item avatar ng-repeat="estudianteG in estudiantesGrupo">{{estudianteG.nombres}}</li>
           </ul>
         </div>
         <!-- Aqui se vn a listar todos los estudiantes -->
@@ -27,7 +27,7 @@
           <h5>Todos los Estudiantes</h5>
            <input id="input_buscar" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
         <ul class="collapsible popout collection" data-collapsible="accordion">
-            <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | filter:estudiante.estaMatriculado='true'|filter:estudiante.esEgresado='false'">{{estudiante.nombres}} {{estudiante.apellidos}} <button class="btn waves-effect waves-light red " type="submit" ng-click="agregarEstudianteGrupo(estudiante,grupo);obtenerEstudiantes(ultimoPeriodo[0].codigo)"><i class="material-icons ">add</i>
+            <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante">{{estudiante.nombres}} {{estudiante.apellidos}} <button class="btn waves-effect waves-light red " type="submit" ng-click="agregarEstudianteGrupo(estudiante,grupo)"><i class="material-icons ">add</i>
           </button></li>
           </ul>
         </div>

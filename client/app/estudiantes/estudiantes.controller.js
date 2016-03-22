@@ -72,34 +72,35 @@ angular.module('notasApp')
     });
   }
 //cambia a un estudiante a Egresado
-  $scope.actualizarEstudianteEgresado = function (estudiante) {
-    estudiante.esEgresado = true;
-    Estudiante.actualizar(estudiante)
-    .then(function (data) {
+$scope.actualizarEstudianteEgresado = function (estudiante) {
+  estudiante.esEgresado = true;
+  Estudiante.actualizar(estudiante)
+  .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-    .catch(function (err) {
+  .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
-  }
+}
 
 //Esta función lo qeu hace es que no elimina al estudiante de la base de datos si no qeu asigna su matricula en false
 // lo qeu quiere decir que ya no estudia en el colegio pero la infomación hasta la fecha esta en la BD
-  $scope.eliminarEstudiante = function(estudiante) {
-   estudiante.estaMatriculado = false;
-   Estudiante.actualizar(estudiante)
-   .then(function (data) {
+$scope.eliminarEstudiante = function(estudiante) {
+ estudiante.estaMatriculado = false;
+ Estudiante.actualizar(estudiante)
+ .then(function (data) {
       Materialize.toast('Estudiante Ya no esta Matriculado', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-   .catch(function (err) {
+ .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
 
- /*Estudiante.eliminar(estudiante._id)
+ /* Esta función borra al estudiante de la base de datos
+ Estudiante.eliminar(estudiante._id)
  .then(function(data) {
         Materialize.toast('Estudiante eliminado con éxito', 4000) // 4000 is the duration of the toast
         $scope.listarEstudiantes();
@@ -114,13 +115,13 @@ $scope.obtenerUltimoPeriodoConEstudiantes = function () {
 
   Periodo.obtenerUltimoPeriodo().then(function(data) {
     $scope.ultimoPeriodo= data;
-     Estudiante.obtenerEstudiantesPorPeriodo($scope.ultimoPeriodo[0].codigo)
-  .then(function(data) {
-    $scope.estudiantes = data;
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+    Estudiante.obtenerEstudiantesPorPeriodo($scope.ultimoPeriodo[0].codigo)
+    .then(function(data) {
+      $scope.estudiantes = data;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
   })
   .catch(function(err) {
