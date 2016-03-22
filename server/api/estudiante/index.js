@@ -15,4 +15,5 @@ router.get('/actividades', controller.actividadesPorEstudiante);
 router.get('/obtenerEstudiantesPeriodo/:codigo', controller.obtenerEstudiantesPeriodo);
 //router.get('/obtenerEstudiantesGrupo/:codigo', controller.obtenerEstudiantesGrupo);
 router.get('/ob/obtenerEstudiantesGrupoPeriodo/:nombre/:codigo', controller.obtenerEstudiantesGrupoPeriodo);
+router.put('/ActualizarPeriodoEstudiantes', controller.ActualizarPeriodoEstudiantes);
 module.exports = router;

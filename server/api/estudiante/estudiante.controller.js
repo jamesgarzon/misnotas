@@ -140,3 +140,11 @@ export function obtenerEstudiantesGrupoPeriodo(req, res) {
 }
 
 
+export function ActualizarPeriodoEstudiantes(req, res) {
+  return Estudiante.update({estaMatriculado:true},{$set:{ciudad:'Medellin'}},{ multi: true}).exec()
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}
+
