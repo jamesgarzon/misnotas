@@ -5,7 +5,8 @@ angular.module('notasApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.materialize'
 ])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider

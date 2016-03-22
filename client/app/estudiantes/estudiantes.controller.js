@@ -16,10 +16,10 @@ angular.module('notasApp')
   $scope.fecha = new Date();
   $scope.vista ='ver';
   $scope.tipoDocumentos =[
-  "Cédula de ciudadanía",
-  "Tarjeta de identidad",
-  "Registro civil"
-  ];
+    "Cédula de ciudadanía",
+    "Tarjeta de identidad",
+    "Registro civil"
+    ];
 
 
 
@@ -49,7 +49,7 @@ angular.module('notasApp')
     Estudiante.crear(estudiante)
     .then(function(data) {
       $('#modal-estudiante-form').closeModal();
-      $scope.listarEstudiantes();
+      $scope.obtenerUltimoPeriodoConEstudiantes();
       Materialize.toast('Estudiante creado con éxito', 4000) // 4000 is the duration of the toast
     })
     .catch(function(err) {
@@ -64,7 +64,7 @@ angular.module('notasApp')
     Estudiante.actualizar(estudiante)
     .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
-      $scope.listarEstudiantes();
+      $scope.obtenerUltimoPeriodoConEstudiantes();
     })
     .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
@@ -77,7 +77,7 @@ $scope.actualizarEstudianteEgresado = function (estudiante) {
   Estudiante.actualizar(estudiante)
   .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
-      $scope.listarEstudiantes();
+      $scope.obtenerUltimoPeriodoConEstudiantes();
     })
   .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
@@ -92,7 +92,7 @@ $scope.eliminarEstudiante = function(estudiante) {
  Estudiante.actualizar(estudiante)
  .then(function (data) {
       Materialize.toast('Estudiante Ya no esta Matriculado', 4000) // 4000 is the duration of the toast
-      $scope.listarEstudiantes();
+      $scope.obtenerUltimoPeriodoConEstudiantes();
     })
  .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
