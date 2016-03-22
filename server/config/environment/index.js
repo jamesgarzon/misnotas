@@ -32,6 +32,9 @@ var all = {
     session: 'notas-secret'
   },
 
+  // List of user roles
+  userRoles: ['guest', 'user', 'admin'],
+
   // MongoDB connection options
   mongo: {
     options: {
