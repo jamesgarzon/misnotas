@@ -15,8 +15,8 @@
 
 <div class="row container"  >
   <ul class="collapsible popout collection" data-collapsible="accordion">
-   <!-- estudiantes posee todos los estudiantes simplemente se filtra el resultado por periodo y por nombre  -->
-    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:ultimoPeriodo[0].codigo| orderBy:'nombres'|filter:buscarEstudiante">
+   <!-- estudiantes posee todos los estudiantes simplemente se filtra el resultado por periodo y por nombre y si esta matriculado o es egresado -->
+    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:ultimoPeriodo[0].codigo| orderBy:'nombres'|filter:buscarEstudiante | filter:estudiante.estaMatriculado='true'|filter:estudiante.esEgresado='false'">
 
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">
@@ -181,17 +181,27 @@
                 </div>
               </div>
 
+             
 
-
+            
               <div class="row right-align">
 
-                <button class="btn waves-effect waves-light" type="submit">Actualizar datos
+                <button class="btn waves-effect waves-light" type="submit" >Actualizar datos
                   <i class="material-icons right">send</i>
                 </button>
               </div>
 
+              
 
             </form>
+
+            <div class="row right-align">
+
+                <button class="btn waves-effect waves-light" type="submit" ng-click = "actualizarEstudianteEgresado(estudiante)">Egresado
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+
           </div>
           <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
 

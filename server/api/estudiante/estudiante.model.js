@@ -3,6 +3,8 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var EstudianteSchema = new mongoose.Schema({
+  estaMatriculado: Boolean, 
+  esEgresado: Boolean,
   perfil: String,
   password: String,
   tipoDocumento : String,

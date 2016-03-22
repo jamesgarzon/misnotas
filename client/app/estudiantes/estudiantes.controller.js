@@ -19,7 +19,8 @@ angular.module('notasApp')
   "Cédula de ciudadanía",
   "Tarjeta de identidad",
   "Registro civil"
-  ]
+  ];
+  
 
 
   $scope.listarEstudiantes = function () {
@@ -37,7 +38,8 @@ angular.module('notasApp')
   $scope.listarEstudiantes();
 
   $scope.crearEstudiante = function (estudiante) {
-   
+      estudiante.estaMatriculado = true;
+      estudiante.esEgresado = false;
      estudiante.periodos =[{codigo:""}];
      estudiante.periodos[0].codigo =  $scope.ultiPeriodo[0].codigo;
      estudiante.perfil = "estudiante";
@@ -69,15 +71,38 @@ angular.module('notasApp')
     });
 }
 
+$scope.actualizarEstudianteEgresado = function (estudiante) {
+  estudiante.esEgresado = true;
+  Estudiante.actualizar(estudiante)
+  .then(function (data) {
+      Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
+      $scope.listarEstudiantes();
+    })
+  .catch(function (err) {
+      Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
+
+    });
+}
+
 $scope.eliminarEstudiante = function(estudiante) {
- Estudiante.eliminar(estudiante._id)
+   estudiante.estaMatriculado = false;
+  Estudiante.actualizar(estudiante)
+  .then(function (data) {
+      Materialize.toast('Estudiante Ya no esta Matriculado', 4000) // 4000 is the duration of the toast
+      $scope.listarEstudiantes();
+    })
+  .catch(function (err) {
+      Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
+
+    });
+ /*Estudiante.eliminar(estudiante._id)
  .then(function(data) {
         Materialize.toast('Estudiante eliminado con éxito', 4000) // 4000 is the duration of the toast
         $scope.listarEstudiantes();
       })
  .catch(function(err) {
         Materialize.toast('No se pudo eliminar el estudiante. '+ err , 4000) // 4000 is the duration of the toast
-      });
+      });*/
 }
 
 //Función para obtener el ultimo periodo 
