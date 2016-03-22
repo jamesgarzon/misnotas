@@ -12,7 +12,7 @@ angular.module('notasApp')
     $('.modal-trigger').leanModal();
   });
 
-  
+
   $scope.fecha = new Date();
   $scope.vista ='ver';
   $scope.tipoDocumentos =[
@@ -20,7 +20,7 @@ angular.module('notasApp')
   "Tarjeta de identidad",
   "Registro civil"
   ];
-  
+
 
 
  /* Esta función nos sirve para cuando queramos mostrar todos los estudiantes que tiene la base de datos
@@ -118,6 +118,9 @@ $scope.obtenerUltimoPeriodoConEstudiantes = function () {
     Estudiante.obtenerEstudiantesPorPeriodo($scope.ultimoPeriodo[0].codigo)
     .then(function(data) {
       $scope.estudiantes = data;
+      for (let i = 0; i < $scope.estudiantes.length; i++) {
+        $scope.estudiantes[i].fechaNacimiento = new Date($scope.estudiantes[i].fechaNacimiento);
+      }
     })
     .catch(function(err) {
       console.log(err);
@@ -127,8 +130,8 @@ $scope.obtenerUltimoPeriodoConEstudiantes = function () {
   .catch(function(err) {
     console.log(err);
   });
-  
-  
+
+
 };
 $scope.obtenerUltimoPeriodoConEstudiantes();
 
