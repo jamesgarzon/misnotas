@@ -16,11 +16,11 @@ angular.module('notasApp')
   $scope.fecha = new Date();
   $scope.vista ='ver';
   $scope.tipoDocumentos =[
-    "Cédula de ciudadanía",
-    "Tarjeta de identidad",
-    "Registro civil"
+  "Cédula de ciudadanía",
+  "Tarjeta de identidad",
+  "Registro civil"
   ]
- 
+
 
   $scope.listarEstudiantes = function () {
     Estudiante.listar()
@@ -37,43 +37,54 @@ angular.module('notasApp')
   $scope.listarEstudiantes();
 
   $scope.crearEstudiante = function (estudiante) {
-    estudiante.perfil = "estudiante";
-    estudiante.password = estudiante.documento;
- 
-    Estudiante.crear(estudiante)
-    .then(function(data) {
+   Periodo.obtenerUltimoPeriodo()
+   .then(function(data) {
+     $scope.ultiPeriodo=data;
+     estudiante.periodos =[{codigo:""}];
+     estudiante.periodos[0].codigo =  $scope.ultiPeriodo[0].codigo;
+     estudiante.perfil = "estudiante";
+     estudiante.password = estudiante.documento;
+
+     Estudiante.crear(estudiante)
+     .then(function(data) {
       $('#modal-estudiante-form').closeModal();
       $scope.listarEstudiantes();
       Materialize.toast('Estudiante creado con éxito', 4000) // 4000 is the duration of the toast
     })
-    .catch(function(err) {
+     .catch(function(err) {
       Materialize.toast('Hubo un error creando el estudiante', 1000) // 4000 is the duration of the toast
       console.log(err);
     });
-  }
+   })
+   .catch(function(err) {
 
-  $scope.actualizarEstudiante = function (estudiante) {
-    Estudiante.actualizar(estudiante)
-    .then(function (data) {
+    console.log(err);
+  });
+
+ }
+
+ $scope.actualizarEstudiante = function (estudiante) {
+  Estudiante.actualizar(estudiante)
+  .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-    .catch(function (err) {
+  .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
-  }
+}
 
- $scope.eliminarEstudiante = function(estudiante) {
-     Estudiante.eliminar(estudiante._id)
-      .then(function(data) {
+$scope.eliminarEstudiante = function(estudiante) {
+ Estudiante.eliminar(estudiante._id)
+ .then(function(data) {
         Materialize.toast('Estudiante eliminado con éxito', 4000) // 4000 is the duration of the toast
         $scope.listarEstudiantes();
       })
-      .catch(function(err) {
+ .catch(function(err) {
         Materialize.toast('No se pudo eliminar el estudiante. '+ err , 4000) // 4000 is the duration of the toast
       });
-    }
+}
 
 
   // for (var i = 0; i < 5; i++) {
