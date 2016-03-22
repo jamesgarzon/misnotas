@@ -104,6 +104,20 @@ servicio.obtenerEstudiantesPorGrupo = function (grupo) {
 			});
 	return promise;
 };
+
+servicio.obtenerEstudiantesPorGrupoPeriodo = function (grupo,periodo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	
+	$http.get('/api/estudiantes/ob/obtenerEstudiantesGrupo/'+grupo+'/'+periodo)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
  return servicio;
 
  });

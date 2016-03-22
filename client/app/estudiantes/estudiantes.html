@@ -16,7 +16,7 @@
 <div class="row container"  >
   <ul class="collapsible popout collection" data-collapsible="accordion">
    <!-- estudiantes posee todos los estudiantes simplemente se filtra el resultado por periodo y por nombre y si esta matriculado o es egresado -->
-    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:ultimoPeriodo[0].codigo| orderBy:'nombres'|filter:buscarEstudiante | filter:estudiante.estaMatriculado='true'|filter:estudiante.esEgresado='false'">
+    <li collection-item avatar ng-repeat="estudiante in estudiantes|filter:buscarEstudiante">
 
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">

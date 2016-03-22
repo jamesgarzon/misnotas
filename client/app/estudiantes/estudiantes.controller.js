@@ -23,7 +23,8 @@ angular.module('notasApp')
   
 
 
-  $scope.listarEstudiantes = function () {
+ /* Esta función nos sirve para cuando queramos mostrar todos los estudiantes que tiene la base de datos
+ $scope.listarEstudiantes = function () {
     Estudiante.listar()
     .then(function(data) {
       $scope.estudiantes = data;
@@ -35,66 +36,69 @@ angular.module('notasApp')
       console.log(err);
     });
   }
-  $scope.listarEstudiantes();
+  $scope.listarEstudiantes();*/
 
   $scope.crearEstudiante = function (estudiante) {
-      estudiante.estaMatriculado = true;
-      estudiante.esEgresado = false;
-     estudiante.periodos =[{codigo:""}];
-     estudiante.periodos[0].codigo =  $scope.ultimoPeriodo[0].codigo;
-     estudiante.perfil = "estudiante";
-     estudiante.password = estudiante.documento;
+    estudiante.estaMatriculado = true;
+    estudiante.esEgresado = false;
+    estudiante.periodos =[{codigo:""}];
+    estudiante.periodos[0].codigo =  $scope.ultimoPeriodo[0].codigo;
+    estudiante.perfil = "estudiante";
+    estudiante.password = estudiante.documento;
 
-     Estudiante.crear(estudiante)
-     .then(function(data) {
+    Estudiante.crear(estudiante)
+    .then(function(data) {
       $('#modal-estudiante-form').closeModal();
       $scope.listarEstudiantes();
       Materialize.toast('Estudiante creado con éxito', 4000) // 4000 is the duration of the toast
     })
-     .catch(function(err) {
+    .catch(function(err) {
       Materialize.toast('Hubo un error creando el estudiante', 1000) // 4000 is the duration of the toast
       console.log(err);
     });
-  
 
- }
 
- $scope.actualizarEstudiante = function (estudiante) {
-  Estudiante.actualizar(estudiante)
-  .then(function (data) {
+  }
+
+  $scope.actualizarEstudiante = function (estudiante) {
+    Estudiante.actualizar(estudiante)
+    .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-  .catch(function (err) {
+    .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
-}
-
-$scope.actualizarEstudianteEgresado = function (estudiante) {
-  estudiante.esEgresado = true;
-  Estudiante.actualizar(estudiante)
-  .then(function (data) {
+  }
+//cambia a un estudiante a Egresado
+  $scope.actualizarEstudianteEgresado = function (estudiante) {
+    estudiante.esEgresado = true;
+    Estudiante.actualizar(estudiante)
+    .then(function (data) {
       Materialize.toast('Estudiante actualizado con éxito', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-  .catch(function (err) {
+    .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
-}
+  }
 
-$scope.eliminarEstudiante = function(estudiante) {
+//Esta función lo qeu hace es que no elimina al estudiante de la base de datos si no qeu asigna su matricula en false
+// lo qeu quiere decir que ya no estudia en el colegio pero la infomación hasta la fecha esta en la BD
+  $scope.eliminarEstudiante = function(estudiante) {
    estudiante.estaMatriculado = false;
-  Estudiante.actualizar(estudiante)
-  .then(function (data) {
+   Estudiante.actualizar(estudiante)
+   .then(function (data) {
       Materialize.toast('Estudiante Ya no esta Matriculado', 4000) // 4000 is the duration of the toast
       $scope.listarEstudiantes();
     })
-  .catch(function (err) {
+   .catch(function (err) {
       Materialize.toast('Nooooooo'+ err , 4000) // 4000 is the duration of the toast
 
     });
+
  /*Estudiante.eliminar(estudiante._id)
  .then(function(data) {
         Materialize.toast('Estudiante eliminado con éxito', 4000) // 4000 is the duration of the toast
@@ -105,24 +109,12 @@ $scope.eliminarEstudiante = function(estudiante) {
       });*/
 }
 
-//Función para obtener el ultimo periodo 
- $scope.obtenerUltimoPeriodo = function () {
+//Función para obtener el ultimo periodo y los estudiantes pertenecientes al ultimo periodo
+$scope.obtenerUltimoPeriodoConEstudiantes = function () {
 
   Periodo.obtenerUltimoPeriodo().then(function(data) {
     $scope.ultimoPeriodo= data;
-    
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-  
-  
-};
-$scope.obtenerUltimoPeriodo();
-
-/*//obtiene los estudiantes de un periodo en esta vista los estudiantes del ultimo periodo
-$scope.obtenerEstudiantes = function (codigo) {
-  Estudiante.obtenerEstudiantesPorPeriodo(codigo)
+     Estudiante.obtenerEstudiantesPorPeriodo($scope.ultimoPeriodo[0].codigo)
   .then(function(data) {
     $scope.estudiantes = data;
   })
@@ -130,31 +122,14 @@ $scope.obtenerEstudiantes = function (codigo) {
     console.log(err);
   });
 
-};*/
-
-
-  // for (var i = 0; i < 5; i++) {
-  //   console.log("entró al ciclo");
-  //   var id = ""+i;
-  //   var estudiante =      {
-  //     "identificacion": id,
-  //     "nombre": "JAMES DANILO",
-  //     "apellido": "GARZON OTALVARO",
-  //     "fecha_nacimiento": "2016-02-19T16:28:00.564Z",
-  //     "ciudad": "MEDELLIN",
-  //     "direccion": "AVENIDA SIEMPRE VIVA",
-  //     "telefono": "555-555-555",
-  //     "email": "james.garzon@udea.edu.co"
-  //   }
-  //
-  //   Estudiante.crear(estudiante)
-  //   .then(function(data) {
-  //     // $scope.estudiantes = data;
-  //   })
-  //   .catch(function(err) {
-  //     console.log(err);
-  //   });
-  // }
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+  
+  
+};
+$scope.obtenerUltimoPeriodoConEstudiantes();
 
 
 

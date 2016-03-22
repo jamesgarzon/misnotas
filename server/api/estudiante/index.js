@@ -13,6 +13,6 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/actividades', controller.actividadesPorEstudiante);
 router.get('/obtenerEstudiantesPeriodo/:codigo', controller.obtenerEstudiantesPeriodo);
-router.get('/obtenerEstudiantesGrupo/:codigo', controller.obtenerEstudiantesGrupo);
+//router.get('/obtenerEstudiantesGrupo/:codigo', controller.obtenerEstudiantesGrupo);
 router.get('/ob/obtenerEstudiantesGrupoPeriodo/:nombre/:codigo', controller.obtenerEstudiantesGrupoPeriodo);
 module.exports = router;

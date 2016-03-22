@@ -114,22 +114,24 @@ export function actividadesPorEstudiante(req, res) {
     .catch(handleError(res));
 }
 
-//Obtener estudiante por periodo
+//Obtener estudiante por periodo que cumplan que esten matriculados osea activos en el colegio y que no sean egresados
+//entendiendo egresados como solo aquellos alumnos que se graduan de 11
 
 export function obtenerEstudiantesPeriodo(req, res) {
-  return Estudiante.find({periodos:{ $elemMatch:{codigo:req.params.codigo}}})
+  return Estudiante.find({$and:[{periodos:{ $elemMatch:{codigo:req.params.codigo}}},{estaMatriculado:true},{esEgresado:false}]})
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
-//Obtiene los estudiantes pertenecientes a un grupo
+
+/*//Obtiene los estudiantes pertenecientes a un grupo 
 export function obtenerEstudiantesGrupo(req, res) {
   return Estudiante.find({periodos:{ $elemMatch:{grupo:req.params.codigo}}})
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
-}
-
+}*/
+//obtiene los estudiantes de un grupo para un periodo en especifico
 export function obtenerEstudiantesGrupoPeriodo(req, res) {
   return Estudiante.find({$and:[{periodos:{ $elemMatch:{grupo:req.params.nombre}}},{periodos:{ $elemMatch:{codigo:req.params.codigo}}}]})
     .then(handleEntityNotFound(res))
@@ -137,21 +139,4 @@ export function obtenerEstudiantesGrupoPeriodo(req, res) {
     .catch(handleError(res));
 }
 
-/*
-export function obtenerEstudiantesPeriodo(req, res) {
-   Estudiante.findAsync()
-    .then(function (estudiantes) { 
-      var respuesta = [];
-      for (var i = 0; i < estudiantes.length; i++) {
-        for (var j = estudiantes.length - 1; j >= 0; j--) {
-           respuesta.push([estudiantes[i].periodos[j]]);
-        }
-       
-      }
-      res.json(respuesta);
-    })
-    .catch(handleError(res));
-}
 
-
-*/
