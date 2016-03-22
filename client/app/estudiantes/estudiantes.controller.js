@@ -40,7 +40,7 @@ angular.module('notasApp')
    Periodo.obtenerUltimoPeriodo()
    .then(function(data) {
      $scope.ultiPeriodo=data;
-     estudiante.periodos =[{codigo:""}];
+     estudiante.periodos =[{codigo:"", grupo:"9B"}];
      estudiante.periodos[0].codigo =  $scope.ultiPeriodo[0].codigo;
      estudiante.perfil = "estudiante";
      estudiante.password = estudiante.documento;

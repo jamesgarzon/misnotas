@@ -122,9 +122,20 @@ export function obtenerEstudiantesPeriodo(req, res) {
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
-
-
-
+//Obtiene los estudiantes pertenecientes a un grupo
+export function obtenerEstudiantesGrupo(req, res) {
+  return Estudiante.find({periodos:{ $elemMatch:{grupo:req.params.codigo}}})
+    .then(handleEntityNotFound(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}
+/*
+export function obtenerEstudiantesGrupoPeriodo(req, res) {
+  return Estudiante.find({$and:[{periodos:{ $elemMatch:{grupo:req.params.nombre}}},{periodos:{ $elemMatch:{codigo:"2016-3"}}}]})
+    .then(handleEntityNotFound(res))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}*/
 
 /*
 export function obtenerEstudiantesPeriodo(req, res) {

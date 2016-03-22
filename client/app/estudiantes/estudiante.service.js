@@ -91,6 +91,19 @@ servicio.obtenerEstudiantesPorPeriodo = function (periodo) {
 	return promise;
 };
 
+
+servicio.obtenerEstudiantesPorGrupo = function (grupo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	$http.get('/api/estudiantes/obtenerEstudiantesGrupo/'+grupo)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
  return servicio;
 
  });

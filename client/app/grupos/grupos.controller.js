@@ -33,7 +33,30 @@ $scope.obtenerEstudiantes = function (codigo) {
     
   
 };
+$scope.obtenerEstudiantesGrupo = function (grupo) {
+  Estudiante.obtenerEstudiantesPorGrupo(grupo)
+    .then(function(data) {
+      $scope.estudiantesGrupo = data;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+/*    $scope.resultado =[];
+var i = 0;
+var j = 0;
+    while(i < $scope.estudiantes.length && j < $scope.estudiantesGrupo.length ){
+      if ($scope.estudiantes[i] = $scope.estudiantesGrupo[j]) {
+        $scope.resultado.push($scope.estudiantes[i]);
+        i = i+1;
 
+      }else{
+        j = j+1;
+
+      }
+
+    }*/
+  
+};
 $scope.obtenerUltimoPeriodo();
 
 

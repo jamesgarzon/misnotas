@@ -6,24 +6,29 @@
 </div>
 
 
-<div class="row container" ng-model="ultimoPeriodo">
+<div class="row container"  ng-model="ultimoPeriodo">
 	<ul class="collapsible popout collection" data-collapsible="accordion">
    <li collection-item avatar  ng-repeat="grupo in ultimoPeriodo[0].grupos">
-    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light yellow" ng-click="obtenerEstudiantes(ultimoPeriodo[0].codigo);vista='editar'"><i class="material-icons">assignment</i></a><!--<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>-->
-
+    <div> {{grupo.nombre}}<a class="btn-floating btn-tiny waves-effect waves-light yellow" ng-click="obtenerEstudiantesGrupo(grupo.nombre);vista='editar'"><i class="material-icons">assignment</i></a><!--<a class="btn-floating btn-tiny waves-effect waves-light green" ng-click=""><i class="material-icons">delete</i></a></div>-->
+<div ng-init ="obtenerEstudiantes(ultimoPeriodo[0].codigo)"></div>
 
     <!-- VISTA EDITAR Grupo -->
     <div class="row " ng-show="vista=='editar'">
   <!-- <form class="row" ng-submit="editarPeriodo(periodo)">
         <!-- Aqui se vn a listar los estudiante pertenecientes al grupo -->
         <div class="col ">
+           <h5> Estudiantes del grupo:{{grupo.nombre}}</h5>
           <ul class="collapsible popout collection" data-collapsible="accordion">
-            <li collection-item avatar ng-repeat="estudiante in estudiantes ">{{estudiante.nombres}}</li>
+            <li collection-item avatar ng-repeat="estudianteG in estudiantesGrupo | filter:ultimoPeriodo[0].codigo">{{estudianteG.nombres}}</li>
           </ul>
         </div>
         <!-- Aqui se vn a listar todos los estudiantes -->
         <div class="col ">
-          mundo
+          <h5>Todos los Estudiantes</h5>
+           <input id="input_buscar" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
+        <ul class="collapsible popout collection" data-collapsible="accordion">
+            <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante">{{estudiante.nombres}} {{estudiante.apellidos}}</li>
+          </ul>
         </div>
         <div class="row m4">
           <button class="btn waves-effect waves-light" type="submit" ng-click="vista='da'">Volver
