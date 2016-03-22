@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('GruposCtrl', function ($scope, Periodo,PeriodoActual,Estudiante) {
+.controller('GruposCtrl', function ($scope, Periodo,Estudiante) {
 
 
  //Función para obtener el ultimo periodo 

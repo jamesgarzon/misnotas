@@ -4,7 +4,7 @@ angular.module('notasApp')
   .factory('Grupos',function($http, $route, $q){
  //Retorna la asiganción academica 
  return {
-      grupos =[
+      grupos:[
 {nombre:"1A",
 areas: [{
  nombre : "Humanidades",
@@ -59,7 +59,7 @@ areas: [{
  },
  ]
 }]}
-];
+]
   };
  
 

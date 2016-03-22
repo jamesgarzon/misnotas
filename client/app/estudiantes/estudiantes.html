@@ -6,15 +6,17 @@
 </div>
 <!-- <label for="buscarEstudiante">Buscar estudiante</label> -->
 <!-- <input type="text" name="buscarEstudiante" ng-model="buscarEstudiante" placeholder="BUSCAR USUARIO"> -->
+<div   ></div>
 <div class="input-field col l6 s12">
   <i class="material-icons prefix">book</i>
   <input id="input_buscar" type="text" class="validate" ng-model="buscarEstudiante" required="" aria-required="true">
   <label for="input_buscar" data-error="wrong" >Buscar estudiante</label>
 </div>
 
-<div class="row container">
+<div class="row container"  >
   <ul class="collapsible popout collection" data-collapsible="accordion">
-    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:buscarEstudiante | orderBy:'identificacion'">
+   <!-- estudiantes posee todos los estudiantes simplemente se filtra el resultado por periodo y por nombre  -->
+    <li collection-item avatar ng-repeat="estudiante in estudiantes | filter:ultimoPeriodo[0].codigo| orderBy:'nombres'|filter:buscarEstudiante">
 
       <!-- TITULO ACORDEON -->
       <div class="collapsible-header">
@@ -60,7 +62,7 @@
                   </div>
                   <div class="col l10 s8">
 
-                   
+
                     {{estudiante.documento}}
                   </div>
                 </div>
@@ -101,7 +103,7 @@
                   </div>
                 </div>
 
-          
+
               </div>
             </div>
             <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
@@ -138,7 +140,7 @@
                   <label for="input_nombre_editar" data-error="Error" class="active">Nombre</label>
                 </div>
 
-              <!-- INPUT APELLIDO -->
+                <!-- INPUT APELLIDO -->
                 <div class="input-field col l6 s12">
                   <!-- <i class="material-icons prefix">face</i> -->
                   <input id="input_apellido_editar" type="text" class="validate" ng-model="estudiante.apellidos" required="" aria-required="true">
@@ -173,7 +175,7 @@
 
                 <!-- TEXTAREA DIRECCION -->
                 <div class="input-field col l6 s12">
-                <i class="material-icons prefix">import_contacts</i>
+                  <i class="material-icons prefix">import_contacts</i>
                   <textarea id="textarea_direccion_editar" class="materialize-textarea" ng-model="estudiante.direccion" aria-required="true"></textarea>
                   <label for="textarea_direccion_editar" class="active">Dirección</label>
                 </div>
@@ -217,13 +219,13 @@
 
         <div class="row">
 
-      <div class="input-field col l6 s12">
-        <select ng-model="nuevoEstudiante.tipoDocumento"
-        ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
-        <option value="" disabled=""> Seleccione un Tipo de Documento </option>
-      </select>
-      <label>Tipo de Documento</label>
-    </div>
+          <div class="input-field col l6 s12">
+            <select ng-model="nuevoEstudiante.tipoDocumento"
+            ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
+            <option value="" disabled=""> Seleccione un Tipo de Documento </option>
+          </select>
+          <label>Tipo de Documento</label>
+        </div>
 
 
         <!-- INPUT IDENTIFICACIÓN -->
@@ -251,7 +253,7 @@
             <label for="input_nombre_crear" data-error="Error" >Nombre</label>
           </div>
 
-        <!-- INPUT APELLIDO -->
+          <!-- INPUT APELLIDO -->
           <div class="input-field col l6 s12">
             <!-- <i class="material-icons prefix">face</i> -->
             <input id="input_apellido_crear" type="text" class="validate" ng-model="nuevoEstudiante.apellidos" required="" aria-required="true">
@@ -285,7 +287,7 @@
 
           <!-- TEXTAREA DIRECCION -->
           <div class="input-field col l6 s12">
-          <i class="material-icons prefix">import_contacts</i>
+            <i class="material-icons prefix">import_contacts</i>
             <textarea id="textarea_direccion_crear" class="materialize-textarea" ng-model="nuevoEstudiante.direccion" required="" aria-required="true"></textarea>
             <label for="textarea_direccion_crear">Dirección</label>
           </div>

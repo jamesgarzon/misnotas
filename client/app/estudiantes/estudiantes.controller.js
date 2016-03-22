@@ -37,10 +37,8 @@ angular.module('notasApp')
   $scope.listarEstudiantes();
 
   $scope.crearEstudiante = function (estudiante) {
-   Periodo.obtenerUltimoPeriodo()
-   .then(function(data) {
-     $scope.ultiPeriodo=data;
-     estudiante.periodos =[{codigo:"", grupo:"9B"}];
+   
+     estudiante.periodos =[{codigo:""}];
      estudiante.periodos[0].codigo =  $scope.ultiPeriodo[0].codigo;
      estudiante.perfil = "estudiante";
      estudiante.password = estudiante.documento;
@@ -55,11 +53,7 @@ angular.module('notasApp')
       Materialize.toast('Hubo un error creando el estudiante', 1000) // 4000 is the duration of the toast
       console.log(err);
     });
-   })
-   .catch(function(err) {
-
-    console.log(err);
-  });
+  
 
  }
 
@@ -85,6 +79,33 @@ $scope.eliminarEstudiante = function(estudiante) {
         Materialize.toast('No se pudo eliminar el estudiante. '+ err , 4000) // 4000 is the duration of the toast
       });
 }
+
+//Función para obtener el ultimo periodo 
+ $scope.obtenerUltimoPeriodo = function () {
+
+  Periodo.obtenerUltimoPeriodo().then(function(data) {
+    $scope.ultimoPeriodo= data;
+    
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+  
+  
+};
+$scope.obtenerUltimoPeriodo();
+
+/*//obtiene los estudiantes de un periodo en esta vista los estudiantes del ultimo periodo
+$scope.obtenerEstudiantes = function (codigo) {
+  Estudiante.obtenerEstudiantesPorPeriodo(codigo)
+  .then(function(data) {
+    $scope.estudiantes = data;
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+
+};*/
 
 
   // for (var i = 0; i < 5; i++) {
