@@ -118,19 +118,20 @@ export function actividadesPorEstudiante(req, res) {
 //entendiendo egresados como solo aquellos alumnos que se graduan de 11
 
 export function obtenerEstudiantesPeriodo(req, res) {
-  return Estudiante.find({$and:[{periodos:{ $elemMatch:{codigo:req.params.codigo}}},{estaMatriculado:true},{esEgresado:false}]})
+  //return Estudiante.find({$and:[{periodos:{ $elemMatch:{codigo:req.params.codigo}}},{estaMatriculado:true},{esEgresado:false}]})
+    return Estudiante.find({periodos:{ $elemMatch:{codigo:req.params.codigo}}})
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
-/*//Obtiene los estudiantes pertenecientes a un grupo 
+///Obtiene los estudiantes pertenecientes a un grupo 
 export function obtenerEstudiantesGrupo(req, res) {
   return Estudiante.find({periodos:{ $elemMatch:{grupo:req.params.codigo}}})
     .then(handleEntityNotFound(res))
     .then(responseWithResult(res))
     .catch(handleError(res));
-}*/
+}
 //obtiene los estudiantes de un grupo para un periodo en especifico
 export function obtenerEstudiantesGrupoPeriodo(req, res) {
   return Estudiante.find({$and:[{periodos:{ $elemMatch:{grupo:req.params.nombre}}},{periodos:{ $elemMatch:{codigo:req.params.codigo}}}]})
@@ -148,3 +149,10 @@ export function actualizarPeriodoEstudiantes(req, res) {
     .catch(handleError(res));
 }
 
+export function asignarGrupoEstudiante(req, res) {
+  return Estudiante.update({_id:req.params.id},{$set:{periodos:{codigo:req.params.periodo,grupo:req.params.grupo}}}).exec()
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}

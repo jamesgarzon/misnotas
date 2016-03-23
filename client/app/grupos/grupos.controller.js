@@ -44,14 +44,8 @@ $scope.obtenerEstudiantesPorGrupoPeriodo = function (grupo,periodo) {
 
 
 $scope.agregarEstudianteGrupo=function(estudiante,grupo){
-  var i = 0;
-
-  while(true){
-   if(estudiante.periodos[i].codigo=== $scope.ultimoPeriodo[0].codigo){
-     estudiante.periodos[i].grupo='';
-     estudiante.periodos[i].grupo = grupo.nombre;
-     estudiante.periodos[i].areas=grupo.areas.slice();
-     Estudiante.actualizar(estudiante)
+ 
+     Estudiante.asignarGrupoEstudiante(estudiante._id,$scope.ultimoPeriodo[0].codigo,grupo.nombre)
      .then(function () {
 
       Materialize.toast('Estudiante Ingresado Al Grupo con éxito', 4000); // 4000 is the duration of the toast
@@ -64,10 +58,8 @@ $scope.agregarEstudianteGrupo=function(estudiante,grupo){
 
     });
      
-   } else{
-    i = i+1;
-  }    
-}
+ 
+
 };
 
 

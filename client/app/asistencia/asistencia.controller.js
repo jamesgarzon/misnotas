@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('notasApp')
-.controller('AsistenciaCtrl', function ($scope, Estudiante) {
+.controller('AsistenciaCtrl', function ($scope, Estudiante,Periodo) {
 
   $(document).ready(function(){
     $('.collapsible').collapsible({
@@ -21,18 +21,33 @@ $('.datepicker').pickadate({
 $scope.fecha = new Date();
 $scope.vista ='ver';
 
-//función que ontiene todos los estudiantes de la base de datos
-$scope.listarEstudiantes = function () {
-  Estudiante.listar()
-  .then(function(data) {
-    $scope.estudiantes = data;
+
+//Función para obtener el ultimo periodo y los estudiantes pertenecientes al ultimo periodo
+$scope.obtenerUltimoPeriodoConEstudiantes = function () {
+
+  Periodo.obtenerUltimoPeriodo().then(function(data) {
+    $scope.ultimoPeriodo= data;
+    Estudiante.obtenerEstudiantesPorPeriodo($scope.ultimoPeriodo[0].codigo)
+    .then(function(data) {
+      $scope.estudiantes = data;
+      for (let i = 0; i < $scope.estudiantes.length; i++) {
+        $scope.estudiantes[i].fechaNacimiento = new Date($scope.estudiantes[i].fechaNacimiento);
+      }
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
   })
   .catch(function(err) {
     console.log(err);
   });
+
+
 };
-$scope.listarEstudiantes();
+$scope.obtenerUltimoPeriodoConEstudiantes();
+
+
 //Función para añadir fechas
 $scope.anadirFecha = function (estudiante, fecha){
 

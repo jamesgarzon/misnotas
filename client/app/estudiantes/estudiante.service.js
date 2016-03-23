@@ -133,6 +133,21 @@ servicio.actualizarPeriodoEstudiantes = function (periodo) {
 	return promise;
 };
 
+servicio.asignarGrupoEstudiante = function (_idEstudiante,periodo,grupo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	
+	$http.get('/api/estudiantes/asignarGrupoEstudiante/'+_idEstudiante+'/'+periodo+'/'+grupo)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
+
+
  return servicio;
 
  });
