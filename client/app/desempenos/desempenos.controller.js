@@ -35,7 +35,7 @@ angular.module('notasApp')
 
     $scope.crearDesempeno = function (desempeno) {
       Desempeno.crear(desempeno)
-      .then(function(data) {
+      .then(function() {
         $('#modal-desempeno-form').closeModal();
         $scope.listarDesempenos();
         Materialize.toast('Desempeño creado con éxito', 4000); // 4000 is the duration of the toast
@@ -48,7 +48,7 @@ angular.module('notasApp')
 
     $scope.actualizarDesempeno = function (desempeno) {
       Desempeno.actualizar(desempeno)
-      .then(function(data) {
+      .then(function() {
         Materialize.toast('Desempeño actualizado con éxito', 4000); // 4000 is the duration of the toast
         $scope.listarDesempenos();
       })
@@ -59,7 +59,7 @@ angular.module('notasApp')
 
     $scope.eliminarDesempeno = function(desempeno) {
       Desempeno.eliminar(desempeno._id)
-      .then(function(data) {
+      .then(function() {
         Materialize.toast('Desempeño eliminado con éxito', 4000); // 4000 is the duration of the toast
         $scope.listarDesempenos();
       })

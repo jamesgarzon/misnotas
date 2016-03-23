@@ -118,105 +118,105 @@
 
             <div class="row">
 
-            <div class="input-field col l6 s12">
-              <select ng-model="estudiante.tipoDocumento"
-              ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
-              <option value="" disabled=""> Seleccione un Tipo de Documento </option>
-            </select>
-            <label>Tipo de Documento</label>
+              <div class="input-field col l6 s12">
+                <select ng-model="estudiante.tipoDocumento"
+                ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
+                <option value="" disabled=""> Seleccione un Tipo de Documento </option>
+              </select>
+              <label>Tipo de Documento</label>
+            </div>
           </div>
+
+          <!-- INPUT IDENTIFICACIÓN -->
+          <div class="row">
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">book</i>
+              <input id="input_codigo_editar" type="text" class="validate" ng-model="estudiante.documento" required="" aria-required="true">
+              <label for="input_codigo_editar" data-error="wrong" class="active">identificación</label>
             </div>
 
-            <!-- INPUT IDENTIFICACIÓN -->
-            <div class="row">
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">book</i>
-                <input id="input_codigo_editar" type="text" class="validate" ng-model="estudiante.documento" required="" aria-required="true">
-                <label for="input_codigo_editar" data-error="wrong" class="active">identificación</label>
-              </div>
+            <!-- INPUT FECHA DE NACIMIENTO -->
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">date_range</i>
+              <input type="date" name="name" ng-model="estudiante.fechaNacimiento">
 
-              <!-- INPUT FECHA DE NACIMIENTO -->
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">date_range</i>
-                <input type="date" name="name" ng-model="estudiante.fechaNacimiento">
+            </div>
+          </div>
 
-              </div>
+          <!-- INPUT NOMBRE -->
+          <div class="row">
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">account_box</i>
+              <input id="input_nombre_editar" type="text" class="validate" ng-model="estudiante.nombres" required="" aria-required="true">
+              <label for="input_nombre_editar" data-error="Error" class="active">Nombre</label>
             </div>
 
-            <!-- INPUT NOMBRE -->
-            <div class="row">
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">account_box</i>
-                <input id="input_nombre_editar" type="text" class="validate" ng-model="estudiante.nombres" required="" aria-required="true">
-                <label for="input_nombre_editar" data-error="Error" class="active">Nombre</label>
-              </div>
+            <!-- INPUT APELLIDO -->
+            <div class="input-field col l6 s12">
+              <!-- <i class="material-icons prefix">face</i> -->
+              <input id="input_apellido_editar" type="text" class="validate" ng-model="estudiante.apellidos" required="" aria-required="true">
+              <label for="input_apellido_editar" data-error="Error" class="active">Apellido</label>
+            </div>
+          </div>
 
-              <!-- INPUT APELLIDO -->
-              <div class="input-field col l6 s12">
-                <!-- <i class="material-icons prefix">face</i> -->
-                <input id="input_apellido_editar" type="text" class="validate" ng-model="estudiante.apellidos" required="" aria-required="true">
-                <label for="input_apellido_editar" data-error="Error" class="active">Apellido</label>
-              </div>
+          <!-- INPUT TELEFONO -->
+          <div class="row">
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">phone</i>
+              <input id="input_telefono_editar" type="text" class="validate" ng-model="estudiante.telefonos[0].numero" aria-required="true">
+              <label for="input_telefono_editar" data-error="Error" class="active">Teléfono</label>
             </div>
 
-            <!-- INPUT TELEFONO -->
-            <div class="row">
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="input_telefono_editar" type="text" class="validate" ng-model="estudiante.telefonos[0].numero" aria-required="true">
-                <label for="input_telefono_editar" data-error="Error" class="active">Teléfono</label>
-              </div>
-
-              <!-- INPUT EMAIL -->
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">email</i>
-                <input id="input_email_editar" type="email" class="validate" ng-model="estudiante.email" required="" aria-required="true">
-                <label for="input_email_editar" data-error="Ingrese una dirección de correo válida" class="active">Email</label>
-              </div>
+            <!-- INPUT EMAIL -->
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">email</i>
+              <input id="input_email_editar" type="email" class="validate" ng-model="estudiante.email" required="" aria-required="true">
+              <label for="input_email_editar" data-error="Ingrese una dirección de correo válida" class="active">Email</label>
             </div>
+          </div>
 
-            <!-- INPUT CIUDAD -->
-            <div class="row">
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">location_city</i>
-                <input id="input_ciudad_editar" type="text" class="validate" ng-model="estudiante.ciudad" required="" aria-required="true">
-                <label for="input_ciudad_editar" data-error="Error" class="active">Ciudad</label>
-              </div>
-
-
-              <!-- TEXTAREA DIRECCION -->
-              <div class="input-field col l6 s12">
-                <i class="material-icons prefix">import_contacts</i>
-                <textarea id="textarea_direccion_editar" class="materialize-textarea" ng-model="estudiante.direccion" aria-required="true"></textarea>
-                <label for="textarea_direccion_editar" class="active">Dirección</label>
-              </div>
-            </div>
-
-            <div class="row right-align">
-
-              <button class="btn waves-effect waves-light" type="submit" >Actualizar datos
-                <i class="material-icons right">send</i>
-              </button>
+          <!-- INPUT CIUDAD -->
+          <div class="row">
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">location_city</i>
+              <input id="input_ciudad_editar" type="text" class="validate" ng-model="estudiante.ciudad" required="" aria-required="true">
+              <label for="input_ciudad_editar" data-error="Error" class="active">Ciudad</label>
             </div>
 
 
-
-          </form>
+            <!-- TEXTAREA DIRECCION -->
+            <div class="input-field col l6 s12">
+              <i class="material-icons prefix">import_contacts</i>
+              <textarea id="textarea_direccion_editar" class="materialize-textarea" ng-model="estudiante.direccion" aria-required="true"></textarea>
+              <label for="textarea_direccion_editar" class="active">Dirección</label>
+            </div>
+          </div>
 
           <div class="row right-align">
 
-            <button class="btn waves-effect waves-light" type="submit" ng-click = "actualizarEstudianteEgresado(estudiante)">Egresado
+            <button class="btn waves-effect waves-light" type="submit" >Actualizar datos
               <i class="material-icons right">send</i>
             </button>
           </div>
 
-        </div>
-        <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
 
+
+        </form>
+
+        <div class="row right-align">
+
+          <button class="btn waves-effect waves-light" type="submit" ng-click = "actualizarEstudianteEgresado(estudiante)">Egresado
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
 
       </div>
+      <!-- FIN CONTENEDOR DEL ESTUDIANTE -->
+
+
     </div>
-  </li>
+  </div>
+</li>
 </ul>
 </div>
 
@@ -231,24 +231,16 @@
     <h4 id="modal-estudiante-title">Crear un nuevo estudiante</h4>
     <div class="row">
       <form class="col m12" ng-submit="crearEstudiante(nuevoEstudiante,$index)">
-        Tipo de documento: {{estudiante.tipoDoc}}
+        {{estudiante.tipoDoc}}
 
         <div class="row">
-
-          <!-- <div class="input-field col l6 s12">
-            <select ng-model="nuevoEstudiante.tipoDocumento"
-            ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
-            <option value="" disabled=""> Seleccione un Tipo de Documento </option>
-          </select>
-          <label>Tipo de Documento</label>
-        </div> -->
-        <div class="input-field col m6 s12">
-          <select class="" ng-model="estudiante.tipoDocumento" material-select watch>
-            <option ng-repeat="tipoDoc in tipoDocumentos">{{tipoDoc}}</option>
-          </select>
-          <label>Tipo Documento</label>
+          <div class="input-field col m6 s12">
+            <select class="" ng-model="estudiante.tipoDocumento" material-select watch>
+              <option ng-repeat="tipoDoc in tipoDocumentos">{{tipoDoc}}</option>
+            </select>
+            <label>Tipo Documento</label>
+          </div>
         </div>
-      </div>
 
 
         <!-- INPUT IDENTIFICACIÓN -->
