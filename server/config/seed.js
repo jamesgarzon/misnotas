@@ -19,6 +19,12 @@ var User = require('../api/user/user.model');
       name: 'Admin',
       email: 'admin@admin.com',
       password: 'admin'
+    }, {
+      provider: 'local',
+      role: 'estudiante',
+      name: 'Estudiante',
+      email: 'std@std.com',
+      password: 'estudiante'
     }, function() {
         console.log('finished populating users');
       }

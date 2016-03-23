@@ -3,8 +3,8 @@
 angular.module('notasApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/inicio', {
-        templateUrl: 'app/inicio/inicio.html',
-        controller: 'InicioCtrl'
+      .when('/', {
+        templateUrl: 'app/cuentas/login/login.html',
+        controller: 'LoginCtrl'
       });
   });

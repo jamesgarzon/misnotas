@@ -1,6 +1,6 @@
 'use strict';
 
-(function($scope, Auth, $location) {
+(function() {
 
 class MainController {
 
@@ -9,12 +9,8 @@ class MainController {
 
   }
 
-  
+
 }
-
-  /*login() {
-
-  }*/
 
 angular.module('notasApp')
   .controller('MainController', MainController);

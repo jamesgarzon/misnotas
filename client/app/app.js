@@ -8,18 +8,18 @@ angular.module('notasApp', [
   'ngRoute',
   'ui.materialize'
 ])
-  .config(function($routeProvider, $locationProvider/*, $httpProvider*/) {
+  .config(function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({
         redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true);
-  //  $httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.interceptors.push('authInterceptor');
 
-  });
+  })
 
-  /*.factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
       request: function (config) {
@@ -33,7 +33,7 @@ angular.module('notasApp', [
       // Intercept 401s and redirect you to login
       responseError: function(response) {
         if(response.status === 401) {
-          $location.path('/');
+          $location.path('/login');
           // remove any stale tokens
           $cookieStore.remove('token');
           return $q.reject(response);
@@ -51,8 +51,8 @@ angular.module('notasApp', [
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           event.preventDefault();
-          $location.path('/');
+          $location.path('/login');
         }
       });
     });
-  });*/
+  });

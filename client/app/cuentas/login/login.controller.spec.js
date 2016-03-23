@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: InicioCtrl', function () {
+describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
   beforeEach(module('notasApp'));
 
-  var InicioCtrl, scope;
+  var LoginCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    InicioCtrl = $controller('InicioCtrl', {
+    LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
     });
   }));
