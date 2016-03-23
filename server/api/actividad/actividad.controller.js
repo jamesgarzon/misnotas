@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Actividad from './actividad.model';
+import Estudiante from '.././estudiante/estudiante.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -99,4 +100,30 @@ export function destroy(req, res) {
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));
+}
+
+// Obtiene una lista de actividades por asignatura, grupo, y periodo
+export function actividadesPorAsignatura(req, res) {
+  // Actividad.findAsync()
+  //   .then(respondWithResult(res))
+  //   .catch(handleError(res));
+  Actividad.find({periodo:'2015-1', asignatura:'MATEMATICAS', grupo:'9A'}).
+  then(function(actividades){
+    // res.send(resultados);
+    Estudiante.find().
+    then(function (estudiantes) {
+      var respuesta =  [{actividades:actividades},{estudiantes:estudiantes}];
+      // var actividadades = [];
+      // var estudiantes = [];
+      // respuesta.push(actividadades);
+      // respuesta.push(estudiantes);
+      // respuesta.push(actividades);
+      // respuesta.push(estudiantes);
+      res.send(respuesta);
+    })
+
+
+  })
+  .catch(handleError(res));
+
 }
