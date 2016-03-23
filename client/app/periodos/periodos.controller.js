@@ -1,6 +1,6 @@
 'use strict';
 angular.module('notasApp')
-.controller('PeriodosCtrl', function ($scope, Periodo,Grupos) {
+.controller('PeriodosCtrl', function ($scope, Periodo,Grupos,Estudiante) {
 
 
 
@@ -40,6 +40,7 @@ $scope.crearPeriodo = function (periodo) {
     periodo.grupos = $scope.grupos.slice();
     Periodo.crear(periodo)
     .then(function() {
+      Estudiante.actualizarPeriodoEstudiantes(periodo.codigo);
       $('#modal-periodo-form').closeModal();
       $scope.listarPeriodos();
         Materialize.toast('Periodo creado con éxito', 4000); // 4000 is the duration of the toast

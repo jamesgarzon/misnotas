@@ -118,6 +118,21 @@ servicio.obtenerEstudiantesPorGrupoPeriodo = function (grupo,periodo) {
 			});
 	return promise;
 };
+
+servicio.actualizarPeriodoEstudiantes = function (periodo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	
+	$http.get('/api/estudiantes/actualizarPeriodoEstudiantes/'+periodo)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
+
  return servicio;
 
  });
