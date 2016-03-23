@@ -107,12 +107,24 @@ export function actividadesPorAsignatura(req, res) {
   // Actividad.findAsync()
   //   .then(respondWithResult(res))
   //   .catch(handleError(res));
-  Actividad.find({periodo:'2015-1', asignatura:'MATEMATICAS', grupo:'9A'}).
+  var periodo = '2015-1';
+  var asignatura = 'MATEMATICAS';
+  var grupo = '9A';
+  Actividad.find({periodo:periodo, asignatura:asignatura, grupo:grupo}).
   then(function(actividades){
     // res.send(resultados);
     Estudiante.find().
     then(function (estudiantes) {
-      var respuesta =  [{actividades:actividades},{estudiantes:estudiantes}];
+      var respuesta = {};
+      var actividadesPorEstudiante= [];
+      var actividad = {};
+
+      // for (let i = 0; i < estudiantes.length; i++) {
+      //
+      // }
+      respuesta.actividades= actividades;
+      respuesta.estudiantes= estudiantes;
+      // respuesta.actividades.push ['fffff','876543'];
       // var actividadades = [];
       // var estudiantes = [];
       // respuesta.push(actividadades);
