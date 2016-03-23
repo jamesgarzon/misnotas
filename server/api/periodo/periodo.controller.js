@@ -112,7 +112,7 @@ export function obtenerUltimoPeriodo(req, res) {
 export function actualizarEstados(req, res) {
   return Periodo.update({esUltimo:true},{$set:{esUltimo:false}},{ multi: true}).exec()
     .then(handleEntityNotFound(res))
-    // .then(saveUpdates(req.body))
+    //.then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
