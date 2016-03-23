@@ -1,14 +1,15 @@
 'use strict';
 
-(function() {
+(function($scope, Auth, $location) {
 
 class MainController {
 
   constructor($http) {
     this.$http = $http;
-    
+
   }
 
+  
 }
 
   /*login() {
