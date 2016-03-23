@@ -1,61 +1,61 @@
 'use strict';
 
 angular.module('notasApp')
-  .factory('Grupos',function($http, $route, $q){
+  .factory('Grupos',function(){
  //Retorna la asiganción academica 
  return {
       grupos:[
-{nombre:"1A",
+{nombre:'1A',
 areas: [{
- nombre : "Humanidades",
+ nombre : 'Humanidades',
  asignaturas :[
  {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
+   nombre :'Lengua Castellana',
+   docente : 'Paula'
  },
  {
-   nombre :"Ingles",
-   docente : "Carmen"
+   nombre :'Ingles',
+   docente : 'Carmen'
  }
  ]
-}]},  {nombre:"2A",
+}]},  {nombre:'2A',
 areas: [{
-  nombre : "Humanidades",
+  nombre : 'Humanidades',
   asignaturas :[
   {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
+   nombre :'Lengua Castellana',
+   docente : 'Paula'
  },
  {
-   nombre :"Ingles",
-   docente : "Carmen"
+   nombre :'Ingles',
+   docente : 'Carmen'
  }
  ]
 }]},
-{nombre:"3A",
+{nombre:'3A',
 areas: [{
-  nombre : "Humanidades",
+  nombre : 'Humanidades',
   asignaturas :[
   {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
+   nombre :'Lengua Castellana',
+   docente : 'Paula'
  },
  {
-   nombre :"Ingles",
-   docente : "Carmen"
+   nombre :'Ingles',
+   docente : 'Carmen'
  },
  ]
-}]},{nombre:"9B",
+}]},{nombre:'9B',
 areas: [{
-  nombre : "Humanidades",
+  nombre : 'Humanidades',
   asignaturas :[
   {
-   nombre :"Lengua Castellana",
-   docente : "Paula"
+   nombre :'Lengua Castellana',
+   docente : 'Paula'
  },
  {
-   nombre :"Ingles",
-   docente : "Carmen"
+   nombre :'Ingles',
+   docente : 'Carmen'
  },
  ]
 }]}

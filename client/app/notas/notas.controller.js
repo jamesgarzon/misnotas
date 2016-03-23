@@ -27,7 +27,7 @@ angular.module('notasApp')
                 for (var k = 0; k < $scope.actividadesPorEstudiante.length; k++) {
                   console.log($scope.actividadesPorGrupo[i]._id);
                   console.log($scope.actividadesPorEstudiante[k]._id);
-                  if ($scope.actividadesPorGrupo[i]._id==$scope.actividadesPorEstudiante[k]._id) {
+                  if ($scope.actividadesPorGrupo[i]._id===$scope.actividadesPorEstudiante[k]._id) {
                     $scope.notasPorActividad[i].push($scope.actividadesPorEstudiante[k].nota);
                     actividadCalificada = true;
                   }

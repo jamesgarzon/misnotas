@@ -1,11 +1,10 @@
 'use strict';
-var app = angular.module('notasApp');
-app.value('PeriodoActual',{ id: null
-});
-  app.controller('PeriodosCtrl', function ($scope, Periodo,PeriodoActual,Grupos) {
-$scope.periodoActual;
+angular.module('notasApp')
+.controller('PeriodosCtrl', function ($scope, Periodo,Grupos) {
 
-$scope.grupos = Grupos.grupos.slice();
+
+
+  $scope.grupos = Grupos.grupos.slice();
 
  //Función para listar periodos
  $scope.listarPeriodos = function () {
@@ -28,7 +27,7 @@ $(document).ready(function(){
     });
     // $('select').material_select();
     $('.scrollspy').scrollSpy();
-    $(".button-collapse-clientes").sideNav();
+    $('.button-collapse-clientes').sideNav();
     $('.modal-trigger').leanModal();
 
   });
@@ -36,46 +35,47 @@ $(document).ready(function(){
 //función crear perido
 $scope.crearPeriodo = function (periodo) {
   Periodo.actualizarEstados()
-  .then(function (data) {
+  .then(function () {
 
     periodo.grupos = $scope.grupos.slice();
     Periodo.crear(periodo)
-    .then(function(data) {
+    .then(function() {
       $('#modal-periodo-form').closeModal();
       $scope.listarPeriodos();
-        Materialize.toast('Periodo creado con éxito', 4000) // 4000 is the duration of the toast
+        Materialize.toast('Periodo creado con éxito', 4000); // 4000 is the duration of the toast
       })
     .catch(function(err) {
-        Materialize.toast('Hubo un error creando el periodo', 1000) // 4000 is the duration of the toast
+        Materialize.toast('Hubo un error creando el periodo', 1000);// 4000 is the duration of the toast
         console.log(err);
       });
   })
 
   .catch(function (err) {
-    Materialize.toast('Hubo un error creando el periodo', 1000) // 4000 is the duration of the toast
+    Materialize.toast('Hubo un error creando el periodo'+err, 1000); // 4000 is the duration of the toast
 
   });
 
 
-}
+};
 
 //Función editar periodo
 $scope.editarPeriodo = function(periodo){
   Periodo.actualizar(periodo)
-  .then(function (data) {
+  .then(function () {
     $scope.listarPeriodos();
-    Materialize.toast("Periodo Actualizado Correctamente", 5000);
-  })
+    Materialize.toast('Periodo Actualizado Correctamente', 5000);
+  });
 };
 //Función eliminar periodo
 $scope.eliminarPeriodo = function(periodo) {
   Periodo.eliminar(periodo._id)
-  .then(function(data) {
-        Materialize.toast('Periodo eliminado con éxito', 4000) // 4000 is the duration of the toast
+  .then(function() {
+        Materialize.toast('Periodo eliminado con éxito', 4000); // 4000 is the duration of the toast
         $scope.listarPeriodos();
       })
   .catch(function(err) {
-        Materialize.toast('No se pudo eliminar el Periodo. '+ err , 4000) // 4000 is the duration of the toast
+        Materialize.toast('No se pudo eliminar el Periodo. '+ err , 4000); // 4000 is the duration of the toast
       });
-}
-  });
+};
+
+});
