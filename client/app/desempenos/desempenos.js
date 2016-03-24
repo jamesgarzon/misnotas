@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/desempenos', {
         templateUrl: 'app/desempenos/desempenos.html',
-        controller: 'DesempenosCtrl'
+        controller: 'DesempenosCtrl',
+        authenticate: true
       });
   });

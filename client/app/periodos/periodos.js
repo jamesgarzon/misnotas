@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/periodos', {
         templateUrl: 'app/periodos/periodos.html',
-        controller: 'PeriodosCtrl'
+        controller: 'PeriodosCtrl',
+        authenticate: true
       });
   });

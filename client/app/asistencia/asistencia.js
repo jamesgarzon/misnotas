@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/asistencia', {
         templateUrl: 'app/asistencia/asistencia.html',
-        controller: 'AsistenciaCtrl'
+        controller: 'AsistenciaCtrl',
+        authenticate: true
       });
   });

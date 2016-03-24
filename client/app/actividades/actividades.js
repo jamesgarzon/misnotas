@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/actividades', {
         templateUrl: 'app/actividades/actividades.html',
-        controller: 'ActividadesCtrl'
+        controller: 'ActividadesCtrl',
+        authenticate: true
       });
   });

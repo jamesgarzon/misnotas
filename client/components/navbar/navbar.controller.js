@@ -4,7 +4,7 @@ class NavbarController {
   //start-non-standard
   menu = [{
     'titulo': 'Home',
-    'link': '/'
+    'link': '/inicio'
   },
 {
   'titulo':'Estudiantes',
@@ -33,6 +33,7 @@ class NavbarController {
 ];
 
   isCollapsed = true;
+
   //end-non-standard
 
   constructor($location) {

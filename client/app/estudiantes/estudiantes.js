@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/estudiantes', {
         templateUrl: 'app/estudiantes/estudiantes.html',
-        controller: 'EstudiantesCtrl'
+        controller: 'EstudiantesCtrl',
+        authenticate: true
       });
   });

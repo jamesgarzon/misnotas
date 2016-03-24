@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/asignaturas', {
         templateUrl: 'app/asignaturas/asignaturas.html',
-        controller: 'AsignaturasCtrl'
+        controller: 'AsignaturasCtrl',
+        authenticate: true
       });
   });

@@ -5,6 +5,7 @@ angular.module('notasApp')
     $routeProvider
       .when('/grupos', {
         templateUrl: 'app/grupos/grupos.html',
-        controller: 'GruposCtrl'
+        controller: 'GruposCtrl',
+        authenticate: true
       });
   });
