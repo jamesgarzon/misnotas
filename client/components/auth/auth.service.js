@@ -136,6 +136,10 @@ angular.module('notasApp')
         return currentUser.role === 'admin';
       },
 
+      esEstudiante: function() {
+        return currentUser.role === 'estudiante';
+      },
+
       /**
        * Get auth token
        */

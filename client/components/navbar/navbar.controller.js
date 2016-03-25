@@ -4,37 +4,46 @@ angular.module('notasApp')
   .controller('NavbarController', function ($scope, $location, Auth) {
     $scope.menu = [{
       'titulo': 'Home',
-      'link': '/inicio'
+      'link': '/inicio',
+      'funcion': 'esAmbos'
     },
     {
       'titulo':'Estudiantes',
-      'link':'/estudiantes'
+      'link':'/estudiantes',
+      'funcion': 'esEstudiante()'
     },
     {
       'titulo':'Desempeños',
-      'link':'/desempenos'
+      'link':'/desempenos',
+      'funcion': 'isAdmin()'
     },
     {
       'titulo':'Asistencia',
-      'link':'/asistencia'
+      'link':'/asistencia',
+      'funcion': 'isAdmin()'
     },
     {
       'titulo':'Grupos',
-      'link':'/grupos'
+      'link':'/grupos',
+      'funcion': 'isAdmin()'
     },
     {
       'titulo':'Asignaturas',
-      'link':'/asignaturas'
+      'link':'/asignaturas',
+      'funcion': 'isAdmin()'
     },
     {
       'titulo':'Periodos',
-      'link':'/periodos'
+      'link':'/periodos',
+      'funcion': 'isAdmin()'
     }];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.esEstudiante = Auth.esEstudiante;
+    $scope.esAmbos = true;
 
     $scope.logout = function() {
       Auth.logout();

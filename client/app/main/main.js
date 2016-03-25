@@ -6,7 +6,7 @@ angular.module('notasApp')
       .when('/inicio', {
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        // controllerAs: 'main',
+        controllerAs: 'main',
         authenticate: true
       });
   });

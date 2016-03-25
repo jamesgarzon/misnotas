@@ -25,18 +25,17 @@
                  Please enter a valid email.
               </p>
 
-              <p class="help-block">{{ errors.other }}</p>
             </div>
             <span class="card-title"><h4 bold>Login</h4></span>
               <div class="input-field col s4">
                 <i class="material-icons prefix">account_circle</i>
-                <input  id="user_name" type="text" name="email" ng-model="user.email" class="form-control validate" required>
-                <label for="user_name">Usuario</label>
+                <input  id="user_name" type="email" name="email" ng-model="user.email" class="form-control validate" required>
+                <label for="user_name" data-error="No es un correo">Usuario</label>
               </div>
               <div class="input-field col s4">
                 <i class="material-icons prefix">lock</i>
                 <input id="password" type="password" name="password" ng-model="user.password" class="form-control validate" required>
-                <label for="password">Contraseña</label>
+                <label for="password" data-error="Contraseña equivocada">Contraseña</label>
               </div>
           </div>
           <div class="card-action ">
@@ -45,6 +44,9 @@
             </button>
             <!--a href="/inicio" class="btn waves-effect waves-light">Loguear <i class="material-icons right">send</i></a-->
           </div>
+          <p>
+            {{ errors.other }}
+          </p>
         </div>
       </form>
     </div>

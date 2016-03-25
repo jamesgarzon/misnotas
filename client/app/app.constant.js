@@ -3,7 +3,7 @@
 
 angular.module('notasApp.constants', [])
 
-.constant('appConfig', {userRoles:['guest','user','admin']})
+.constant('appConfig', {userRoles:['guest','user','admin','estudiante','profesor']})
 
 ;
 })(angular);

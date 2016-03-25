@@ -1,9 +1,18 @@
 <nav class="teal" ng-controller="NavbarController">
+  <ul class="left hide-on-med-and-down">
+    <li><a href="#">Hola {{getCurrentUser().name}}</a></li>
+  </ul>
   <ul class="right hide-on-med-and-down">
-    <li ng-repeat="item in menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
+    <li ng-show="{{item.funcion}}" ng-repeat="item in menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
+    <li class="divider"></li>
+    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
   </ul>
   <ul id="slide-out" class="side-nav">
-    <li ng-repeat="item in menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
+    <li><a href="#">Hola {{getCurrentUser().name}}</a></li>
+    <li class="divider"></li>
+    <li ng-show="{{item.funcion}}" ng-class="{active: isActive('{{item.link}}')}" ng-repeat="item in menu"><a ng-href="{{item.link}}">{{item.titulo}}</a></li>
+    <li class="divider"></li>
+    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 </nav>
