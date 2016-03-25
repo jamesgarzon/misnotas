@@ -16,7 +16,5 @@ router.get('/obtenerEstudiantesPeriodo/:codigo', controller.obtenerEstudiantesPe
 router.get('/obtenerEstudiantesGrupo/:codigo', controller.obtenerEstudiantesGrupo);
 router.get('/ob/obtenerEstudiantesGrupoPeriodo/:nombre/:codigo', controller.obtenerEstudiantesGrupoPeriodo);
 router.get('/actualizarPeriodoEstudiantes/:periodo', controller.actualizarPeriodoEstudiantes);
-router.get('/asignarGrupoEstudiante/:id/:periodo', controller.asignarGrupoEstudiante);
+router.get('/asignarGrupoEstudiante/:id/:periodo/:grupo', controller.asignarGrupoEstudiante);
 module.exports = router;
-///:periodo
-/*/:grupo*/

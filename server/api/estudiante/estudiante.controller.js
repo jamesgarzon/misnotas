@@ -149,8 +149,9 @@ export function actualizarPeriodoEstudiantes(req, res) {//esta bien
     .catch(handleError(res));
 }
 
+
 export function asignarGrupoEstudiante(req, res) {
-  return Estudiante.update({"_id":req.params.id,"periodos.codigo": req.params.periodo},{$set:{"periodos.$.grupo":"7B"}}).exec()
+  return Estudiante.update({"_id":req.params.id,"periodos.codigo": req.params.periodo},{$set:{"periodos.$.grupo":req.params.grupo}}).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(responseWithResult(res))
