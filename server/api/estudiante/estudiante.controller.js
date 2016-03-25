@@ -150,7 +150,7 @@ export function actualizarPeriodoEstudiantes(req, res) {//esta bien
 }
 
 export function asignarGrupoEstudiante(req, res) {
-  return Estudiante.update({_id:req.params.id},{$addToSet:{periodos:{grupo:req.params.grupo}}}).exec()
+  return Estudiante.update({"_id":req.params.id,"periodos.codigo": req.params.periodo},{$set:{"periodos.$.grupo":"7B"}}).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(responseWithResult(res))
