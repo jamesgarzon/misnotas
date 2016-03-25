@@ -17,8 +17,10 @@
 </thead>
 
 <tbody>
-<tr ng-repeat="actividad in notasPorActividad">
-  <td ng-repeat="nota in actividad  track by $index"> {{nota}}</td>
+<tr ng-repeat="actividad in actividades">
+  <td> {{actividad.titulo}} </td>
+  <td ng-repeat="nota in actividad.notas  track by $index"> {{nota.calificacion}}</td>
+  Total: {{getTotalNota(actividad)}}
 <!-- <td ng-repeat="actividad in estudiante.periodos[0].areas[0].asignaturas[0].actividades"><span >{{actividad}}</span></td> -->
 
 </tr>
