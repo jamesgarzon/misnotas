@@ -1,29 +1,178 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="row">
-<div class="col s12 teal">
-<h2 class="center-align white-text">ASIGNATURAS</h2>
+<div class="fixed-action-btn" style="bottom:45px; right:24px;">
+  <a class="waves-effect waves-light btn modal-trigger  btn-large red" href="#modal-actividad-form" ng-click="showCreateForm()"><i class="large material-icons">add</i> <b>ACTIVIDAD</b></a>
 </div>
+
+
+<div class="row">
+  <div class="col s12 teal">
+    <h2 class="center-align white-text">ASIGNATURAS</h2>
+  </div>
 </div>
 <table class="responsive-table striped highlight bordered">
-<!-- <table class="responsive-table-custom striped highlight bordered"> -->
+  <!-- <table class="responsive-table-custom striped highlight bordered"> -->
 
-<thead>
-<tr>
-<td> <b>ESTUDIANTES</b> </td>
-<td ng-repeat="estudiante in estudiantes"> {{estudiante.nombres}} {{estudiante.apellidos}}</td>
-<td> Calificación Final </td>
-</tr>
-</thead>
+  <thead>
+    <tr>
+      <td> <b>ESTUDIANTES</b> </td>
+      <td ng-repeat="estudiante in estudiantes"> {{estudiante.nombres}} {{estudiante.apellidos}}</td>
+      <td> Calificación Final </td>
+    </tr>
+  </thead>
 
-<tbody>
-<tr ng-repeat="actividad in actividades">
-  <td> {{actividad.titulo}} </td>
-  <td ng-repeat="nota in actividad.notas  track by $index"> {{nota.calificacion}}</td>
-  Total: {{getTotalNota(actividad)}}
-<!-- <td ng-repeat="actividad in estudiante.periodos[0].areas[0].asignaturas[0].actividades"><span >{{actividad}}</span></td> -->
+  <tbody>
+    <tr ng-repeat="actividad in actividades">
+      <td> {{actividad.titulo}} </td>
+      <td ng-repeat="nota in actividad.notas  track by $index"> {{nota.calificacion}}</td>
+      Total: {{getTotalNota(actividad)}}
+      <!-- <td ng-repeat="actividad in estudiante.periodos[0].areas[0].asignaturas[0].actividades"><span >{{actividad}}</span></td> -->
 
-</tr>
-</tbody>
+    </tr>
+  </tbody>
 
 </table>
+
+<!-- ******************* NUEVA ACTIVIDAD ********************* -->
+<div id="modal-actividad-form" class="modal">
+  <div class="modal-content">
+    <h4 id="modal-actividad-title">Crear una nueva actividad</h4>
+    <div class="row">
+      <form class="col m12" ng-submit="crearActividad(nuevoActividad)">
+
+
+        <div class="row">
+          <!-- INPUT IDENTIFICACIÓN -->
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">stars</i>
+            <input id="input_titulo_crear" type="text" class="validate" ng-model="nuevoActividad.titulo" required="">
+            <label for="input_titulo_crear">Titulo</label>
+          </div>
+
+          <!-- TEXTAREA DESCRIPCIÓN -->
+          <div class="input-field col l6 s12">
+            <i class="material-icons prefix">import_contacts</i>
+            <textarea id="textarea_descripcion_crear" class="materialize-textarea" ng-model="nuevoActividad.descripcion" required="" aria-required="true"></textarea>
+            <label for="textarea_descripcion_crear">Dirección</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <!-- SELECT TIPO -->
+          <div class="input-field col l6 s12">
+            <select ng-model="nuevoActividad.tipo" material-select watch required>
+              <option value="" disabled=""> Seleccione un tipo</option>
+              <option value="tipo1"> Tipo 1 </option>
+              <option value="tipo2"> Tipo 2 </option>
+          </select>
+          <label>Tipo</label>
+        </div>
+
+        <!-- SELECT DESEMPEÑO -->
+        <div class="input-field col l6 s12">
+          <select ng-model="nuevoActividad.desempeno"
+          ng-options="desempeno.nombre  for desempeno in desempenos"material-select watch required>
+            <option value="" disabled=""> Seleccione un desempeño </option>
+          </select>
+        <label>Desempeño</label>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="input-field col l6 s12">
+        <select ng-model="nuevoActividad.tipoDocumento"
+        ng-options="tipoDocumento  for tipoDocumento in tipoDocumentos"material-select watch required>
+        <option value="" disabled=""> Seleccione un Tipo de Documento </option>
+      </select>
+      <label>Tipo de Documento</label>
+    </div>
+  </div>
+
+
+  <!-- INPUT IDENTIFICACIÓN -->
+  <div class="row">
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">book</i>
+      <input id="input_codigo_crear" type="text" class="validate" ng-model="nuevoActividad.documento" required="">
+      <label for="input_codigo_crear">identificación</label>
+    </div>
+
+    <!-- INPUT FECHA DE NACIMIENTO -->
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">date_range</i>
+      <!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"> -->
+      <input id="date_fecha_nacimiento_crear" class="datepicker" type="text" onfocus="(this.type='date')" ng-model="nuevoActividad.fechaNacimiento"  required="" aria-required="true">
+      <label for="date_fecha_nacimiento_crear" data-error="Error" >Fecha de nacimiento</label>
+    </div>
+  </div>
+
+  <!-- INPUT NOMBRE -->
+  <div class="row">
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">account_box</i>
+      <input id="input_nombre_crear" type="text" class="validate" ng-model="nuevoActividad.nombres" required="" aria-required="true">
+      <label for="input_nombre_crear" data-error="Error" >Nombre</label>
+    </div>
+
+    <!-- INPUT APELLIDO -->
+    <div class="input-field col l6 s12">
+      <!-- <i class="material-icons prefix">face</i> -->
+      <input id="input_apellido_crear" type="text" class="validate" ng-model="nuevoActividad.apellidos" required="" aria-required="true">
+      <label for="input_apellido_crear" data-error="Error" >Apellido</label>
+    </div>
+  </div>
+
+  <!-- INPUT TELEFONO -->
+  <div class="row">
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">phone</i>
+      <input id="input_telefono_crear" type="text" class="validate" ng-model="nuevoActividad.telefonos.numero" required="" aria-required="true">
+      <label for="input_telefono_crear" data-error="Error" >Teléfono</label>
+    </div>
+
+    <!-- INPUT EMAIL -->
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">email</i>
+      <input id="input_email_crear" type="email" class="validate" ng-model="nuevoActividad.email" required="" aria-required="true">
+      <label for="input_email_crear" data-error="Ingrese una dirección de correo válida" >Email</label>
+    </div>
+  </div>
+
+  <!-- INPUT CIUDAD -->
+  <div class="row">
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">location_city</i>
+      <input id="input_ciudad_crear" type="text" class="validate" ng-model="nuevoActividad.ciudad" required="" aria-required="true">
+      <label for="input_ciudad_crear" data-error="Error" >Ciudad</label>
+    </div>
+
+    <!-- TEXTAREA DIRECCION -->
+    <div class="input-field col l6 s12">
+      <i class="material-icons prefix">import_contacts</i>
+      <textarea id="textarea_direccion_crear" class="materialize-textarea" ng-model="nuevoActividad.direccion" required="" aria-required="true"></textarea>
+      <label for="textarea_direccion_crear">Dirección</label>
+    </div>
+  </div>
+
+  <div class="row right-align">
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Crear
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+
+</form>
+</div>
+
+</div>
+</div>

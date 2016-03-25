@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('notasApp')
-  .controller('NotasCtrl', function ($scope, Estudiante, ) {
-
+  .controller('NotasCtrl', function ($scope, Estudiante, Desempeno) {
+    $('.modal-trigger').leanModal();
         // $scope.actividadesPorGrupo = [
         //   {_id:'56d23e1e7bcfd0ab4161436d', titulo:'ENSAYO EL PRINCIPITO', descripcion:'ENSAYO SOBRE LA OBRA DEL PRINCIPITO'},
         //   {_id:'002', titulo:'ENSAYO CIEN AÑOS DE SOLEDAD', descripcion:'ENSAYO SOBRE LA OBRA DE GABRIEL GARCÍA MARQUEZ, CIEN AÑOS DE SOLEDAD'},
@@ -20,38 +20,38 @@ angular.module('notasApp')
                 titulo:"El principito",
                 notas:[
                   {estudiante: '1040040896', calificacion:4.1},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:3},
-                  {estudiante: '1040040786', calificacion:2.9},
-                  {estudiante: '1040040786', calificacion:2.9},
-                  {estudiante: '1040040786', calificacion:2.9},
-                  {estudiante: '1040040786', calificacion:3.6},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:2.5},
-                  {estudiante: '1040040786', calificacion:2.6},
-                  {estudiante: '1040040786', calificacion:3.4},
-                  {estudiante: '1040040786', calificacion:4.5},
                   {estudiante: '1040040786', calificacion:5}
+                  // {estudiante: '1040040786', calificacion:5},
+                  // {estudiante: '1040040786', calificacion:3},
+                  // {estudiante: '1040040786', calificacion:2.9},
+                  // {estudiante: '1040040786', calificacion:2.9},
+                  // {estudiante: '1040040786', calificacion:2.9},
+                  // {estudiante: '1040040786', calificacion:3.6},
+                  // {estudiante: '1040040786', calificacion:5},
+                  // {estudiante: '1040040786', calificacion:2.5},
+                  // {estudiante: '1040040786', calificacion:2.6},
+                  // {estudiante: '1040040786', calificacion:3.4},
+                  // {estudiante: '1040040786', calificacion:4.5},
+                  // {estudiante: '1040040786', calificacion:5}
                 ]
               },
               {
                 titulo:"Cien años de soledad",
                 notas:[
                   {estudiante: '1040040896', calificacion:2.9},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:3},
-                  {estudiante: '1040040786', calificacion:3.6},
-                  {estudiante: '1040040786', calificacion:2.6},
-                  {estudiante: '1040040786', calificacion:2.4},
-                  {estudiante: '1040040786', calificacion:4.3},
-                  {estudiante: '1040040786', calificacion:3.6},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:2.5},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:5},
-                  {estudiante: '1040040786', calificacion:4.2},
-                  {estudiante: '1040040786', calificacion:4.5}
+                  {estudiante: '1040040786', calificacion:5}
+                  // {estudiante: '1040040786', calificacion:3},
+                  // {estudiante: '1040040786', calificacion:3.6},
+                  // {estudiante: '1040040786', calificacion:2.6},
+                  // {estudiante: '1040040786', calificacion:2.4},
+                  // {estudiante: '1040040786', calificacion:4.3},
+                  // {estudiante: '1040040786', calificacion:3.6},
+                  // {estudiante: '1040040786', calificacion:5},
+                  // {estudiante: '1040040786', calificacion:2.5},
+                  // {estudiante: '1040040786', calificacion:5},
+                  // {estudiante: '1040040786', calificacion:5},
+                  // {estudiante: '1040040786', calificacion:4.2},
+                  // {estudiante: '1040040786', calificacion:4.5}
                 ]
               }
 
@@ -63,6 +63,18 @@ angular.module('notasApp')
           });
         };
 
+
+        $scope.listarDesempenos = function () {
+          Desempeno.listar()
+          .then(function(data){
+            $scope.desempenos = data;
+          })
+          .catch(function(err){
+            Materialize.toast('Problemas obteniendo los desemepeños', 4000);
+          });
+        }
+
+        $scope.listarDesempenos();
 
         $scope.listarEstudiantes();
 
