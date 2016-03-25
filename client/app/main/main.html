@@ -1,4 +1,4 @@
-<navbar></navbar>
+<div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit teal" id="banner">
   <div class="container">
@@ -7,8 +7,8 @@
   </div>
 </header>
 
-<div class="container">
- <h2>Bienvenido!</h2>
+<div class="container" ng-controller="MainController">
+ <h2>Bienvenido  {{getCurrentUser().name}}!</h2>
 </div>
 
 <footer></footer>

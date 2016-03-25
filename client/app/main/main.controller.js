@@ -1,18 +1,7 @@
 'use strict';
 
-(function() {
-
-class MainController {
-
-  constructor($http) {
-    this.$http = $http;
-
-  }
-
-
-}
-
 angular.module('notasApp')
-  .controller('MainController', MainController);
-
-})();
+  .controller('MainController', function ($scope, $http, Auth) {
+    $scope.nuevo = [];
+    $scope.getCurrentUser = Auth.getCurrentUser;
+  });
