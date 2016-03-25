@@ -107,31 +107,40 @@ export function actividadesPorAsignatura(req, res) {
   // Actividad.findAsync()
   //   .then(respondWithResult(res))
   //   .catch(handleError(res));
-  var periodo = '2015-1';
-  var asignatura = 'MATEMATICAS';
-  var grupo = '9A';
+
+
+  // Estudiantes.find({"periodos.codigo":"2016-1", "periodos.areas.asignaturas.nombre":"ESPAÑOL"}, {"periodos.areas.asignaturas.actividades":1})
+
+
+
+
+  var periodo = '2016-1';
+  var asignatura = 'ESPAÑOL';
+  var grupo = '9B';
   Actividad.find({periodo:periodo, asignatura:asignatura, grupo:grupo}).
   then(function(actividades){
     // res.send(resultados);
-    Estudiante.find().
+    Estudiante.find({"periodos.codigo":periodo,"periodos.grupo":grupo, "periodos.areas.asignaturas.nombre":asignatura, }, {"periodos.areas.asignaturas.actividades":1}).
     then(function (estudiantes) {
       var respuesta = {};
-      var actividadesPorEstudiante= [];
-      var actividad = {};
-
-      // for (let i = 0; i < estudiantes.length; i++) {
-      //
-      // }
-      respuesta.actividades= actividades;
-      respuesta.estudiantes= estudiantes;
-      // respuesta.actividades.push ['fffff','876543'];
-      // var actividadades = [];
-      // var estudiantes = [];
-      // respuesta.push(actividadades);
-      // respuesta.push(estudiantes);
-      // respuesta.push(actividades);
-      // respuesta.push(estudiantes);
-      res.send(respuesta);
+      var actividadesResp= [];
+      for (let i = 0; i < actividades.length; i++) {
+        var actividad = {};
+        actividad.titulo = actividades[i].titulo;
+        actividad.notas=[];
+        for (let j = 0; j < estudiantes.length; j++) {
+          var actividadesEstudiante = estudiantes[i].periodos[0].areas[0].asignaturas[0].actividades;
+          for (let k = 0; k < actividadesEstudiante.length; k++) {
+            if (actividad.titulo==actividadesEstudiante[k].titulo) {
+              actividad.notas.push(actividadesEstudiante[k].nota);
+            }
+          }
+        }
+        actividadesResp.push(actividad);
+      }
+      // respuesta.actividades= actividades;
+      // respuesta.estudiantes= estudiantes;
+      res.send(actividadesResp);
     })
 
 
