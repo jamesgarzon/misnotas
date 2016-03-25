@@ -34,6 +34,25 @@ angular.module('notasApp')
                   {estudiante: '1040040786', calificacion:4.5},
                   {estudiante: '1040040786', calificacion:5}
                 ]
+              },
+              {
+                titulo:"Cien años de soledad",
+                notas:[
+                  {estudiante: '1040040896', calificacion:2.9},
+                  {estudiante: '1040040786', calificacion:5},
+                  {estudiante: '1040040786', calificacion:3},
+                  {estudiante: '1040040786', calificacion:3.6},
+                  {estudiante: '1040040786', calificacion:2.6},
+                  {estudiante: '1040040786', calificacion:2.4},
+                  {estudiante: '1040040786', calificacion:4.3},
+                  {estudiante: '1040040786', calificacion:3.6},
+                  {estudiante: '1040040786', calificacion:5},
+                  {estudiante: '1040040786', calificacion:2.5},
+                  {estudiante: '1040040786', calificacion:5},
+                  {estudiante: '1040040786', calificacion:5},
+                  {estudiante: '1040040786', calificacion:4.2},
+                  {estudiante: '1040040786', calificacion:4.5}
+                ]
               }
 
 
