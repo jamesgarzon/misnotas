@@ -1,9 +1,20 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
+var Schema = mongoose.Schema;
+var crypto = require('crypto');
 
-var EstudianteSchema = new mongoose.Schema({
-  estaMatriculado: Boolean, 
+var EstudianteSchema = new Schema({
+  name: String,
+  email: { type: String, lowercase: true },
+  role: {
+    type: String,
+    default: 'user'
+  },
+  hashedPassword: String,
+  provider: String,
+  salt: String,
+  estaMatriculado: Boolean,
   esEgresado: Boolean,
   perfil: String,
   password: String,
@@ -14,7 +25,6 @@ var EstudianteSchema = new mongoose.Schema({
   direccion : {type: String, required: true},
   ciudad:String,
   telefonos : [ { tipo :String, titular : String, numero : String } ],
-  email : String,
   acudiente : String,
   fechaNacimiento:{type:Date, required: true},//Cambiar cuando creemos la entidad
   periodos : [
