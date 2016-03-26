@@ -10,7 +10,7 @@ angular.module('notasApp')
     {
       'titulo':'Estudiantes',
       'link':'/estudiantes',
-      'funcion': 'esEstudiante()'
+      'funcion': 'isAdmin()'
     },
     {
       'titulo':'Desempeños',
@@ -66,28 +66,7 @@ class NavbarController {
 {
   'titulo':'Estudiantes',
   'link':'/estudiantes'
-},
-{
-  'titulo':'Desempeños',
-  'link':'/desempenos'
-},
-{
-  'titulo':'Asistencia',
-  'link':'/asistencia'
-},
-{
-  'titulo':'Grupos',
-  'link':'/grupos'
-},
-{
-  'titulo':'Asignaturas',
-  'link':'/asignaturas'
-},
-{
-  'titulo':'Periodos',
-  'link':'/periodos'
-}
-];
+}];
 
   isCollapsed = true;
 
