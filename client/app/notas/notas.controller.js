@@ -1,16 +1,13 @@
 'use strict';
 
 angular.module('notasApp')
-  .controller('NotasCtrl', function ($scope, Estudiante, Desempeno) {
+  .controller('NotasCtrl', function ($scope, Estudiante, Desempeno, Actividad, $routeParams) {
     $('.modal-trigger').leanModal();
-        // $scope.actividadesPorGrupo = [
-        //   {_id:'56d23e1e7bcfd0ab4161436d', titulo:'ENSAYO EL PRINCIPITO', descripcion:'ENSAYO SOBRE LA OBRA DEL PRINCIPITO'},
-        //   {_id:'002', titulo:'ENSAYO CIEN AÑOS DE SOLEDAD', descripcion:'ENSAYO SOBRE LA OBRA DE GABRIEL GARCÍA MARQUEZ, CIEN AÑOS DE SOLEDAD'},
-        // ];
-        // $scope.actividades = [
-        //   ['EL PRINCIPITO',2,'-'],
-        //   ['CIEN AÑOS DE SOLEDAD',5,'-']
-        // ];
+
+    $scope.periodo =  $routeParams.idPeriodo;
+    $scope.grupo =  $routeParams.idGrupo;
+    $scope.asignatura =  $routeParams.idAsignatura;
+
         $scope.listarEstudiantes = function () {
           Estudiante.listar()
           .then(function(data) {
@@ -73,6 +70,29 @@ angular.module('notasApp')
             Materialize.toast('Problemas obteniendo los desemepeños', 4000);
           });
         }
+// asignaturas/:idPeriodo/:idGrupo/:idAsignatura/notas
+        $scope.crearActividad = function (actividad) {
+          actividad.periodo =  $scope.periodo;
+          actividad.grupo =  $scope.grupo;
+          actividad.asignatura =  $scope.asignatura;
+            Actividad.crear(actividad)
+            .then(function(data){
+              Materialize.toast('Actividad creada exitosamente', 4000);
+              $scope.listarEstudiantes();
+            })
+            .catch(function (err) {
+              Materialize.toast('ERROR CREANDO LA ACTIVIDAD', 4000);
+            })
+        }
+
+        Actividad.listarPorGrupo($scope.periodo,$scope.asignatura,$scope.grupo)
+        .then(function (data) {
+          $scope.respuestaActividades = data;
+        })
+        .catch(function (err) {
+          Materialize.toast(err, 4000);
+
+        });
 
         $scope.listarDesempenos();
 

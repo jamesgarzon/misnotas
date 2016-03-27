@@ -13,8 +13,7 @@ var ActividadSchema = new mongoose.Schema({
   tipo: String,
   fecha_creacion: { type: Date, default: Date.now },
   fecha_entrega: Date,
-  docente: String,
-  estudiante: String
+  docente: String
 });
 
 export default mongoose.model('Actividad', ActividadSchema);

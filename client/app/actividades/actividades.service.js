@@ -18,6 +18,26 @@ servicio.listar = function () {
 	return promise;
 };
 
+
+// Servicio para listar actividades por grupo
+servicio.listarPorGrupo = function (periodo, asignatura, grupo) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+
+	$http(
+		{method: 'GET',
+		 url: '/api/actividades/actividadesPorAsignatura',
+		 params: {periodo:periodo, asignatura:asignatura, grupo:grupo}
+		})
+	.then(function successCallback(response) {
+				defered.resolve(response.data);
+	  }, function errorCallback(err) {
+	    	defered.reject(err);
+	  });
+	return promise;
+};
+
+
 // Servicio para crear un nuevo actividad
 // parametro actividadNuevo => objeto actividad que se va a crear
 servicio.crear = function (actividadNuevo) {

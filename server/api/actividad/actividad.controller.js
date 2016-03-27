@@ -114,9 +114,10 @@ export function actividadesPorAsignatura(req, res) {
 
 
 
-  var periodo = '2016-1';
-  var asignatura = 'ESPAÑOL';
-  var grupo = '9B';
+  var periodo = req.query.periodo;
+  var asignatura = req.query.asignatura;
+  var grupo = req.query.grupo;
+
   Actividad.find({periodo:periodo, asignatura:asignatura, grupo:grupo}).
   then(function(actividades){
     // res.send(resultados);
@@ -128,12 +129,18 @@ export function actividadesPorAsignatura(req, res) {
         var actividad = {};
         actividad.titulo = actividades[i].titulo;
         actividad.notas=[];
+        console.log("estudiantes length:"+ estudiantes.length);
         for (let j = 0; j < estudiantes.length; j++) {
           var actividadesEstudiante = estudiantes[i].periodos[0].areas[0].asignaturas[0].actividades;
+          var notaEncontrada = false;
           for (let k = 0; k < actividadesEstudiante.length; k++) {
             if (actividad.titulo==actividadesEstudiante[k].titulo) {
               actividad.notas.push(actividadesEstudiante[k].nota);
+              notaEncontrada = true;
             }
+          }
+          if (!notaEncontrada) {
+            actividad.notas.push('-');
           }
         }
         actividadesResp.push(actividad);

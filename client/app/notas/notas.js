@@ -3,9 +3,9 @@
 angular.module('notasApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/asignaturas/:idAsignatura/notas', {
+      .when('/asignaturas/:idPeriodo/:idGrupo/:idAsignatura/notas', {
         templateUrl: 'app/notas/notas.html',
-        controller: 'NotasCtrl',
-        authenticate: true
+        controller: 'NotasCtrl'
+        // ,authenticate: true
       });
   });
