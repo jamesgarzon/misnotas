@@ -39,6 +39,20 @@ servicio.listarPorGrupo = function (periodo, asignatura, grupo) {
 
 
 // Servicio para crear un nuevo actividad
+servicio.crearActividadAlGrupo = function (actividadNueva) {
+	var defered = $q.defer();
+	var promise = defered.promise;
+	$http.post('/api/actividades/crearActividadPorAsignatura', actividadNueva)
+			.success(function(data) {
+					defered.resolve(data);
+			})
+			.error(function(err) {
+					defered.reject(err);
+			});
+	return promise;
+};
+
+// Servicio para crear una actividad y asociarla a todos los estudiantes
 // parametro actividadNuevo => objeto actividad que se va a crear
 servicio.crear = function (actividadNuevo) {
 	var defered = $q.defer();
