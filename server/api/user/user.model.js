@@ -5,7 +5,14 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var UserSchema = new Schema({
-  name: String,
+  tipoDocumento : String,
+  documento : {type: String, required: true},
+  nombres: String,
+  apellidos: String,
+  direccion : {type: String, required: true},
+  ciudad:String,
+  telefonos : [ { tipo :String, titular : String, numero : String } ],
+  fechaNacimiento:{type:Date, required: true},//Cambiar cuando creemos la entidad
   email: { type: String, lowercase: true },
   role: {
     type: String,
@@ -13,7 +20,9 @@ var UserSchema = new Schema({
   },
   hashedPassword: String,
   provider: String,
-  salt: String
+  salt: String,
+  //Variables condicionales por perfil
+  acudiente : String,
 });
 
 /**
