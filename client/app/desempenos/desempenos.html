@@ -71,10 +71,10 @@
               <a class="orange btn" ng-click="vista='editar'">Actualizar</a>
               <a class="red btn" ng-click="eliminarDesempeno(desempeno)">Eliminar</a>
 
-              <a class="waves-effect waves-light btn modal-trigger" href="#modal1" ng-click="showCreateForm()">Modal</a>
+              <a class="waves-effect waves-light btn modal-trigger" href="#modal{{desempeno.nombre}}" ng-click="showCreateForm()">Modal</a>
 
               <!-- Modal Structure -->
-              <div id="modal1" class="modal">
+              <div id="modal{{desempeno.nombre}}" class="modal">
                 <div class="modal-content">
                   <h4>Modal Header</h4>
                   <p>A bunch of text</p>
@@ -108,7 +108,8 @@
                   <!-- INPUT PERIODO -->
                   <div class="row col s6">
                     <label for="input_periodo_select"><h6>Periodo</h6></label>
-                    <select id="input_periodo_select" class="browser-default validate" ng-model="desempeno.periodo" required material-select watch>
+                    <select id="input_periodo_select" class="browser-default validate" ng-model="desempeno.periodo"
+                    required material-select watch>
                         <option value="" disabled>Escoja un periodo</option>
                         <option value="{{periodo}}" ng-repeat="periodo in periodoDesempenos">{{periodo}}</option>
                     </select>
