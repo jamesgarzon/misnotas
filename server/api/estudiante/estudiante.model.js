@@ -5,45 +5,28 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var EstudianteSchema = new Schema({
-  name: String,
-  email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'user'
-  },
-  hashedPassword: String,
-  provider: String,
-  salt: String,
+
   estaMatriculado: Boolean,
   esEgresado: Boolean,
-  perfil: String,
-  password: String,
-  tipoDocumento : String,
-  documento : {type: String, required: true},
-  nombres : {type: String, required: true},
-  apellidos : {type: String, required: true},
-  direccion : {type: String, required: true},
-  ciudad:String,
-  telefonos : [ { tipo :String, titular : String, numero : String } ],
-  acudiente : String,
-  fechaNacimiento:{type:Date, required: true},//Cambiar cuando creemos la entidad
-  periodos : [
-    {
+  user_id: String,
+ //Cambiar cuando creemos la entidad
+ periodos : [
+ {
       codigo : String, // 2016-1
       grupo : String,
-      areas : [
-        {
-          nombre : String,
-          nota : Number,
-          notaEscolar : String,
-          notaNacional : String,
-          asignaturas : [
-            {
-              nombre : String,
+      asignaturas : [
+      {
+        nombre : String,
               docente : String, // Cambiar cuando creemos la entidad
               asistencias : [Date],
+              area:{
+                nombre : String,
+                nota : Number,
+                notaEscolar : String,
+                notaNacional : String
+              },
               actividades : [
-                {
+              {
                 titulo : String,
                 descripcion : String,
                 fechaCreacion : Date,
@@ -61,15 +44,15 @@ var EstudianteSchema = new Schema({
               }
               ]
             }
+            ]
+
+
+          }
           ]
-        }
-      ]
-      }
-    ]
 
 
 
-});
+        });
 
 export default mongoose.model('Estudiante', EstudianteSchema);
 
