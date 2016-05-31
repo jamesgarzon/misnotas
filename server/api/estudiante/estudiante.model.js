@@ -6,8 +6,7 @@ var crypto = require('crypto');
 
 var EstudianteSchema = new Schema({
 
-  estaMatriculado: Boolean,
-  esEgresado: Boolean,
+  
   user_id: String,
  //Cambiar cuando creemos la entidad
  periodos : [
