@@ -157,3 +157,12 @@ export function asignarGrupoEstudiante(req, res) {
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
+export function actividades(req, res) {
+  
+  //return Estudiante.find({periodos:{$all:[{$elemMatch:{codigo:req.params.periodos,areas:{$elemMatch:{nombre:req.params.nombre}}}}]}}).exec()
+  return Estudiante.find({$and:[{"periodos.codigo":req.params.nombre},{"periodos.areas.nombre":req.params.periodo}]}).exec()
+    .then(handleEntityNotFound(res))
+   // .then(saveUpdates(req.body))
+    .then(responseWithResult(res))
+    .catch(handleError(res));
+}

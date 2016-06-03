@@ -3,7 +3,7 @@
 import mongoose from 'mongoose';
 
 var DocenteSchema = new mongoose.Schema({
-  user_id:String;
+  user_id:String,
   asignaturas:[{
   /* Codigo de periodo para saber en que periodos dio que materias*/codigo:String,
   	nombre: String,
